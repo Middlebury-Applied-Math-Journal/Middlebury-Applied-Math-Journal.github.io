@@ -7,7 +7,7 @@ A senior student research journal on mathematical methods and their applications
 
 An automatically generated index of every repository in the [Middlebury-Applied-Math-Journal](https://github.com/Middlebury-Applied-Math-Journal) organization. Rebuilt nightly by [GitHub Actions](.github/workflows/build-index.yml). See [SETUP.md](SETUP.md) for how it works, and [Organizing editions and sections](#organizing-editions-and-sections) to place an article in an edition.
 
-_Last built: 2026-11-04T20:14:32.816Z_
+_Last built: 2026-11-04T20:44:15.694Z_
 
 ## [Alzheimers Biomarker Cascade](https://github.com/Middlebury-Applied-Math-Journal/alzheimers-biomarker-cascade)
 
@@ -17,7 +17,7 @@ Alzheimer’s disease is a progressive, irreversible brain disorder that gradual
 
 ## [Behavior Driven Vaccination Sir](https://github.com/Middlebury-Applied-Math-Journal/behavior-driven-vaccination-sir)
 
-Put your abstract here.
+Vaccination rates can change with public perception of dis- ease risk, especially when infection levels rise or fall over time. However, many classical SIR vaccination models treat vacci- nation coverage as constant, which can miss feedback between disease prevalence and human behavior. This paper studies whether behav…
 
 **Contributors:** _none listed_
 
@@ -35,7 +35,7 @@ Fishery management officials must balance maximizing economic gain with preservi
 
 ## [Pandemic Compartmental Models](https://github.com/Middlebury-Applied-Math-Journal/pandemic-compartmental-models)
 
-Put your abstract here.
+After the COVID-19 pandemic upended daily life in 2020, questions about how disease control agencies around the world could better prepare for the spread diseases arose. Epidemiol- ogy is the study of the spread of diseases, and in this paper, we explore how epidemiological models can inform disease inter- vention stra…
 
 **Contributors:** _none listed_
 

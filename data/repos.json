@@ -2,7 +2,7 @@
   "org": "Middlebury-Applied-Math-Journal",
   "title": "Middlebury Applied Math Journal",
   "description": "A senior student research journal on mathematical methods and their applications.",
-  "builtAt": "2026-11-04T20:14:32.816Z",
+  "builtAt": "2026-11-04T20:44:15.694Z",
   "repos": [
     {
       "name": "alzheimers-biomarker-cascade",
@@ -30,17 +30,17 @@
       "displayTitle": "Behavior Driven Vaccination Sir",
       "htmlUrl": "https://github.com/Middlebury-Applied-Math-Journal/behavior-driven-vaccination-sir",
       "description": null,
-      "summary": "Put your abstract here.",
+      "summary": "Vaccination rates can change with public perception of dis- ease risk, especially when infection levels rise or fall over time. However, many classical SIR vaccination models treat vacci- nation coverage as constant, which can miss feedback between disease prevalence and human behavior. This paper studies whether behav…",
       "contributors": [],
       "contributorsOverflow": false,
       "isFork": false,
       "isArchived": false,
-      "updatedAt": "2026-11-04T16:23:45Z",
+      "updatedAt": "2026-11-04T20:31:21Z",
       "topics": [
         "edition-1",
         "understanding-epidemiology"
       ],
-      "pdfUrl": null,
+      "pdfUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/behavior-driven-vaccination-sir/main/pdf/behavior-vaccination.pdf",
       "bio": {
         "markdownUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/behavior-driven-vaccination-sir/main/bio/bio.md",
         "imageUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/behavior-driven-vaccination-sir/main/bio/basic.png"
@@ -93,17 +93,17 @@
       "displayTitle": "Pandemic Compartmental Models",
       "htmlUrl": "https://github.com/Middlebury-Applied-Math-Journal/pandemic-compartmental-models",
       "description": null,
-      "summary": "Put your abstract here.",
+      "summary": "After the COVID-19 pandemic upended daily life in 2020, questions about how disease control agencies around the world could better prepare for the spread diseases arose. Epidemiol- ogy is the study of the spread of diseases, and in this paper, we explore how epidemiological models can inform disease inter- vention stra…",
       "contributors": [],
       "contributorsOverflow": false,
       "isFork": false,
       "isArchived": false,
-      "updatedAt": "2026-11-04T16:23:29Z",
+      "updatedAt": "2026-11-04T20:28:04Z",
       "topics": [
         "edition-1",
         "understanding-epidemiology"
       ],
-      "pdfUrl": null,
+      "pdfUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/pandemic-compartmental-models/main/pdf/prevent-pandemic.pdf",
       "bio": {
         "markdownUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/pandemic-compartmental-models/main/bio/bio.md",
         "imageUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/pandemic-compartmental-models/main/bio/basic.png"
