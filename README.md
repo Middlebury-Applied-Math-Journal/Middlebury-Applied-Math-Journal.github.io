@@ -7,7 +7,7 @@ A senior student research journal on mathematical methods and their applications
 
 An automatically generated index of every repository in the [Middlebury-Applied-Math-Journal](https://github.com/Middlebury-Applied-Math-Journal) organization. Rebuilt nightly by [GitHub Actions](.github/workflows/build-index.yml). See [SETUP.md](SETUP.md) for how it works, and [Organizing editions and sections](#organizing-editions-and-sections) to place an article in an edition.
 
-_Last built: 2026-11-04T18:50:52.722Z_
+_Last built: 2026-11-04T19:10:00.333Z_
 
 ## [Alzheimers Biomarker Cascade](https://github.com/Middlebury-Applied-Math-Journal/alzheimers-biomarker-cascade)
 
