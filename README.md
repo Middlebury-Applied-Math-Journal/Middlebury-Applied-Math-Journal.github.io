@@ -7,11 +7,11 @@ A senior student research journal on mathematical methods and their applications
 
 An automatically generated index of every repository in the [Middlebury-Applied-Math-Journal](https://github.com/Middlebury-Applied-Math-Journal) organization. Rebuilt nightly by [GitHub Actions](.github/workflows/build-index.yml). See [SETUP.md](SETUP.md) for how it works, and [Organizing editions and sections](#organizing-editions-and-sections) to place an article in an edition.
 
-_Last built: 2026-11-04T19:30:36.114Z_
+_Last built: 2026-11-04T20:14:32.816Z_
 
 ## [Alzheimers Biomarker Cascade](https://github.com/Middlebury-Applied-Math-Journal/alzheimers-biomarker-cascade)
 
-Put your abstract here.
+Alzheimer’s disease is a progressive, irreversible brain disorder that gradually destroys cognitive function and memory, mak- ing even the simplest tasks di!cult to perform. While the general pathological mechanisms underlying Alzheimer’s dis- ease are known, the timing and progression of these changes in the brain rem…
 
 **Contributors:** _none listed_
 
@@ -23,13 +23,13 @@ Put your abstract here.
 
 ## [Carbon Cycle Ode](https://github.com/Middlebury-Applied-Math-Journal/carbon-cycle-ode)
 
-Put your abstract here.
+Carbon dioxide acts as a greenhouse gas when stored in the atmosphere. The burning of fossil fuels and biomass upsets the natural balance of the carbon cycle by releasing long-ago stored carbon into the air, tipping the equilibrium towards the atmospheric storage. A model consisting of a system of ordinary di!erential…
 
 **Contributors:** _none listed_
 
 ## [Leslie Matrix Fishery Harvesting](https://github.com/Middlebury-Applied-Math-Journal/leslie-matrix-fishery-harvesting)
 
-Put your abstract here.
+Fishery management officials must balance maximizing economic gain with preserving fish populations. This challenge depends heavily on understanding how regulations on min- imum harvesting age a"ect long-term population dynamics. This paper compares a Leslie matrix and a system of ordinary diferential equations (ODEs)…
 
 **Contributors:** _none listed_
 
@@ -47,25 +47,25 @@ Thermal discharge from power plants can raise downstream river temperatures and 
 
 ## [Rock Paper Scissors Cyclic Competition](https://github.com/Middlebury-Applied-Math-Journal/rock-paper-scissors-cyclic-competition)
 
-Put your abstract here.
+n 1996, Sinervo & Lively documented a striking natural phe- nomenon: the three male throat-color morphs of the side- blotched lizard (Uta stansburiana) cycle through dominance in sequence over a five-year period, with no single morph ever permanently prevailing; a biological manifestation of the rock-paper-scissors gam…
 
 **Contributors:** _none listed_
 
 ## [Spatial Pattern Formation](https://github.com/Middlebury-Applied-Math-Journal/spatial-pattern-formation)
 
-Put your abstract here.
+Spatial patterns are present throughout many areas of nature such as in animal patterns and vegetation growth. Turing pat- terns are one way of mathematically modeling spatial pattern formation, and the reaction-di!usion principles which define the model have been shown to be the likely biological cause of pattern form…
 
 **Contributors:** _none listed_
 
 ## [Tmbox Microfluidic Biosensor](https://github.com/Middlebury-Applied-Math-Journal/tmbox-microfluidic-biosensor)
 
-Put your abstract here.
+Microfluidic devices are small, typically inexpensive devices capable of performing complex biochemical assays. For exam- ple, the enzyme-linked immunosorbent assay (ELISA) can be adapted to a microfluidic electrochemical biosensor for rapid cancer biomarker quantification. An ELISA produces the oxidized electroactive…
 
 **Contributors:** _none listed_
 
 ## [Wind Turbine Gearbox Maintenance](https://github.com/Middlebury-Applied-Math-Journal/wind-turbine-gearbox-maintenance)
 
-Put your abstract here.
+Wind turbine gearboxes degrade under uncertain operating conditions, such as turbulence, storms, and rapidly chang- ing loads, making maintenance decisions sensitive to random- ness. While keeping turbines operating is crucial for energy production, poorly chosen maintenance strategies can lead to inadequate maintenanc…
 
 **Contributors:** _none listed_
 
