@@ -1,10 +1,10 @@
 {
   "editions": {
-    "Edition 1": {
-      "image": "assets/images/edition-1-cover.jpeg",
+    "1": {
+      "image": "assets/images/edition-1-cover.jpg",
       "description": "Modelling Patterns in Nature"
     },
-    "2027": {
+    "2": {
       "image": "assets/images/sqrl.webp",
       "description": "Another demo edition for the journal. This edition contains different example articles and is used to showcase the journal's capabilities. This description should focus on the over-all theme."
     }
@@ -12,6 +12,12 @@
   "sections": {
     "managing-energy": {
       "color": "#2E7D32"
+    },
+    "mechanistic-insights-into-disease-and-progression": {
+      "color": "#444444"
+    },
+    "understanding-epidemiology": {
+      "color": "#efefef"
     },
     "wild-equations": {
       "color": "#1565C0"
