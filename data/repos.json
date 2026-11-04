@@ -1,69 +1,30 @@
 {
-  "org": "Demo-Math-Journal",
-  "title": "Demo Math Journal",
-  "description": "I'm a journal on mathematical methods and their applications.",
-  "builtAt": "2026-11-04T18:16:36.886Z",
+  "org": "Middlebury-Applied-Math-Journal",
+  "title": "Middlebury Applied Math Journal",
+  "description": "A senior student research journal on mathematical methods and their applications.",
+  "builtAt": "2026-11-04T18:33:15.137Z",
   "repos": [
     {
-      "name": "adaptive-quadrature",
-      "displayTitle": "Adaptive Quadrature",
-      "htmlUrl": "https://github.com/Demo-Math-Journal/adaptive-quadrature",
-      "description": null,
-      "summary": "Error-controlled numerical integration: adaptive Simpson's rule versus a fixed-grid Simpson's rule, compared at matched function-evaluation budgets.",
-      "contributors": [
-        {
-          "login": "woodwardtw",
-          "htmlUrl": "https://github.com/woodwardtw",
-          "avatarUrl": "https://avatars.githubusercontent.com/u/5863137?v=4",
-          "name": "Tom Woodward"
-        }
-      ],
+      "name": ".github",
+      "displayTitle": ".github",
+      "htmlUrl": "https://github.com/Middlebury-Applied-Math-Journal/.github",
+      "description": "Public content",
+      "summary": "Public content",
+      "contributors": [],
       "contributorsOverflow": false,
       "isFork": false,
       "isArchived": false,
-      "updatedAt": "2026-10-22T13:01:56Z",
-      "topics": [
-        "adaptive-method",
-        "issue-2026",
-        "numerical-analysis",
-        "numerical-integration",
-        "quadrature",
-        "section-managing-energy"
-      ],
-      "pdfUrl": "https://raw.githubusercontent.com/Demo-Math-Journal/adaptive-quadrature/master/pdf/title.pdf",
-      "bio": {
-        "markdownUrl": "https://raw.githubusercontent.com/Demo-Math-Journal/adaptive-quadrature/master/bio/bio.md",
-        "imageUrl": "https://raw.githubusercontent.com/Demo-Math-Journal/adaptive-quadrature/master/bio/basic.png"
-      }
-    },
-    {
-      "name": "Demo-Math-Journal.github.io",
-      "displayTitle": "Demo Math Journal.github.io",
-      "htmlUrl": "https://github.com/Demo-Math-Journal/Demo-Math-Journal.github.io",
-      "description": "Index builder for GitHub journal experiment",
-      "summary": "I'm a journal on mathematical methods and their applications.",
-      "contributors": [
-        {
-          "login": "woodwardtw",
-          "htmlUrl": "https://github.com/woodwardtw",
-          "avatarUrl": "https://avatars.githubusercontent.com/u/5863137?v=4",
-          "name": "Tom Woodward"
-        }
-      ],
-      "contributorsOverflow": false,
-      "isFork": false,
-      "isArchived": false,
-      "updatedAt": "2026-11-04T15:24:57Z",
+      "updatedAt": "2026-10-27T13:39:35Z",
       "topics": [],
       "pdfUrl": null,
       "bio": null
     },
     {
-      "name": "monte-carlo-integrator",
-      "displayTitle": "Monte Carlo Integrator",
-      "htmlUrl": "https://github.com/Demo-Math-Journal/monte-carlo-integrator",
+      "name": "alzheimers-biomarker-cascade",
+      "displayTitle": "Alzheimers Biomarker Cascade",
+      "htmlUrl": "https://github.com/Middlebury-Applied-Math-Journal/alzheimers-biomarker-cascade",
       "description": null,
-      "summary": "Stochastic estimation of definite integrals and of pi, with an experiment tracking how the error actually shrinks as the sample count grows. $$\\left( \\sum{k=1}^n ak bk \\right)^2 \\leq \\left( \\sum{k=1}^n ak^2 \\right) \\left( \\sum{k=1}^n b_k^2 \\right)$$",
+      "summary": "Put your abstract here.",
       "contributors": [
         {
           "login": "woodwardtw",
@@ -75,27 +36,20 @@
       "contributorsOverflow": false,
       "isFork": false,
       "isArchived": false,
-      "updatedAt": "2026-10-22T09:46:35Z",
-      "topics": [
-        "integration",
-        "issue-2026",
-        "monte-carlo",
-        "numerical-analysis",
-        "section-other-main-category",
-        "stochastic-methods"
-      ],
-      "pdfUrl": "https://raw.githubusercontent.com/Demo-Math-Journal/monte-carlo-integrator/master/pdf/title.pdf",
+      "updatedAt": "2026-11-04T16:22:42Z",
+      "topics": [],
+      "pdfUrl": null,
       "bio": {
-        "markdownUrl": "https://raw.githubusercontent.com/Demo-Math-Journal/monte-carlo-integrator/master/bio/bio.md",
-        "imageUrl": "https://raw.githubusercontent.com/Demo-Math-Journal/monte-carlo-integrator/master/bio/basic.png"
+        "markdownUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/alzheimers-biomarker-cascade/main/bio/bio.md",
+        "imageUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/alzheimers-biomarker-cascade/main/bio/basic.png"
       }
     },
     {
-      "name": "newton-raphson-lab",
-      "displayTitle": "Newton Raphson Lab",
-      "htmlUrl": "https://github.com/Demo-Math-Journal/newton-raphson-lab",
+      "name": "behavior-driven-vaccination-sir",
+      "displayTitle": "Behavior Driven Vaccination Sir",
+      "htmlUrl": "https://github.com/Middlebury-Applied-Math-Journal/behavior-driven-vaccination-sir",
       "description": null,
-      "summary": "Root-finding methods and their convergence behavior, compared side by side: Newton-Raphson, secant, and bisection. And more !!!",
+      "summary": "Put your abstract here.",
       "contributors": [
         {
           "login": "woodwardtw",
@@ -107,19 +61,212 @@
       "contributorsOverflow": false,
       "isFork": false,
       "isArchived": false,
-      "updatedAt": "2026-10-22T09:46:34Z",
-      "topics": [
-        "issue-2027",
-        "newton-raphson",
-        "nonlinear-equations",
-        "numerical-analysis",
-        "root-finding",
-        "section-managing-energy"
-      ],
-      "pdfUrl": "https://raw.githubusercontent.com/Demo-Math-Journal/newton-raphson-lab/master/pdf/title.pdf",
+      "updatedAt": "2026-11-04T16:23:45Z",
+      "topics": [],
+      "pdfUrl": null,
       "bio": {
-        "markdownUrl": "https://raw.githubusercontent.com/Demo-Math-Journal/newton-raphson-lab/master/bio/bio.md",
-        "imageUrl": "https://raw.githubusercontent.com/Demo-Math-Journal/newton-raphson-lab/master/bio/basic.png"
+        "markdownUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/behavior-driven-vaccination-sir/main/bio/bio.md",
+        "imageUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/behavior-driven-vaccination-sir/main/bio/basic.png"
+      }
+    },
+    {
+      "name": "carbon-cycle-ode",
+      "displayTitle": "Carbon Cycle Ode",
+      "htmlUrl": "https://github.com/Middlebury-Applied-Math-Journal/carbon-cycle-ode",
+      "description": null,
+      "summary": "Put your abstract here.",
+      "contributors": [
+        {
+          "login": "woodwardtw",
+          "htmlUrl": "https://github.com/woodwardtw",
+          "avatarUrl": "https://avatars.githubusercontent.com/u/5863137?v=4",
+          "name": "Tom Woodward"
+        }
+      ],
+      "contributorsOverflow": false,
+      "isFork": false,
+      "isArchived": false,
+      "updatedAt": "2026-11-04T16:22:03Z",
+      "topics": [],
+      "pdfUrl": null,
+      "bio": {
+        "markdownUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/carbon-cycle-ode/main/bio/bio.md",
+        "imageUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/carbon-cycle-ode/main/bio/basic.png"
+      }
+    },
+    {
+      "name": "leslie-matrix-fishery-harvesting",
+      "displayTitle": "Leslie Matrix Fishery Harvesting",
+      "htmlUrl": "https://github.com/Middlebury-Applied-Math-Journal/leslie-matrix-fishery-harvesting",
+      "description": null,
+      "summary": "Put your abstract here.",
+      "contributors": [
+        {
+          "login": "woodwardtw",
+          "htmlUrl": "https://github.com/woodwardtw",
+          "avatarUrl": "https://avatars.githubusercontent.com/u/5863137?v=4",
+          "name": "Tom Woodward"
+        }
+      ],
+      "contributorsOverflow": false,
+      "isFork": false,
+      "isArchived": false,
+      "updatedAt": "2026-11-04T16:23:04Z",
+      "topics": [],
+      "pdfUrl": null,
+      "bio": {
+        "markdownUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/leslie-matrix-fishery-harvesting/main/bio/bio.md",
+        "imageUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/leslie-matrix-fishery-harvesting/main/bio/basic.png"
+      }
+    },
+    {
+      "name": "pandemic-compartmental-models",
+      "displayTitle": "Pandemic Compartmental Models",
+      "htmlUrl": "https://github.com/Middlebury-Applied-Math-Journal/pandemic-compartmental-models",
+      "description": null,
+      "summary": "Put your abstract here.",
+      "contributors": [
+        {
+          "login": "woodwardtw",
+          "htmlUrl": "https://github.com/woodwardtw",
+          "avatarUrl": "https://avatars.githubusercontent.com/u/5863137?v=4",
+          "name": "Tom Woodward"
+        }
+      ],
+      "contributorsOverflow": false,
+      "isFork": false,
+      "isArchived": false,
+      "updatedAt": "2026-11-04T16:23:29Z",
+      "topics": [],
+      "pdfUrl": null,
+      "bio": {
+        "markdownUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/pandemic-compartmental-models/main/bio/bio.md",
+        "imageUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/pandemic-compartmental-models/main/bio/basic.png"
+      }
+    },
+    {
+      "name": "river-temperature-thermal-discharge",
+      "displayTitle": "River Temperature Thermal Discharge",
+      "htmlUrl": "https://github.com/Middlebury-Applied-Math-Journal/river-temperature-thermal-discharge",
+      "description": null,
+      "summary": "Thermal discharge from power plants can raise downstream river temperatures and stress aquatic ecosystems, especially during warm seasons. While limits on the amount of allowed heat output do exist, they are not defined dynamically to account for varying river conditions. This study uses a one dimensional advection-di!…",
+      "contributors": [
+        {
+          "login": "woodwardtw",
+          "htmlUrl": "https://github.com/woodwardtw",
+          "avatarUrl": "https://avatars.githubusercontent.com/u/5863137?v=4",
+          "name": "Tom Woodward"
+        }
+      ],
+      "contributorsOverflow": false,
+      "isFork": false,
+      "isArchived": false,
+      "updatedAt": "2026-11-04T16:34:54Z",
+      "topics": [],
+      "pdfUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/river-temperature-thermal-discharge/main/pdf/river-temp.pdf",
+      "bio": {
+        "markdownUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/river-temperature-thermal-discharge/main/bio/bio.md",
+        "imageUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/river-temperature-thermal-discharge/main/bio/basic.png"
+      }
+    },
+    {
+      "name": "rock-paper-scissors-cyclic-competition",
+      "displayTitle": "Rock Paper Scissors Cyclic Competition",
+      "htmlUrl": "https://github.com/Middlebury-Applied-Math-Journal/rock-paper-scissors-cyclic-competition",
+      "description": null,
+      "summary": "Put your abstract here.",
+      "contributors": [
+        {
+          "login": "woodwardtw",
+          "htmlUrl": "https://github.com/woodwardtw",
+          "avatarUrl": "https://avatars.githubusercontent.com/u/5863137?v=4",
+          "name": "Tom Woodward"
+        }
+      ],
+      "contributorsOverflow": false,
+      "isFork": false,
+      "isArchived": false,
+      "updatedAt": "2026-11-04T16:23:15Z",
+      "topics": [],
+      "pdfUrl": null,
+      "bio": {
+        "markdownUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/rock-paper-scissors-cyclic-competition/main/bio/bio.md",
+        "imageUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/rock-paper-scissors-cyclic-competition/main/bio/basic.png"
+      }
+    },
+    {
+      "name": "spatial-pattern-formation",
+      "displayTitle": "Spatial Pattern Formation",
+      "htmlUrl": "https://github.com/Middlebury-Applied-Math-Journal/spatial-pattern-formation",
+      "description": null,
+      "summary": "Put your abstract here.",
+      "contributors": [
+        {
+          "login": "woodwardtw",
+          "htmlUrl": "https://github.com/woodwardtw",
+          "avatarUrl": "https://avatars.githubusercontent.com/u/5863137?v=4",
+          "name": "Tom Woodward"
+        }
+      ],
+      "contributorsOverflow": false,
+      "isFork": false,
+      "isArchived": false,
+      "updatedAt": "2026-11-04T16:22:52Z",
+      "topics": [],
+      "pdfUrl": null,
+      "bio": {
+        "markdownUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/spatial-pattern-formation/main/bio/bio.md",
+        "imageUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/spatial-pattern-formation/main/bio/basic.png"
+      }
+    },
+    {
+      "name": "tmbox-microfluidic-biosensor",
+      "displayTitle": "Tmbox Microfluidic Biosensor",
+      "htmlUrl": "https://github.com/Middlebury-Applied-Math-Journal/tmbox-microfluidic-biosensor",
+      "description": null,
+      "summary": "Put your abstract here.",
+      "contributors": [
+        {
+          "login": "woodwardtw",
+          "htmlUrl": "https://github.com/woodwardtw",
+          "avatarUrl": "https://avatars.githubusercontent.com/u/5863137?v=4",
+          "name": "Tom Woodward"
+        }
+      ],
+      "contributorsOverflow": false,
+      "isFork": false,
+      "isArchived": false,
+      "updatedAt": "2026-11-04T16:22:31Z",
+      "topics": [],
+      "pdfUrl": null,
+      "bio": {
+        "markdownUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/tmbox-microfluidic-biosensor/main/bio/bio.md",
+        "imageUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/tmbox-microfluidic-biosensor/main/bio/basic.png"
+      }
+    },
+    {
+      "name": "wind-turbine-gearbox-maintenance",
+      "displayTitle": "Wind Turbine Gearbox Maintenance",
+      "htmlUrl": "https://github.com/Middlebury-Applied-Math-Journal/wind-turbine-gearbox-maintenance",
+      "description": null,
+      "summary": "Put your abstract here.",
+      "contributors": [
+        {
+          "login": "woodwardtw",
+          "htmlUrl": "https://github.com/woodwardtw",
+          "avatarUrl": "https://avatars.githubusercontent.com/u/5863137?v=4",
+          "name": "Tom Woodward"
+        }
+      ],
+      "contributorsOverflow": false,
+      "isFork": false,
+      "isArchived": false,
+      "updatedAt": "2026-11-04T16:22:18Z",
+      "topics": [],
+      "pdfUrl": null,
+      "bio": {
+        "markdownUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/wind-turbine-gearbox-maintenance/main/bio/bio.md",
+        "imageUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/wind-turbine-gearbox-maintenance/main/bio/basic.png"
       }
     }
   ]
