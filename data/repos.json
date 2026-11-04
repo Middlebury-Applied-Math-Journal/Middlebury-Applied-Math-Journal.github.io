@@ -2,42 +2,23 @@
   "org": "Middlebury-Applied-Math-Journal",
   "title": "Middlebury Applied Math Journal",
   "description": "A senior student research journal on mathematical methods and their applications.",
-  "builtAt": "2026-11-04T18:33:15.137Z",
+  "builtAt": "2026-11-04T18:50:52.722Z",
   "repos": [
-    {
-      "name": ".github",
-      "displayTitle": ".github",
-      "htmlUrl": "https://github.com/Middlebury-Applied-Math-Journal/.github",
-      "description": "Public content",
-      "summary": "Public content",
-      "contributors": [],
-      "contributorsOverflow": false,
-      "isFork": false,
-      "isArchived": false,
-      "updatedAt": "2026-10-27T13:39:35Z",
-      "topics": [],
-      "pdfUrl": null,
-      "bio": null
-    },
     {
       "name": "alzheimers-biomarker-cascade",
       "displayTitle": "Alzheimers Biomarker Cascade",
       "htmlUrl": "https://github.com/Middlebury-Applied-Math-Journal/alzheimers-biomarker-cascade",
       "description": null,
       "summary": "Put your abstract here.",
-      "contributors": [
-        {
-          "login": "woodwardtw",
-          "htmlUrl": "https://github.com/woodwardtw",
-          "avatarUrl": "https://avatars.githubusercontent.com/u/5863137?v=4",
-          "name": "Tom Woodward"
-        }
-      ],
+      "contributors": [],
       "contributorsOverflow": false,
       "isFork": false,
       "isArchived": false,
-      "updatedAt": "2026-11-04T16:22:42Z",
-      "topics": [],
+      "updatedAt": "2026-11-04T18:50:13Z",
+      "topics": [
+        "edition-1",
+        "mechanistic-insights-into-disease-and-progression"
+      ],
       "pdfUrl": null,
       "bio": {
         "markdownUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/alzheimers-biomarker-cascade/main/bio/bio.md",
@@ -50,14 +31,7 @@
       "htmlUrl": "https://github.com/Middlebury-Applied-Math-Journal/behavior-driven-vaccination-sir",
       "description": null,
       "summary": "Put your abstract here.",
-      "contributors": [
-        {
-          "login": "woodwardtw",
-          "htmlUrl": "https://github.com/woodwardtw",
-          "avatarUrl": "https://avatars.githubusercontent.com/u/5863137?v=4",
-          "name": "Tom Woodward"
-        }
-      ],
+      "contributors": [],
       "contributorsOverflow": false,
       "isFork": false,
       "isArchived": false,
@@ -75,14 +49,7 @@
       "htmlUrl": "https://github.com/Middlebury-Applied-Math-Journal/carbon-cycle-ode",
       "description": null,
       "summary": "Put your abstract here.",
-      "contributors": [
-        {
-          "login": "woodwardtw",
-          "htmlUrl": "https://github.com/woodwardtw",
-          "avatarUrl": "https://avatars.githubusercontent.com/u/5863137?v=4",
-          "name": "Tom Woodward"
-        }
-      ],
+      "contributors": [],
       "contributorsOverflow": false,
       "isFork": false,
       "isArchived": false,
@@ -100,14 +67,7 @@
       "htmlUrl": "https://github.com/Middlebury-Applied-Math-Journal/leslie-matrix-fishery-harvesting",
       "description": null,
       "summary": "Put your abstract here.",
-      "contributors": [
-        {
-          "login": "woodwardtw",
-          "htmlUrl": "https://github.com/woodwardtw",
-          "avatarUrl": "https://avatars.githubusercontent.com/u/5863137?v=4",
-          "name": "Tom Woodward"
-        }
-      ],
+      "contributors": [],
       "contributorsOverflow": false,
       "isFork": false,
       "isArchived": false,
@@ -125,14 +85,7 @@
       "htmlUrl": "https://github.com/Middlebury-Applied-Math-Journal/pandemic-compartmental-models",
       "description": null,
       "summary": "Put your abstract here.",
-      "contributors": [
-        {
-          "login": "woodwardtw",
-          "htmlUrl": "https://github.com/woodwardtw",
-          "avatarUrl": "https://avatars.githubusercontent.com/u/5863137?v=4",
-          "name": "Tom Woodward"
-        }
-      ],
+      "contributors": [],
       "contributorsOverflow": false,
       "isFork": false,
       "isArchived": false,
@@ -150,14 +103,7 @@
       "htmlUrl": "https://github.com/Middlebury-Applied-Math-Journal/river-temperature-thermal-discharge",
       "description": null,
       "summary": "Thermal discharge from power plants can raise downstream river temperatures and stress aquatic ecosystems, especially during warm seasons. While limits on the amount of allowed heat output do exist, they are not defined dynamically to account for varying river conditions. This study uses a one dimensional advection-di!…",
-      "contributors": [
-        {
-          "login": "woodwardtw",
-          "htmlUrl": "https://github.com/woodwardtw",
-          "avatarUrl": "https://avatars.githubusercontent.com/u/5863137?v=4",
-          "name": "Tom Woodward"
-        }
-      ],
+      "contributors": [],
       "contributorsOverflow": false,
       "isFork": false,
       "isArchived": false,
@@ -175,14 +121,7 @@
       "htmlUrl": "https://github.com/Middlebury-Applied-Math-Journal/rock-paper-scissors-cyclic-competition",
       "description": null,
       "summary": "Put your abstract here.",
-      "contributors": [
-        {
-          "login": "woodwardtw",
-          "htmlUrl": "https://github.com/woodwardtw",
-          "avatarUrl": "https://avatars.githubusercontent.com/u/5863137?v=4",
-          "name": "Tom Woodward"
-        }
-      ],
+      "contributors": [],
       "contributorsOverflow": false,
       "isFork": false,
       "isArchived": false,
@@ -200,14 +139,7 @@
       "htmlUrl": "https://github.com/Middlebury-Applied-Math-Journal/spatial-pattern-formation",
       "description": null,
       "summary": "Put your abstract here.",
-      "contributors": [
-        {
-          "login": "woodwardtw",
-          "htmlUrl": "https://github.com/woodwardtw",
-          "avatarUrl": "https://avatars.githubusercontent.com/u/5863137?v=4",
-          "name": "Tom Woodward"
-        }
-      ],
+      "contributors": [],
       "contributorsOverflow": false,
       "isFork": false,
       "isArchived": false,
@@ -225,14 +157,7 @@
       "htmlUrl": "https://github.com/Middlebury-Applied-Math-Journal/tmbox-microfluidic-biosensor",
       "description": null,
       "summary": "Put your abstract here.",
-      "contributors": [
-        {
-          "login": "woodwardtw",
-          "htmlUrl": "https://github.com/woodwardtw",
-          "avatarUrl": "https://avatars.githubusercontent.com/u/5863137?v=4",
-          "name": "Tom Woodward"
-        }
-      ],
+      "contributors": [],
       "contributorsOverflow": false,
       "isFork": false,
       "isArchived": false,
@@ -250,14 +175,7 @@
       "htmlUrl": "https://github.com/Middlebury-Applied-Math-Journal/wind-turbine-gearbox-maintenance",
       "description": null,
       "summary": "Put your abstract here.",
-      "contributors": [
-        {
-          "login": "woodwardtw",
-          "htmlUrl": "https://github.com/woodwardtw",
-          "avatarUrl": "https://avatars.githubusercontent.com/u/5863137?v=4",
-          "name": "Tom Woodward"
-        }
-      ],
+      "contributors": [],
       "contributorsOverflow": false,
       "isFork": false,
       "isArchived": false,

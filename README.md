@@ -7,73 +7,67 @@ A senior student research journal on mathematical methods and their applications
 
 An automatically generated index of every repository in the [Middlebury-Applied-Math-Journal](https://github.com/Middlebury-Applied-Math-Journal) organization. Rebuilt nightly by [GitHub Actions](.github/workflows/build-index.yml). See [SETUP.md](SETUP.md) for how it works, and [Organizing issues and sections](#organizing-issues-and-sections) to place an article in an issue.
 
-_Last built: 2026-11-04T18:33:15.137Z_
-
-## [.github](https://github.com/Middlebury-Applied-Math-Journal/.github)
-
-Public content
-
-**Contributors:** _none listed_
+_Last built: 2026-11-04T18:50:52.722Z_
 
 ## [Alzheimers Biomarker Cascade](https://github.com/Middlebury-Applied-Math-Journal/alzheimers-biomarker-cascade)
 
 Put your abstract here.
 
-**Contributors:** [@woodwardtw](https://github.com/woodwardtw)
+**Contributors:** _none listed_
 
 ## [Behavior Driven Vaccination Sir](https://github.com/Middlebury-Applied-Math-Journal/behavior-driven-vaccination-sir)
 
 Put your abstract here.
 
-**Contributors:** [@woodwardtw](https://github.com/woodwardtw)
+**Contributors:** _none listed_
 
 ## [Carbon Cycle Ode](https://github.com/Middlebury-Applied-Math-Journal/carbon-cycle-ode)
 
 Put your abstract here.
 
-**Contributors:** [@woodwardtw](https://github.com/woodwardtw)
+**Contributors:** _none listed_
 
 ## [Leslie Matrix Fishery Harvesting](https://github.com/Middlebury-Applied-Math-Journal/leslie-matrix-fishery-harvesting)
 
 Put your abstract here.
 
-**Contributors:** [@woodwardtw](https://github.com/woodwardtw)
+**Contributors:** _none listed_
 
 ## [Pandemic Compartmental Models](https://github.com/Middlebury-Applied-Math-Journal/pandemic-compartmental-models)
 
 Put your abstract here.
 
-**Contributors:** [@woodwardtw](https://github.com/woodwardtw)
+**Contributors:** _none listed_
 
 ## [River Temperature Thermal Discharge](https://github.com/Middlebury-Applied-Math-Journal/river-temperature-thermal-discharge)
 
 Thermal discharge from power plants can raise downstream river temperatures and stress aquatic ecosystems, especially during warm seasons. While limits on the amount of allowed heat output do exist, they are not defined dynamically to account for varying river conditions. This study uses a one dimensional advection-di!…
 
-**Contributors:** [@woodwardtw](https://github.com/woodwardtw)
+**Contributors:** _none listed_
 
 ## [Rock Paper Scissors Cyclic Competition](https://github.com/Middlebury-Applied-Math-Journal/rock-paper-scissors-cyclic-competition)
 
 Put your abstract here.
 
-**Contributors:** [@woodwardtw](https://github.com/woodwardtw)
+**Contributors:** _none listed_
 
 ## [Spatial Pattern Formation](https://github.com/Middlebury-Applied-Math-Journal/spatial-pattern-formation)
 
 Put your abstract here.
 
-**Contributors:** [@woodwardtw](https://github.com/woodwardtw)
+**Contributors:** _none listed_
 
 ## [Tmbox Microfluidic Biosensor](https://github.com/Middlebury-Applied-Math-Journal/tmbox-microfluidic-biosensor)
 
 Put your abstract here.
 
-**Contributors:** [@woodwardtw](https://github.com/woodwardtw)
+**Contributors:** _none listed_
 
 ## [Wind Turbine Gearbox Maintenance](https://github.com/Middlebury-Applied-Math-Journal/wind-turbine-gearbox-maintenance)
 
 Put your abstract here.
 
-**Contributors:** [@woodwardtw](https://github.com/woodwardtw)
+**Contributors:** _none listed_
 
 ## Organizing issues and sections
 
