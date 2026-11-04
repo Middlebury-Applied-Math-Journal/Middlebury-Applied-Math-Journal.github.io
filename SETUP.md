@@ -1,7 +1,7 @@
 # Setup
 
 This repository builds and publishes an index of every repository in the
-Demo-Math-Journal organization. This file explains how it works and how to
+Middlebury-Applied-Math-Journal organization. This file explains how it works and how to
 set it up. Do not edit README.md or data/repos.json directly — a workflow
 overwrites both on every run. index.html, assets/, site.json, and
 data/issues.json are hand-maintained and safe to edit.
@@ -10,7 +10,7 @@ data/issues.json are hand-maintained and safe to edit.
 
 1. A GitHub Actions workflow runs `scripts/build-index.mjs` on a schedule.
 2. The script calls the GitHub API to list every repository in the
-   Demo-Math-Journal organization, except this one.
+   Middlebury-Applied-Math-Journal organization, except this one.
 3. For each repository, the script reads the top-level README and pulls out
    its first paragraph. If a repository has no README, the script falls
    back to the repository's short description on GitHub. If neither exists,
@@ -35,12 +35,12 @@ copied into `data/repos.json` on the next build. (The fallback title in
 `index.html` is only shown if JavaScript is off.)
 
 `data/repos.json` is also a stable endpoint other pages can use:
-`https://demo-math-journal.github.io/data/repos.json`.
+`https://middlebury-applied-math-journal.github.io/data/repos.json`.
 
 ## One-time setup
 
 Do these steps once, after you push this repository to
-`github.com/Demo-Math-Journal/Demo-Math-Journal.github.io`.
+`github.com/Middlebury-Applied-Math-Journal/Middlebury-Applied-Math-Journal.github.io`.
 
 Give this one repository its own write access with a scoped token, rather
 than changing the organization's default workflow permissions. The
@@ -49,7 +49,7 @@ for every other repo — this token grants write access to nothing but this
 repository.
 
 1. Create a fine-grained personal access token scoped to only the
-   `Demo-Math-Journal.github.io` repository, with **Contents: Read and
+   `Middlebury-Applied-Math-Journal.github.io` repository, with **Contents: Read and
    write** permission. (Settings > Developer settings > Personal access
    tokens > Fine-grained tokens.)
 2. In this repository, open **Settings > Secrets and variables >
@@ -67,7 +67,7 @@ repository.
 9. Select **Run workflow** to trigger the first build by hand. Do not wait
    for the nightly schedule.
 10. After the run finishes, open
-    `https://demo-math-journal.github.io/` to see the published page.
+    `https://middlebury-applied-math-journal.github.io/` to see the published page.
 
 Reading the other repositories' READMEs and contributors doesn't need
 `INDEX_REPO_TOKEN` — the workflow uses the default `GITHUB_TOKEN` for that,
@@ -80,7 +80,7 @@ used for the final push back to this repository.
 If you'd rather have every repository in the organization default to read
 and write access (broader than this task needs, but simpler if you expect
 other repos to need it too), an organization owner can change it at
-`github.com/organizations/Demo-Math-Journal/settings/actions`, under
+`github.com/organizations/Middlebury-Applied-Math-Journal/settings/actions`, under
 **Workflow permissions**. With that changed, `INDEX_REPO_TOKEN` becomes
 unnecessary — the workflow falls back to the default `GITHUB_TOKEN`
 automatically if the secret isn't set.
@@ -146,7 +146,7 @@ the format.
 
 ```
 GITHUB_TOKEN=<a token with public repo read access> \
-GITHUB_ORG=Demo-Math-Journal \
+GITHUB_ORG=Middlebury-Applied-Math-Journal \
 node scripts/build-index.mjs
 ```
 

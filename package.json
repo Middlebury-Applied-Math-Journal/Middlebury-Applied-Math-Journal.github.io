@@ -2,7 +2,7 @@
   "name": "math-journal-org-index",
   "private": true,
   "type": "module",
-  "description": "Builds the Demo-Math-Journal organization repository index data (data/repos.json, README.md) from the GitHub API.",
+  "description": "Builds the Middlebury-Applied-Math-Journal organization repository index data (data/repos.json, README.md) from the GitHub API.",
   "scripts": {
     "build": "node scripts/build-index.mjs"
   },

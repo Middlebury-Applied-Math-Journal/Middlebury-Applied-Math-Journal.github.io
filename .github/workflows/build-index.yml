@@ -1,7 +1,7 @@
 name: Build organization repository index
 
 # Rebuilds data/repos.json and README.md from the current state
-# of every repository in the Demo-Math-Journal organization, then commits the
+# of every repository in the Middlebury-Applied-Math-Journal organization, then commits the
 # result if anything changed. See ../../SETUP.md for how this works.
 
 on:
@@ -39,7 +39,7 @@ jobs:
       - name: Build the index
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_ORG: Demo-Math-Journal
+          GITHUB_ORG: Middlebury-Applied-Math-Journal
         run: node scripts/build-index.mjs
 
       - name: Commit and push if the index changed

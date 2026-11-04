@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Builds the Demo-Math-Journal organization index data: data/repos.json
+// Builds the Middlebury-Applied-Math-Journal organization index data: data/repos.json
 // (read by index.html in the browser) and README.md (the index as shown on
 // GitHub). Run by .github/workflows/build-index.yml on a
 // schedule, or manually with `node scripts/build-index.mjs`.
@@ -11,7 +11,7 @@ import { writeFile, mkdir, readFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
-const ORG = process.env.GITHUB_ORG || 'Demo-Math-Journal';
+const ORG = process.env.GITHUB_ORG || 'Middlebury-Applied-Math-Journal';
 const TOKEN = process.env.GITHUB_TOKEN;
 const EXCLUDED_LOGIN = 'twoodwardmidd'; // excluded contributor, case-insensitive
 const userNameCache = new Map(); // login -> full name (or null), shared across repos
