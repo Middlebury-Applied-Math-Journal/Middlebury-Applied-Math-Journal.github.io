@@ -11,16 +11,16 @@
   'use strict';
 
   const DATA_URL = 'data/repos.json';
-  // Hand-edited per-issue settings, e.g.
-  // { issues: { "2026": { image: "…", description: "…" } } }.
-  const ISSUES_URL = 'data/issues.json';
-  const ISSUE_PREFIX = 'issue-';
+  // Hand-edited per-edition settings, e.g.
+  // { editions: { "2026": { image: "…", description: "…" } } }.
+  const EDITIONS_URL = 'data/editions.json';
+  const EDITION_PREFIX = 'edition-';
   const SECTION_PREFIX = 'section-';
 
   const repoList = document.getElementById('repo-list');
   const input = document.getElementById('repo-search');
   const status = document.getElementById('repo-search-status');
-  const issueNav = document.getElementById('issue-nav');
+  const editionNav = document.getElementById('edition-nav');
   const noResults = document.getElementById('no-results');
   const siteTitle = document.getElementById('site-title');
   const siteDescription = document.getElementById('site-description');
@@ -37,7 +37,7 @@
   if (!repoList) return;
 
   let cards = [];
-  let issueSettings = {};
+  let editionSettings = {};
   let sectionSettings = {};
 
   // Small element helper: el('a', { href: '…', className: '…' }, [children]).
@@ -256,20 +256,20 @@
       repo.description || '',
       repo.summary || '',
       authorNames,
-      issueLabel(topicSuffix(repo, ISSUE_PREFIX)),
+      editionLabel(topicSuffix(repo, EDITION_PREFIX)),
       sectionLabel(topicSuffix(repo, SECTION_PREFIX)),
     ].join(' ').toLowerCase();
     return card;
   }
 
   // ---------------------------------------------------------------------
-  // Grouping: repos are grouped by their first `issue-*` topic, then within
-  // each issue by their first `section-*` topic. Repos missing either topic
+  // Grouping: repos are grouped by their first `edition-*` topic, then within
+  // each edition by their first `section-*` topic. Repos missing either topic
   // fall into an "Other" group at that level.
   // ---------------------------------------------------------------------
 
   // Returns what follows `prefix` in the repo's first topic starting with
-  // it (e.g. "3" for "issue-3"), or null if it has no such topic.
+  // it (e.g. "3" for "edition-3"), or null if it has no such topic.
   function topicSuffix(repo, prefix) {
     const topics = Array.isArray(repo.topics) ? repo.topics : [];
     for (const topic of topics) {
@@ -286,11 +286,11 @@
       .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
       .join(' ');
 
-  const issueLabel = (key) => (key == null ? 'Other repositories' : `Issue ${humanizeSlug(key)}`);
+  const editionLabel = (key) => (key == null ? 'Other repositories' : `Edition ${humanizeSlug(key)}`);
 
   const sectionLabel = (key) => (key == null ? 'Other' : humanizeSlug(key));
 
-  // Numeric-aware compare, so "issue-10" sorts after "issue-9". Null keys
+  // Numeric-aware compare, so "edition-10" sorts after "edition-9". Null keys
   // (the "Other" groups) always sort last.
   function compareKeys(a, b, descending) {
     if (a === b) return 0;
@@ -300,25 +300,25 @@
     return descending ? -cmp : cmp;
   }
 
-  // Returns [{ key, sections: [{ key, repos }] }], newest issue first and
+  // Returns [{ key, sections: [{ key, repos }] }], newest edition first and
   // sections alphabetical. Repos keep their order from repos.json.
   function groupRepos(repos) {
-    const issues = new Map();
+    const editions = new Map();
     for (const repo of repos) {
-      const issueKey = topicSuffix(repo, ISSUE_PREFIX);
+      const editionKey = topicSuffix(repo, EDITION_PREFIX);
       const sectionKey = topicSuffix(repo, SECTION_PREFIX);
-      if (!issues.has(issueKey)) issues.set(issueKey, new Map());
-      const sections = issues.get(issueKey);
+      if (!editions.has(editionKey)) editions.set(editionKey, new Map());
+      const sections = editions.get(editionKey);
       if (!sections.has(sectionKey)) sections.set(sectionKey, []);
       sections.get(sectionKey).push(repo);
     }
 
-    return [...issues.keys()]
+    return [...editions.keys()]
       .sort((a, b) => compareKeys(a, b, true))
-      .map((issueKey) => {
-        const sections = issues.get(issueKey);
+      .map((editionKey) => {
+        const sections = editions.get(editionKey);
         return {
-          key: issueKey,
+          key: editionKey,
           sections: [...sections.keys()]
             .sort((a, b) => compareKeys(a, b, false))
             .map((sectionKey) => ({ key: sectionKey, repos: sections.get(sectionKey) })),
@@ -328,28 +328,28 @@
 
   const slugId = (prefix, key) => prefix + (key == null ? 'other' : key.replace(/[^a-z0-9-]/g, '-'));
 
-  // Renders one issue group, laid out like a book page: the issue image (if
-  // data/issues.json gives one) on the left, and on the right the issue
-  // title, an article count, a short rule, the issue description, and the
-  // section indexes. An issue whose repos all lack a section topic gets no
+  // Renders one edition group, laid out like a book page: the edition image (if
+  // data/editions.json gives one) on the left, and on the right the edition
+  // title, an article count, a short rule, the edition description, and the
+  // section indexes. An edition whose repos all lack a section topic gets no
   // section headings, so its repo list sits directly under the description.
-  function renderIssue(issue) {
-    const issueId = slugId('issue-', issue.key);
-    const showSections = !(issue.sections.length === 1 && issue.sections[0].key == null);
-    const settings = (issue.key != null && issueSettings[issue.key]) || {};
-    const repoCount = issue.sections.reduce((n, section) => n + section.repos.length, 0);
+  function renderEdition(edition) {
+    const editionId = slugId('edition-', edition.key);
+    const showSections = !(edition.sections.length === 1 && edition.sections[0].key == null);
+    const settings = (edition.key != null && editionSettings[edition.key]) || {};
+    const repoCount = edition.sections.reduce((n, section) => n + section.repos.length, 0);
 
-    const content = el('div', { className: 'col-12 issue-content' }, [
-      el('h2', { className: 'issue-heading', id: issueId }, [issueLabel(issue.key)]),
-      el('p', { className: 'issue-byline' }, [`${repoCount} ${repoCount === 1 ? 'article' : 'articles'}`]),
-      el('hr', { className: 'issue-rule' }),
-      settings.description ? el('p', { className: 'issue-description' }, [settings.description]) : null,
+    const content = el('div', { className: 'col-12 edition-content' }, [
+      el('h2', { className: 'edition-heading', id: editionId }, [editionLabel(edition.key)]),
+      el('p', { className: 'edition-byline' }, [`${repoCount} ${repoCount === 1 ? 'article' : 'articles'}`]),
+      el('hr', { className: 'edition-rule' }),
+      settings.description ? el('p', { className: 'edition-description' }, [settings.description]) : null,
     ]);
-    const group = el('section', { className: 'col-12 repo-group issue-group', 'aria-labelledby': issueId }, [
+    const group = el('section', { className: 'col-12 repo-group edition-group', 'aria-labelledby': editionId }, [
       el('div', { className: 'row g-4 g-md-5' }, [
         settings.image
-          ? el('div', { className: 'col-12 col-md-5 issue-image-col' }, [
-              el('img', { src: settings.image, className: 'issue-image', alt: '', loading: 'lazy' }),
+          ? el('div', { className: 'col-12 col-md-5 edition-image-col' }, [
+              el('img', { src: settings.image, className: 'edition-image', alt: '', loading: 'lazy' }),
             ])
           : null,
         content,
@@ -357,7 +357,7 @@
     ]);
     if (settings.image) content.classList.add('col-md-7');
 
-    for (const section of issue.sections) {
+    for (const section of edition.sections) {
       const list = el('div', { className: 'repo-index' }, section.repos.map((repo) => {
         const card = renderCard(repo, showSections ? 4 : 3);
         cards.push(card);
@@ -368,7 +368,7 @@
         content.append(list);
         continue;
       }
-      const sectionId = `${issueId}--${slugId('section-', section.key)}`;
+      const sectionId = `${editionId}--${slugId('section-', section.key)}`;
       const heading = el('h3', { className: 'section-heading', id: sectionId }, [sectionLabel(section.key)]);
       const color = section.key != null && sectionSettings[section.key]?.color;
       if (color && /^#[0-9a-f]{6}$/i.test(color)) {
@@ -382,12 +382,12 @@
     return group;
   }
 
-  // One menu-bar link per issue, jumping to its heading.
-  function renderIssueNav(issues) {
-    if (!issueNav) return;
-    issueNav.replaceChildren(...issues.map((issue) =>
+  // One menu-bar link per edition, jumping to its heading.
+  function renderEditionNav(editions) {
+    if (!editionNav) return;
+    editionNav.replaceChildren(...editions.map((edition) =>
       el('li', {}, [
-        el('a', { href: `#${slugId('issue-', issue.key)}`, className: 'site-nav-link' }, [issueLabel(issue.key)]),
+        el('a', { href: `#${slugId('edition-', edition.key)}`, className: 'site-nav-link' }, [editionLabel(edition.key)]),
       ])
     ));
   }
@@ -402,13 +402,13 @@
       if (matches) visibleCount++;
     }
 
-    // Hide any issue or section whose cards are all filtered out.
+    // Hide any edition or section whose cards are all filtered out.
     for (const group of repoList.querySelectorAll('.repo-group')) {
       group.classList.toggle('d-none', !group.querySelector('.repo-card:not(.d-none)'));
     }
     // ...and its menu-bar link.
-    for (const link of issueNav?.querySelectorAll('a') ?? []) {
-      const group = document.querySelector(link.hash)?.closest('.issue-group');
+    for (const link of editionNav?.querySelectorAll('a') ?? []) {
+      const group = document.querySelector(link.hash)?.closest('.edition-group');
       link.parentElement.classList.toggle('d-none', Boolean(group?.classList.contains('d-none')));
     }
 
@@ -446,9 +446,9 @@
 
     const repos = Array.isArray(data.repos) ? data.repos : [];
     cards = [];
-    const issues = groupRepos(repos);
-    repoList.replaceChildren(...issues.map(renderIssue));
-    renderIssueNav(issues);
+    const editions = groupRepos(repos);
+    repoList.replaceChildren(...editions.map(renderEdition));
+    renderEditionNav(editions);
 
     if (repos.length === 0 && status) {
       status.textContent = 'No repositories found.';
@@ -469,25 +469,25 @@
     return res.json();
   }
 
-  // issues.json is optional: if it's missing or broken, the index still
-  // renders, just without issue images.
-  async function loadIssueSettings() {
+  // editions.json is optional: if it's missing or broken, the index still
+  // renders, just without edition images.
+  async function loadEditionSettings() {
     try {
-      const data = await fetchJson(ISSUES_URL);
-      issueSettings = data?.issues || {};
+      const data = await fetchJson(EDITIONS_URL);
+      editionSettings = data?.editions || {};
       sectionSettings = data?.sections || {};
     } catch (err) {
-      console.warn(`Could not load ${ISSUES_URL}:`, err);
+      console.warn(`Could not load ${EDITIONS_URL}:`, err);
     }
   }
 
   async function init() {
-    // Both requests start at once; the issue settings only need to be in
+    // Both requests start at once; the edition settings only need to be in
     // place before the cards render.
-    const issuesLoaded = loadIssueSettings();
+    const editionsLoaded = loadEditionSettings();
     try {
       const data = await fetchJson(DATA_URL);
-      await issuesLoaded;
+      await editionsLoaded;
       renderSite(data);
     } catch (err) {
       console.error(`Could not load ${DATA_URL}:`, err);

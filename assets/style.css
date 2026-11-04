@@ -66,7 +66,7 @@ body:has(#pdf-pane:not(.d-none)) .page-width {
 }
 
 /* Menu bar directly under the header, drawn with the same 1px lines as
-   the repo rows: a cell per issue link on the left, search in the right
+   the repo rows: a cell per edition link on the left, search in the right
    cell. On phones the search takes its own row below the links. */
 .site-nav {
   display: flex;
@@ -138,20 +138,20 @@ a.site-nav-link:focus-visible {
   }
 }
 
-/* Room above an issue heading reached from the menu bar. */
-.issue-heading {
+/* Room above an edition heading reached from the menu bar. */
+.edition-heading {
   scroll-margin-top: 1.5rem;
 }
 
-/* Issue groups, laid out like a book listing (see renderIssue in
+/* Edition groups, laid out like a book listing (see renderEdition in
    assets/index.js): image on the left, title block and index on the
    right. */
-.issue-group + .issue-group {
+.edition-group + .edition-group {
   margin-top: 5rem;
 }
 
 /* Sticky so it stays beside the index while it scrolls. */
-.issue-image {
+.edition-image {
   display: block;
   width: 100%;
   height: auto;
@@ -162,7 +162,7 @@ a.site-nav-link:focus-visible {
 
 /* On phones the image sits above the title, so keep it cover-sized. */
 @media (max-width: 767.98px) {
-  .issue-image {
+  .edition-image {
     position: static;
     max-width: 14rem;
   }
@@ -171,10 +171,10 @@ a.site-nav-link:focus-visible {
 /* When the PDF pane is open the index is too narrow for two columns, so
    the index takes the full width and the image is hidden. */
 @media (min-width: 992px) {
-  #index-pane.col-lg-5 .issue-image-col {
+  #index-pane.col-lg-5 .edition-image-col {
     display: none;
   }
-  #index-pane.col-lg-5 .issue-content.col-md-7 {
+  #index-pane.col-lg-5 .edition-content.col-md-7 {
     width: 100%;
   }
   /* Room below the index so even the last row can scroll to the top
@@ -184,7 +184,7 @@ a.site-nav-link:focus-visible {
   }
 }
 
-.issue-heading {
+.edition-heading {
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 2.85rem;
@@ -193,7 +193,7 @@ a.site-nav-link:focus-visible {
   margin-bottom: 0.15rem;
 }
 
-.issue-byline {
+.edition-byline {
   font-family: var(--font-display);
   font-style: italic;
   font-size: 1.1rem;
@@ -201,14 +201,14 @@ a.site-nav-link:focus-visible {
 }
 
 /* Short rule under the title block. */
-.issue-rule {
+.edition-rule {
   width: 2.75rem;
   margin: 1.25rem 0 1.75rem;
   border-top: 1px solid currentColor;
   opacity: 0.6;
 }
 
-.issue-description {
+.edition-description {
   font-size: 0.9375rem;
   line-height: 1.6;
   max-width: 34rem;
@@ -231,7 +231,7 @@ a.site-nav-link:focus-visible {
   margin-bottom: 0.6rem;
 }
 
-/* Section color from data/issues.json, as a small swatch before the
+/* Section color from data/editions.json, as a small swatch before the
    label. */
 .section-swatch {
   width: 0.6rem;
@@ -547,8 +547,8 @@ body {
   right: 1rem;
 }
 
-/* Title block matches the issue heading: bold serif name, italic
-   byline, short rule (.issue-rule), then the bio text. */
+/* Title block matches the edition heading: bold serif name, italic
+   byline, short rule (.edition-rule), then the bio text. */
 .bio-title {
   font-family: var(--font-display);
   font-weight: 700;

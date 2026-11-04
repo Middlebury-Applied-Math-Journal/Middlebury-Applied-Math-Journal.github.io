@@ -1,12 +1,12 @@
 {
-  "issues": {
+  "editions": {
     "2026": {
       "image": "assets/images/sci.jpeg",
-      "description": "This is a demo issue for the journal. It contains a few example articles and is used to demonstrate the journal's features."
+      "description": "This is a demo edition for the journal. It contains a few example articles and is used to demonstrate the journal's features."
     },
     "2027": {
       "image": "assets/images/sqrl.webp",
-      "description": "Another demo issue for the journal. This issue contains different example articles and is used to showcase the journal's capabilities. This description should focus on the over-all theme."
+      "description": "Another demo edition for the journal. This edition contains different example articles and is used to showcase the journal's capabilities. This description should focus on the over-all theme."
     }
   },
   "sections": {

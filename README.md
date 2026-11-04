@@ -5,7 +5,7 @@
 
 A senior student research journal on mathematical methods and their applications.
 
-An automatically generated index of every repository in the [Middlebury-Applied-Math-Journal](https://github.com/Middlebury-Applied-Math-Journal) organization. Rebuilt nightly by [GitHub Actions](.github/workflows/build-index.yml). See [SETUP.md](SETUP.md) for how it works, and [Organizing issues and sections](#organizing-issues-and-sections) to place an article in an issue.
+An automatically generated index of every repository in the [Middlebury-Applied-Math-Journal](https://github.com/Middlebury-Applied-Math-Journal) organization. Rebuilt nightly by [GitHub Actions](.github/workflows/build-index.yml). See [SETUP.md](SETUP.md) for how it works, and [Organizing editions and sections](#organizing-editions-and-sections) to place an article in an edition.
 
 _Last built: 2026-11-04T18:50:52.722Z_
 
@@ -69,9 +69,9 @@ Put your abstract here.
 
 **Contributors:** _none listed_
 
-## Organizing issues and sections
+## Organizing editions and sections
 
-The website groups articles into issues, and issues into sections. Two things control this: **topics** on each article repository decide where it goes, and **`data/issues.json`** in this repository holds the settings for each issue and section.
+The website groups articles into editions, and editions into sections. Two things control this: **topics** on each article repository decide where it goes, and **`data/editions.json`** in this repository holds the settings for each edition and section.
 
 ### Topics: placing an article
 
@@ -86,26 +86,26 @@ Use these topics:
 
 | Topic | Example | Shown as |
 | --- | --- | --- |
-| `issue-<name>` | `issue-2026` | Issue 2026 |
+| `edition-<name>` | `edition-2026` | Edition 2026 |
 | `section-<name>` | `section-managing-energy` | Managing Energy |
 
-- Issues are listed newest first. Numbers are compared as numbers, so `issue-10` comes before `issue-9`.
-- Sections are listed alphabetically within their issue.
-- A repository with no `issue-` topic is listed under **Other repositories** at the bottom of the page.
-- A repository with an issue but no `section-` topic is listed under **Other** within that issue. If no repository in an issue has a section, the issue shows its articles without section headings.
-- Give each repository only one `issue-` topic and one `section-` topic. If it has more, only the first in alphabetical order is used.
+- Editions are listed newest first. Numbers are compared as numbers, so `edition-10` comes before `edition-9`.
+- Sections are listed alphabetically within their edition.
+- A repository with no `edition-` topic is listed under **Other repositories** at the bottom of the page.
+- A repository with an edition but no `section-` topic is listed under **Other** within that edition. If no repository in an edition has a section, the edition shows its articles without section headings.
+- Give each repository only one `edition-` topic and one `section-` topic. If it has more, only the first in alphabetical order is used.
 - Topic changes appear after the next build. The build runs nightly, or you can run it now: open the **Actions** tab, select **Build organization repository index**, and select **Run workflow**.
 
-### `data/issues.json`: issue and section settings
+### `data/editions.json`: edition and section settings
 
 This file is edited by hand. The nightly build never overwrites it. The page reads it directly, so changes appear as soon as GitHub Pages redeploys, with no build needed.
 
 ```json
 {
-  "issues": {
+  "editions": {
     "2026": {
       "image": "assets/images/sci.jpeg",
-      "description": "A short paragraph about the theme of this issue."
+      "description": "A short paragraph about the theme of this edition."
     }
   },
   "sections": {
@@ -116,17 +116,17 @@ This file is edited by hand. The nightly build never overwrites it. The page rea
 }
 ```
 
-**Issues.** Each key under `"issues"` is the part of the topic after `issue-`. The topic `issue-2026` uses the key `"2026"`. Each issue can set:
+**Editions.** Each key under `"editions"` is the part of the topic after `edition-`. The topic `edition-2026` uses the key `"2026"`. Each edition can set:
 
-- `image`: a picture shown beside the issue. Add the image file to `assets/images/` and use its path, such as `"assets/images/cover.jpg"`. A full `https://` URL also works.
-- `description`: plain text shown under the issue title.
+- `image`: a picture shown beside the edition. Add the image file to `assets/images/` and use its path, such as `"assets/images/cover.jpg"`. A full `https://` URL also works.
+- `description`: plain text shown under the edition title.
 
 **Sections.** Each key under `"sections"` is the part of the topic after `section-`. The topic `section-managing-energy` uses the key `"managing-energy"`. Each section can set:
 
 - `color`: a color swatch shown beside the section heading. Any CSS color works, such as `"#2E7D32"` or `"teal"`.
 
-Every setting is optional. An issue or section with no entry is shown without an image, description, or color. Keep these rules in mind when you edit the file:
+Every setting is optional. An edition or section with no entry is shown without an image, description, or color. Keep these rules in mind when you edit the file:
 
 - Write keys in lowercase, because GitHub stores topics in lowercase.
-- A section color applies to that section name in every issue.
+- A section color applies to that section name in every edition.
 - The file must be valid JSON: wrap keys and values in double quotes, and do not leave a comma after the last item in a list. If the file is invalid, the page still loads but without any images, descriptions, or colors. The browser console shows the error.

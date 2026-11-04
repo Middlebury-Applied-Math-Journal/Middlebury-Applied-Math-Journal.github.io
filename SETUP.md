@@ -4,7 +4,7 @@ This repository builds and publishes an index of every repository in the
 Middlebury-Applied-Math-Journal organization. This file explains how it works and how to
 set it up. Do not edit README.md or data/repos.json directly — a workflow
 overwrites both on every run. index.html, assets/, site.json, and
-data/issues.json are hand-maintained and safe to edit.
+data/editions.json are hand-maintained and safe to edit.
 
 ## How it works
 
@@ -92,28 +92,28 @@ is in UTC. For example, `'0 12 * * *'` runs once at 12:00 UTC every day.
 You can always trigger a build by hand from the Actions tab regardless of
 the schedule.
 
-## Grouping by issue and section
+## Grouping by edition and section
 
 The page groups repositories using their GitHub topics:
 
-- A topic starting with `issue-` puts the repository under that issue
-  (`issue-3` → "Issue 3"). Issues are listed newest first, compared
-  numerically, so `issue-10` comes before `issue-9`.
-- Within an issue, a topic starting with `section-` puts the repository
+- A topic starting with `edition-` puts the repository under that edition
+  (`edition-3` → "Edition 3"). Editions are listed newest first, compared
+  numerically, so `edition-10` comes before `edition-9`.
+- Within an edition, a topic starting with `section-` puts the repository
   under that section (`section-root-finding` → "Root Finding"). Sections
   are listed alphabetically.
-- A repository with no `issue-` topic is listed under "Other
+- A repository with no `edition-` topic is listed under "Other
   repositories" at the bottom; one with no `section-` topic is listed
-  under "Other" within its issue. An issue with no sections at all shows
+  under "Other" within its edition. An edition with no sections at all shows
   its repositories directly, without section headings.
-- If a repository has more than one `issue-` (or `section-`) topic, only
+- If a repository has more than one `edition-` (or `section-`) topic, only
   the first in alphabetical order is used.
 
 Topics are read during the nightly build, so a topic change shows up after
 the next run (or a manual run of the workflow).
 
-Each issue's image and description, and each section's color, are set in
-`data/issues.json`. See "Organizing issues and sections" in README.md for
+Each edition's image and description, and each section's color, are set in
+`data/editions.json`. See "Organizing editions and sections" in README.md for
 the format.
 
 ## Known limitations

@@ -140,7 +140,7 @@ pdfjsLib.GlobalWorkerOptions.workerSrc =
     card.querySelector('.repo-toggle[aria-expanded="false"]')?.click();
     openCardPdf(card, { animate: false });
 
-    // The PDF view wins over any #issue-… anchor in the same link. The
+    // The PDF view wins over any #edition-… anchor in the same link. The
     // browser may still jump to that anchor once the page finishes loading,
     // so drop it and bring the row back to the top after load.
     if (window.location.hash) {

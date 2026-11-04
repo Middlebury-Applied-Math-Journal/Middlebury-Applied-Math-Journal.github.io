@@ -68,11 +68,11 @@
     </div>
   </header>
 
-  <!-- Menu bar: one link per issue on the left (filled in by
-       renderIssueNav in assets/index.js), search on the right. -->
-  <nav class="container page-width mb-5" aria-label="Issues">
+  <!-- Menu bar: one link per edition on the left (filled in by
+       renderEditionNav in assets/index.js), search on the right. -->
+  <nav class="container page-width mb-5" aria-label="Editions">
     <div class="site-nav">
-      <ul class="site-nav-links" id="issue-nav"></ul>
+      <ul class="site-nav-links" id="edition-nav"></ul>
       <div class="site-nav-search" role="search">
         <label for="repo-search" class="visually-hidden">Search articles</label>
         <input type="search" id="repo-search" class="site-nav-input" placeholder="Search…" disabled>
@@ -125,7 +125,7 @@
         <div class="col-12 col-md-7" id="bio-modal-content">
           <h1 class="bio-title" id="bio-modal-title"></h1>
           <p class="bio-byline" id="bio-modal-byline"></p>
-          <hr class="issue-rule">
+          <hr class="edition-rule">
           <div class="bio-content" id="bio-modal-body"></div>
         </div>
       </div>
