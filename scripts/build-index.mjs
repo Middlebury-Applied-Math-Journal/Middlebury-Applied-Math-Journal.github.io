@@ -13,7 +13,8 @@ import path from 'node:path';
 
 const ORG = process.env.GITHUB_ORG || 'Middlebury-Applied-Math-Journal';
 const TOKEN = process.env.GITHUB_TOKEN;
-const EXCLUDED_LOGIN = 'twoodwardmidd'; // excluded contributor, case-insensitive
+// Contributors to leave out of the index (lowercase logins).
+const EXCLUDED_LOGINS = new Set(['twoodwardmidd', 'woodwardtw']);
 const userNameCache = new Map(); // login -> full name (or null), shared across repos
 const API_BASE = 'https://api.github.com';
 const MAX_PARAGRAPH_LENGTH = 320;
@@ -22,6 +23,9 @@ const MAX_PARAGRAPH_LENGTH = 320;
 const SELF_REPO_NAME = (process.env.GITHUB_REPOSITORY || `${ORG}/${ORG}.github.io`)
   .split('/')[1]
   .toLowerCase();
+
+// Other repos to leave out of the index (lowercase names).
+const EXCLUDED_REPOS = new Set([SELF_REPO_NAME, '.github']);
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
@@ -110,7 +114,7 @@ async function getUserFullName(login) {
 }
 
 // Returns { contributors, overflow } where contributors excludes bots and
-// EXCLUDED_LOGIN, and overflow is true if GitHub declined to compute the
+// EXCLUDED_LOGINS, and overflow is true if GitHub declined to compute the
 // full list (it does this for repos with very many contributors). Each
 // contributor carries login, htmlUrl, avatarUrl, and name (their GitHub
 // profile full name, or null if they haven't set one).
@@ -126,7 +130,7 @@ async function getContributors(owner, repo) {
     }
     const list = await ghPaginate(url);
     const filtered = list
-      .filter((c) => c.type !== 'Bot' && c.login && c.login.toLowerCase() !== EXCLUDED_LOGIN)
+      .filter((c) => c.type !== 'Bot' && c.login && !EXCLUDED_LOGINS.has(c.login.toLowerCase()))
       .sort((a, b) => b.contributions - a.contributions);
 
     const contributors = [];
@@ -322,10 +326,10 @@ async function loadSiteConfig() {
 async function buildRepoEntries() {
   console.log(`Listing repositories in ${ORG}...`);
   const rawRepos = (await listOrgRepos(ORG)).filter(
-    (r) => r.name.toLowerCase() !== SELF_REPO_NAME
+    (r) => !EXCLUDED_REPOS.has(r.name.toLowerCase())
   );
   rawRepos.sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }));
-  console.log(`Found ${rawRepos.length} repositories (excluding this index repo).`);
+  console.log(`Found ${rawRepos.length} repositories (excluding ${[...EXCLUDED_REPOS].join(', ')}).`);
 
   const entries = [];
   for (const repo of rawRepos) {
