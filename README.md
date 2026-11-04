@@ -87,13 +87,13 @@ Use these topics:
 | Topic | Example | Shown as |
 | --- | --- | --- |
 | `edition-<name>` | `edition-2026` | Edition 2026 |
-| `section-<name>` | `section-managing-energy` | Managing Energy |
+| any other topic | `managing-energy` | Managing Energy (section) |
 
 - Editions are listed newest first. Numbers are compared as numbers, so `edition-10` comes before `edition-9`.
 - Sections are listed alphabetically within their edition.
 - A repository with no `edition-` topic is listed under **Other repositories** at the bottom of the page.
-- A repository with an edition but no `section-` topic is listed under **Other** within that edition. If no repository in an edition has a section, the edition shows its articles without section headings.
-- Give each repository only one `edition-` topic and one `section-` topic. If it has more, only the first in alphabetical order is used.
+- Any topic that does not start with `edition-` is used as the section. A repository with an edition but no other topic is listed under **Other** within that edition. If no repository in an edition has a section, the edition shows its articles without section headings.
+- Give each repository only one `edition-` topic and one other topic. If it has more, only the first of each in alphabetical order is used, so a repository tagged `fluids` and `pde` is placed in the Fluids section.
 - Topic changes appear after the next build. The build runs nightly, or you can run it now: open the **Actions** tab, select **Build organization repository index**, and select **Run workflow**.
 
 ### `data/editions.json`: edition and section settings
@@ -121,7 +121,7 @@ This file is edited by hand. The nightly build never overwrites it. The page rea
 - `image`: a picture shown beside the edition. Add the image file to `assets/images/` and use its path, such as `"assets/images/cover.jpg"`. A full `https://` URL also works.
 - `description`: plain text shown under the edition title.
 
-**Sections.** Each key under `"sections"` is the part of the topic after `section-`. The topic `section-managing-energy` uses the key `"managing-energy"`. Each section can set:
+**Sections.** Each key under `"sections"` is the section topic itself. The topic `managing-energy` uses the key `"managing-energy"`. Each section can set:
 
 - `color`: a color swatch shown beside the section heading. Any CSS color works, such as `"#2E7D32"` or `"teal"`.
 

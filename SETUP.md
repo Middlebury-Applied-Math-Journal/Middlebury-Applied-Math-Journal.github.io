@@ -99,15 +99,15 @@ The page groups repositories using their GitHub topics:
 - A topic starting with `edition-` puts the repository under that edition
   (`edition-3` → "Edition 3"). Editions are listed newest first, compared
   numerically, so `edition-10` comes before `edition-9`.
-- Within an edition, a topic starting with `section-` puts the repository
-  under that section (`section-root-finding` → "Root Finding"). Sections
-  are listed alphabetically.
+- Within an edition, any other topic (one not starting with `edition-`)
+  puts the repository under that section (`root-finding` → "Root
+  Finding"). Sections are listed alphabetically.
 - A repository with no `edition-` topic is listed under "Other
-  repositories" at the bottom; one with no `section-` topic is listed
+  repositories" at the bottom; one with no other topic is listed
   under "Other" within its edition. An edition with no sections at all shows
   its repositories directly, without section headings.
-- If a repository has more than one `edition-` (or `section-`) topic, only
-  the first in alphabetical order is used.
+- If a repository has more than one `edition-` topic, or more than one
+  other topic, only the first of each in alphabetical order is used.
 
 Topics are read during the nightly build, so a topic change shows up after
 the next run (or a manual run of the workflow).

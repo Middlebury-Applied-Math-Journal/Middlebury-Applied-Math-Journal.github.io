@@ -15,7 +15,6 @@
   // { editions: { "2026": { image: "…", description: "…" } } }.
   const EDITIONS_URL = 'data/editions.json';
   const EDITION_PREFIX = 'edition-';
-  const SECTION_PREFIX = 'section-';
 
   const repoList = document.getElementById('repo-list');
   const input = document.getElementById('repo-search');
@@ -257,15 +256,15 @@
       repo.summary || '',
       authorNames,
       editionLabel(topicSuffix(repo, EDITION_PREFIX)),
-      sectionLabel(topicSuffix(repo, SECTION_PREFIX)),
+      sectionLabel(sectionKeyOf(repo)),
     ].join(' ').toLowerCase();
     return card;
   }
 
   // ---------------------------------------------------------------------
   // Grouping: repos are grouped by their first `edition-*` topic, then within
-  // each edition by their first `section-*` topic. Repos missing either topic
-  // fall into an "Other" group at that level.
+  // each edition by their first other topic (any topic not starting with
+  // `edition-`). Repos missing either fall into an "Other" group at that level.
   // ---------------------------------------------------------------------
 
   // Returns what follows `prefix` in the repo's first topic starting with
@@ -275,6 +274,17 @@
     for (const topic of topics) {
       const t = String(topic).toLowerCase();
       if (t.startsWith(prefix) && t.length > prefix.length) return t.slice(prefix.length);
+    }
+    return null;
+  }
+
+  // The repo's section: its first topic that isn't an `edition-*` topic,
+  // or null if it has none.
+  function sectionKeyOf(repo) {
+    const topics = Array.isArray(repo.topics) ? repo.topics : [];
+    for (const topic of topics) {
+      const t = String(topic).toLowerCase();
+      if (t && !t.startsWith(EDITION_PREFIX)) return t;
     }
     return null;
   }
@@ -306,7 +316,7 @@
     const editions = new Map();
     for (const repo of repos) {
       const editionKey = topicSuffix(repo, EDITION_PREFIX);
-      const sectionKey = topicSuffix(repo, SECTION_PREFIX);
+      const sectionKey = sectionKeyOf(repo);
       if (!editions.has(editionKey)) editions.set(editionKey, new Map());
       const sections = editions.get(editionKey);
       if (!sections.has(sectionKey)) sections.set(sectionKey, []);

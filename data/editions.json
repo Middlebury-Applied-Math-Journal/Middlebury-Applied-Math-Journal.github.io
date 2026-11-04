@@ -1,8 +1,8 @@
 {
   "editions": {
-    "2026": {
-      "image": "assets/images/sci.jpeg",
-      "description": "This is a demo edition for the journal. It contains a few example articles and is used to demonstrate the journal's features."
+    "Edition 1": {
+      "image": "assets/images/edition-1-cover.jpeg",
+      "description": "Modelling Patterns in Nature"
     },
     "2027": {
       "image": "assets/images/sqrl.webp",
@@ -13,7 +13,7 @@
     "managing-energy": {
       "color": "#2E7D32"
     },
-    "other-main-category": {
+    "wild-equations": {
       "color": "#1565C0"
     }
   }
