@@ -2,7 +2,7 @@
   "org": "Demo-Math-Journal",
   "title": "Demo Math Journal",
   "description": "I'm a journal on mathematical methods and their applications.",
-  "builtAt": "2026-11-04T15:24:56.027Z",
+  "builtAt": "2026-11-04T18:16:36.886Z",
   "repos": [
     {
       "name": "adaptive-quadrature",
@@ -35,6 +35,28 @@
         "markdownUrl": "https://raw.githubusercontent.com/Demo-Math-Journal/adaptive-quadrature/master/bio/bio.md",
         "imageUrl": "https://raw.githubusercontent.com/Demo-Math-Journal/adaptive-quadrature/master/bio/basic.png"
       }
+    },
+    {
+      "name": "Demo-Math-Journal.github.io",
+      "displayTitle": "Demo Math Journal.github.io",
+      "htmlUrl": "https://github.com/Demo-Math-Journal/Demo-Math-Journal.github.io",
+      "description": "Index builder for GitHub journal experiment",
+      "summary": "I'm a journal on mathematical methods and their applications.",
+      "contributors": [
+        {
+          "login": "woodwardtw",
+          "htmlUrl": "https://github.com/woodwardtw",
+          "avatarUrl": "https://avatars.githubusercontent.com/u/5863137?v=4",
+          "name": "Tom Woodward"
+        }
+      ],
+      "contributorsOverflow": false,
+      "isFork": false,
+      "isArchived": false,
+      "updatedAt": "2026-11-04T15:24:57Z",
+      "topics": [],
+      "pdfUrl": null,
+      "bio": null
     },
     {
       "name": "monte-carlo-integrator",

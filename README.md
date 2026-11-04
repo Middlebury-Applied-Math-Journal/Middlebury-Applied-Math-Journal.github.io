@@ -7,11 +7,17 @@ I'm a journal on mathematical methods and their applications.
 
 An automatically generated index of every repository in the [Demo-Math-Journal](https://github.com/Demo-Math-Journal) organization. Rebuilt nightly by [GitHub Actions](.github/workflows/build-index.yml). See [SETUP.md](SETUP.md) for how it works, and [Organizing issues and sections](#organizing-issues-and-sections) to place an article in an issue.
 
-_Last built: 2026-11-04T15:24:56.027Z_
+_Last built: 2026-11-04T18:16:36.886Z_
 
 ## [Adaptive Quadrature](https://github.com/Demo-Math-Journal/adaptive-quadrature)
 
 Error-controlled numerical integration: adaptive Simpson's rule versus a fixed-grid Simpson's rule, compared at matched function-evaluation budgets.
+
+**Contributors:** [@woodwardtw](https://github.com/woodwardtw)
+
+## [Demo Math Journal.github.io](https://github.com/Demo-Math-Journal/Demo-Math-Journal.github.io)
+
+I'm a journal on mathematical methods and their applications.
 
 **Contributors:** [@woodwardtw](https://github.com/woodwardtw)
 
