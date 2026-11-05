@@ -326,8 +326,22 @@
     return descending ? -cmp : cmp;
   }
 
+  // Section order: sections listed under "sections" in data/editions.json
+  // come first, in the order they appear there; any others follow
+  // alphabetically, and "Other" (null) is always last.
+  function compareSections(a, b) {
+    const order = Object.keys(sectionSettings);
+    const ia = a == null ? -1 : order.indexOf(a);
+    const ib = b == null ? -1 : order.indexOf(b);
+    if (ia !== -1 && ib !== -1) return ia - ib;
+    if (ia !== -1) return -1;
+    if (ib !== -1) return 1;
+    return compareKeys(a, b, false);
+  }
+
   // Returns [{ key, sections: [{ key, repos }] }], newest edition first and
-  // sections alphabetical. Repos keep their order from repos.json.
+  // sections ordered by compareSections. Repos keep their order from
+  // repos.json.
   function groupRepos(repos) {
     const editions = new Map();
     for (const repo of repos) {
@@ -346,7 +360,7 @@
         return {
           key: editionKey,
           sections: [...sections.keys()]
-            .sort((a, b) => compareKeys(a, b, false))
+            .sort(compareSections)
             .map((sectionKey) => ({ key: sectionKey, repos: sections.get(sectionKey) })),
         };
       });
