@@ -7,7 +7,7 @@ A senior student research journal on mathematical methods and their applications
 
 An automatically generated index of every repository in the [Middlebury-Applied-Math-Journal](https://github.com/Middlebury-Applied-Math-Journal) organization. Rebuilt nightly by [GitHub Actions](.github/workflows/build-index.yml). See [SETUP.md](SETUP.md) for how it works, and [Organizing editions and sections](#organizing-editions-and-sections) to place an article in an edition.
 
-_Last built: 2026-11-05T15:32:26.977Z_
+_Last built: 2026-11-05T17:12:32.686Z_
 
 ## [Investigating the Biomarker Cascade of Alzheimer’s Disease](https://github.com/Middlebury-Applied-Math-Journal/alzheimers-biomarker-cascade)
 
@@ -51,7 +51,7 @@ n 1996, Sinervo & Lively documented a striking natural phe- nomenon: the three m
 
 **Contributors:** Evan Flaks
 
-## [TThe Math Behind Spatial Pattern Formation](https://github.com/Middlebury-Applied-Math-Journal/spatial-pattern-formation)
+## [The Math Behind Spatial Pattern Formation](https://github.com/Middlebury-Applied-Math-Journal/spatial-pattern-formation)
 
 Spatial patterns are present throughout many areas of nature such as in animal patterns and vegetation growth. Turing pat- terns are one way of mathematically modeling spatial pattern formation, and the reaction-di!usion principles which define the model have been shown to be the likely biological cause of pattern form…
 

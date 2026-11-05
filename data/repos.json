@@ -2,7 +2,7 @@
   "org": "Middlebury-Applied-Math-Journal",
   "title": "Middlebury Applied Math Journal",
   "description": "A senior student research journal on mathematical methods and their applications.",
-  "builtAt": "2026-11-05T15:32:26.977Z",
+  "builtAt": "2026-11-05T17:12:32.686Z",
   "repos": [
     {
       "name": "alzheimers-biomarker-cascade",
@@ -160,7 +160,7 @@
     },
     {
       "name": "spatial-pattern-formation",
-      "displayTitle": "TThe Math Behind Spatial Pattern Formation",
+      "displayTitle": "The Math Behind Spatial Pattern Formation",
       "htmlUrl": "https://github.com/Middlebury-Applied-Math-Journal/spatial-pattern-formation",
       "description": null,
       "summary": "Spatial patterns are present throughout many areas of nature such as in animal patterns and vegetation growth. Turing pat- terns are one way of mathematically modeling spatial pattern formation, and the reaction-di!usion principles which define the model have been shown to be the likely biological cause of pattern form…",
@@ -168,7 +168,7 @@
       "contributorsOverflow": false,
       "isFork": false,
       "isArchived": false,
-      "updatedAt": "2026-11-05T12:58:11Z",
+      "updatedAt": "2026-11-05T17:02:41Z",
       "topics": [
         "edition-1",
         "wild-equations"
