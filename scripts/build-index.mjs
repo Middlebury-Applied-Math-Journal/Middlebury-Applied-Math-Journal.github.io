@@ -14,7 +14,7 @@ import path from 'node:path';
 const ORG = process.env.GITHUB_ORG || 'Middlebury-Applied-Math-Journal';
 const TOKEN = process.env.GITHUB_TOKEN;
 // Contributors to leave out of the index (lowercase logins).
-const EXCLUDED_LOGINS = new Set(['twoodwardmidd', 'woodwardtw']);
+const EXCLUDED_LOGINS = new Set(['twoodwardmidd', 'woodwardtw', 'mkuback1']);
 const userNameCache = new Map(); // login -> full name (or null), shared across repos
 const API_BASE = 'https://api.github.com';
 const MAX_PARAGRAPH_LENGTH = 320;
