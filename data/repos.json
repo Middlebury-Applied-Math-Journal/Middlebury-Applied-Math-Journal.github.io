@@ -2,11 +2,11 @@
   "org": "Middlebury-Applied-Math-Journal",
   "title": "Middlebury Applied Math Journal",
   "description": "A senior student research journal on mathematical methods and their applications.",
-  "builtAt": "2026-11-04T20:44:15.694Z",
+  "builtAt": "2026-11-05T13:21:24.032Z",
   "repos": [
     {
       "name": "alzheimers-biomarker-cascade",
-      "displayTitle": "Alzheimers Biomarker Cascade",
+      "displayTitle": "Investigating the Biomarker Cascade of Alzheimer’s Disease",
       "htmlUrl": "https://github.com/Middlebury-Applied-Math-Journal/alzheimers-biomarker-cascade",
       "description": null,
       "summary": "Alzheimer’s disease is a progressive, irreversible brain disorder that gradually destroys cognitive function and memory, mak- ing even the simplest tasks di!cult to perform. While the general pathological mechanisms underlying Alzheimer’s dis- ease are known, the timing and progression of these changes in the brain rem…",
@@ -14,7 +14,7 @@
       "contributorsOverflow": false,
       "isFork": false,
       "isArchived": false,
-      "updatedAt": "2026-11-05T12:40:16Z",
+      "updatedAt": "2026-11-05T13:13:36Z",
       "topics": [
         "edition-1",
         "mechanistic-insights-into-disease-and-progression"
@@ -23,12 +23,12 @@
       "bio": {
         "markdownUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/alzheimers-biomarker-cascade/main/bio/bio.md",
         "imageUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/alzheimers-biomarker-cascade/main/bio/basic.png",
-        "name": "Krysta Pereira1"
+        "name": "Krysta Pereira"
       }
     },
     {
       "name": "behavior-driven-vaccination-sir",
-      "displayTitle": "Behavior Driven Vaccination Sir",
+      "displayTitle": "Behavior-Driven Vaccination in an SIR Model",
       "htmlUrl": "https://github.com/Middlebury-Applied-Math-Journal/behavior-driven-vaccination-sir",
       "description": null,
       "summary": "Vaccination rates can change with public perception of dis- ease risk, especially when infection levels rise or fall over time. However, many classical SIR vaccination models treat vacci- nation coverage as constant, which can miss feedback between disease prevalence and human behavior. This paper studies whether behav…",
@@ -49,27 +49,8 @@
       }
     },
     {
-      "name": "bratu-pseudo-arclength-continuation",
-      "displayTitle": "Bratu Pseudo Arclength Continuation",
-      "htmlUrl": "https://github.com/Middlebury-Applied-Math-Journal/bratu-pseudo-arclength-continuation",
-      "description": null,
-      "summary": "Put your abstract here.",
-      "contributors": [],
-      "contributorsOverflow": false,
-      "isFork": false,
-      "isArchived": false,
-      "updatedAt": "2026-11-05T12:44:26Z",
-      "topics": [],
-      "pdfUrl": null,
-      "bio": {
-        "markdownUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/bratu-pseudo-arclength-continuation/main/bio/bio.md",
-        "imageUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/bratu-pseudo-arclength-continuation/main/bio/basic.png",
-        "name": "Name"
-      }
-    },
-    {
       "name": "carbon-cycle-ode",
-      "displayTitle": "Carbon Cycle Ode",
+      "displayTitle": "Analyzing Our Impact on the Carbon Cycle Through Ordinary Diferential Equations",
       "htmlUrl": "https://github.com/Middlebury-Applied-Math-Journal/carbon-cycle-ode",
       "description": null,
       "summary": "Carbon dioxide acts as a greenhouse gas when stored in the atmosphere. The burning of fossil fuels and biomass upsets the natural balance of the carbon cycle by releasing long-ago stored carbon into the air, tipping the equilibrium towards the atmospheric storage. A model consisting of a system of ordinary di!erential…",
@@ -90,79 +71,8 @@
       }
     },
     {
-      "name": "chebyshev-semi-iteration",
-      "displayTitle": "Chebyshev Semi Iteration",
-      "htmlUrl": "https://github.com/Middlebury-Applied-Math-Journal/chebyshev-semi-iteration",
-      "description": null,
-      "summary": "Put your abstract here.",
-      "contributors": [],
-      "contributorsOverflow": false,
-      "isFork": false,
-      "isArchived": false,
-      "updatedAt": "2026-10-29T15:32:40Z",
-      "topics": [],
-      "pdfUrl": null,
-      "bio": {
-        "markdownUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/chebyshev-semi-iteration/main/bio/bio.md",
-        "imageUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/chebyshev-semi-iteration/main/bio/basic.png",
-        "name": null
-      }
-    },
-    {
-      "name": "google-pagerank-extrapolation",
-      "displayTitle": "Google Pagerank Extrapolation",
-      "htmlUrl": "https://github.com/Middlebury-Applied-Math-Journal/google-pagerank-extrapolation",
-      "description": "TBD",
-      "summary": "Put your abstract here.",
-      "contributors": [
-        {
-          "login": "cbisono-robot14",
-          "htmlUrl": "https://github.com/cbisono-robot14",
-          "avatarUrl": "https://avatars.githubusercontent.com/u/339424175?v=4",
-          "name": null
-        }
-      ],
-      "contributorsOverflow": false,
-      "isFork": false,
-      "isArchived": false,
-      "updatedAt": "2026-11-05T08:40:51Z",
-      "topics": [],
-      "pdfUrl": null,
-      "bio": {
-        "markdownUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/google-pagerank-extrapolation/main/bio/bio.md",
-        "imageUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/google-pagerank-extrapolation/main/bio/basic.png",
-        "name": null
-      }
-    },
-    {
-      "name": "kaczmarz-overdetermined-systems",
-      "displayTitle": "Kaczmarz Overdetermined Systems",
-      "htmlUrl": "https://github.com/Middlebury-Applied-Math-Journal/kaczmarz-overdetermined-systems",
-      "description": null,
-      "summary": "Put your abstract here.",
-      "contributors": [
-        {
-          "login": "AidenHan8",
-          "htmlUrl": "https://github.com/AidenHan8",
-          "avatarUrl": "https://avatars.githubusercontent.com/u/159857225?v=4",
-          "name": null
-        }
-      ],
-      "contributorsOverflow": false,
-      "isFork": false,
-      "isArchived": false,
-      "updatedAt": "2026-10-27T15:55:07Z",
-      "topics": [],
-      "pdfUrl": null,
-      "bio": {
-        "markdownUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/kaczmarz-overdetermined-systems/main/bio/bio.md",
-        "imageUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/kaczmarz-overdetermined-systems/main/bio/basic.png",
-        "name": null
-      }
-    },
-    {
       "name": "leslie-matrix-fishery-harvesting",
-      "displayTitle": "Leslie Matrix Fishery Harvesting",
+      "displayTitle": "Modeling Age-Specific Fishery Harvesting: Comparing a Leslie Matrix Model to a System of ODEs",
       "htmlUrl": "https://github.com/Middlebury-Applied-Math-Journal/leslie-matrix-fishery-harvesting",
       "description": null,
       "summary": "Fishery management officials must balance maximizing economic gain with preserving fish populations. This challenge depends heavily on understanding how regulations on min- imum harvesting age a\"ect long-term population dynamics. This paper compares a Leslie matrix and a system of ordinary diferential equations (ODEs)…",
@@ -183,53 +93,8 @@
       }
     },
     {
-      "name": "levenberg-marquardt-caffeine-sensitivity",
-      "displayTitle": "Levenberg Marquardt Caffeine Sensitivity",
-      "htmlUrl": "https://github.com/Middlebury-Applied-Math-Journal/levenberg-marquardt-caffeine-sensitivity",
-      "description": null,
-      "summary": "Put your abstract here.",
-      "contributors": [
-        {
-          "login": "jgracepark",
-          "htmlUrl": "https://github.com/jgracepark",
-          "avatarUrl": "https://avatars.githubusercontent.com/u/159796297?v=4",
-          "name": null
-        }
-      ],
-      "contributorsOverflow": false,
-      "isFork": false,
-      "isArchived": false,
-      "updatedAt": "2026-11-03T16:51:38Z",
-      "topics": [],
-      "pdfUrl": null,
-      "bio": {
-        "markdownUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/levenberg-marquardt-caffeine-sensitivity/main/bio/bio.md",
-        "imageUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/levenberg-marquardt-caffeine-sensitivity/main/bio/basic.png",
-        "name": null
-      }
-    },
-    {
-      "name": "nonstandard-finite-difference-sir",
-      "displayTitle": "Nonstandard Finite Difference Sir",
-      "htmlUrl": "https://github.com/Middlebury-Applied-Math-Journal/nonstandard-finite-difference-sir",
-      "description": null,
-      "summary": "Put your abstract here.",
-      "contributors": [],
-      "contributorsOverflow": false,
-      "isFork": false,
-      "isArchived": false,
-      "updatedAt": "2026-11-05T13:00:51Z",
-      "topics": [],
-      "pdfUrl": null,
-      "bio": {
-        "markdownUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/nonstandard-finite-difference-sir/main/bio/bio.md",
-        "imageUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/nonstandard-finite-difference-sir/main/bio/basic.png",
-        "name": "Name"
-      }
-    },
-    {
       "name": "pandemic-compartmental-models",
-      "displayTitle": "Pandemic Compartmental Models",
+      "displayTitle": "Preventing the Next Pandemic: Epidemiological Compartmental Models, the Reproduction Number, and Determining Intervention Strategies",
       "htmlUrl": "https://github.com/Middlebury-Applied-Math-Journal/pandemic-compartmental-models",
       "description": null,
       "summary": "After the COVID-19 pandemic upended daily life in 2020, questions about how disease control agencies around the world could better prepare for the spread diseases arose. Epidemiol- ogy is the study of the spread of diseases, and in this paper, we explore how epidemiological models can inform disease inter- vention stra…",
@@ -251,7 +116,7 @@
     },
     {
       "name": "river-temperature-thermal-discharge",
-      "displayTitle": "River Temperature Thermal Discharge",
+      "displayTitle": "Predicting River Temperature and Risk from Power Plant Thermal Discharge",
       "htmlUrl": "https://github.com/Middlebury-Applied-Math-Journal/river-temperature-thermal-discharge",
       "description": null,
       "summary": "Thermal discharge from power plants can raise downstream river temperatures and stress aquatic ecosystems, especially during warm seasons. While limits on the amount of allowed heat output do exist, they are not defined dynamically to account for varying river conditions. This study uses a one dimensional advection-di!…",
@@ -273,7 +138,7 @@
     },
     {
       "name": "rock-paper-scissors-cyclic-competition",
-      "displayTitle": "Rock Paper Scissors Cyclic Competition",
+      "displayTitle": "Rock-Paper-Scissors in Nature: Population Dynamics of Cyclic Competition in Uta Stansburiana",
       "htmlUrl": "https://github.com/Middlebury-Applied-Math-Journal/rock-paper-scissors-cyclic-competition",
       "description": null,
       "summary": "n 1996, Sinervo & Lively documented a striking natural phe- nomenon: the three male throat-color morphs of the side- blotched lizard (Uta stansburiana) cycle through dominance in sequence over a five-year period, with no single morph ever permanently prevailing; a biological manifestation of the rock-paper-scissors gam…",
@@ -294,27 +159,8 @@
       }
     },
     {
-      "name": "rough-bergomi-hybrid-quadrature",
-      "displayTitle": "Rough Bergomi Hybrid Quadrature",
-      "htmlUrl": "https://github.com/Middlebury-Applied-Math-Journal/rough-bergomi-hybrid-quadrature",
-      "description": "TBD",
-      "summary": "Put your abstract here.",
-      "contributors": [],
-      "contributorsOverflow": false,
-      "isFork": false,
-      "isArchived": false,
-      "updatedAt": "2026-10-29T15:33:17Z",
-      "topics": [],
-      "pdfUrl": null,
-      "bio": {
-        "markdownUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/rough-bergomi-hybrid-quadrature/main/bio/bio.md",
-        "imageUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/rough-bergomi-hybrid-quadrature/main/bio/basic.png",
-        "name": null
-      }
-    },
-    {
       "name": "spatial-pattern-formation",
-      "displayTitle": "Spatial Pattern Formation",
+      "displayTitle": "TThe Math Behind Spatial Pattern Formation",
       "htmlUrl": "https://github.com/Middlebury-Applied-Math-Journal/spatial-pattern-formation",
       "description": null,
       "summary": "Spatial patterns are present throughout many areas of nature such as in animal patterns and vegetation growth. Turing pat- terns are one way of mathematically modeling spatial pattern formation, and the reaction-di!usion principles which define the model have been shown to be the likely biological cause of pattern form…",
@@ -335,27 +181,8 @@
       }
     },
     {
-      "name": "thiele-ode-life-insurance",
-      "displayTitle": "Thiele Ode Life Insurance",
-      "htmlUrl": "https://github.com/Middlebury-Applied-Math-Journal/thiele-ode-life-insurance",
-      "description": null,
-      "summary": "Put your abstract here.",
-      "contributors": [],
-      "contributorsOverflow": false,
-      "isFork": false,
-      "isArchived": false,
-      "updatedAt": "2026-10-29T15:33:58Z",
-      "topics": [],
-      "pdfUrl": null,
-      "bio": {
-        "markdownUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/thiele-ode-life-insurance/main/bio/bio.md",
-        "imageUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/thiele-ode-life-insurance/main/bio/basic.png",
-        "name": null
-      }
-    },
-    {
       "name": "tmbox-microfluidic-biosensor",
-      "displayTitle": "Tmbox Microfluidic Biosensor",
+      "displayTitle": "Modeling Fluid Dynamics of Oxidized 3,3’,5,5’ Tetramethylbenzidine (TMBOX) in a Microfluidic Biosensor",
       "htmlUrl": "https://github.com/Middlebury-Applied-Math-Journal/tmbox-microfluidic-biosensor",
       "description": null,
       "summary": "Microfluidic devices are small, typically inexpensive devices capable of performing complex biochemical assays. For exam- ple, the enzyme-linked immunosorbent assay (ELISA) can be adapted to a microfluidic electrochemical biosensor for rapid cancer biomarker quantification. An ELISA produces the oxidized electroactive…",
@@ -377,7 +204,7 @@
     },
     {
       "name": "wind-turbine-gearbox-maintenance",
-      "displayTitle": "Wind Turbine Gearbox Maintenance",
+      "displayTitle": "Comparing Maintenance Policies for Wind Turbine Gearboxes Under Stochastic Degradation",
       "htmlUrl": "https://github.com/Middlebury-Applied-Math-Journal/wind-turbine-gearbox-maintenance",
       "description": null,
       "summary": "Wind turbine gearboxes degrade under uncertain operating conditions, such as turbulence, storms, and rapidly chang- ing loads, making maintenance decisions sensitive to random- ness. While keeping turbines operating is crucial for energy production, poorly chosen maintenance strategies can lead to inadequate maintenanc…",
