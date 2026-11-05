@@ -77,7 +77,7 @@ function nextPageUrl(linkHeader) {
 }
 
 async function listOrgRepos(org) {
-  const url = `${API_BASE}/orgs/${encodeURIComponent(org)}/repos?type=all&per_page=100&sort=full_name&direction=asc`;
+  const url = `${API_BASE}/orgs/${encodeURIComponent(org)}/repos?type=public&per_page=100&sort=full_name&direction=asc`;
   return ghPaginate(url);
 }
 
@@ -398,8 +398,14 @@ async function loadSiteConfig() {
 
 async function buildRepoEntries() {
   console.log(`Listing repositories in ${ORG}...`);
+  // Only public repos are listed. The API query already asks for
+  // type=public; this check also drops private/internal repos in case the
+  // token can see them anyway.
   const rawRepos = (await listOrgRepos(ORG)).filter(
-    (r) => !EXCLUDED_REPOS.has(r.name.toLowerCase())
+    (r) =>
+      !r.private &&
+      (r.visibility === undefined || r.visibility === 'public') &&
+      !EXCLUDED_REPOS.has(r.name.toLowerCase())
   );
   rawRepos.sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }));
   console.log(`Found ${rawRepos.length} repositories (excluding ${[...EXCLUDED_REPOS].join(', ')}).`);
