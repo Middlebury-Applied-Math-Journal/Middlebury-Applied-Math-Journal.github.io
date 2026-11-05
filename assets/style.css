@@ -262,9 +262,15 @@ a.site-nav-link:focus-visible {
   font-size: 0.875rem;
 }
 
+/* Grid: title stacked over authors in the left column, arrow cell
+   spanning the full height on the right. The 1fr spacer rows center
+   the text block vertically inside the fixed minimum height, so every
+   row is the same height whether or not it has an author line. */
 .repo-toggle {
-  display: flex;
-  align-items: stretch;
+  display: grid;
+  grid-template-columns: 1fr 1.5rem;
+  grid-template-rows: 1fr auto auto 1fr;
+  min-height: 3.75rem;
   width: 100%;
   padding: 0;
   border: 0;
@@ -275,14 +281,22 @@ a.site-nav-link:focus-visible {
 }
 
 .repo-toggle-title {
-  padding: 0.5rem 0 0.5rem 0.75rem;
+  grid-column: 1;
+  grid-row: 2;
+  padding: 0.5rem 0.75rem 0;
   font-weight: 600;
 }
 
 .repo-toggle-authors {
-  flex: 1 1 auto;
-  padding: 0.5rem 0.75rem 0.5rem 0.6rem;
+  grid-column: 1;
+  grid-row: 3;
+  padding: 0.8rem 0.75rem 0.5rem;
   font-weight: 400;
+}
+
+/* No author line: keep the title's bottom padding. */
+.repo-toggle-title:has(+ .repo-toggle-icon) {
+  padding-bottom: 0.5rem;
 }
 
 .repo-toggle:hover,
@@ -306,7 +320,8 @@ a.site-nav-link:focus-visible {
 /* Right-hand arrow cell. The inner span is a small chevron that points
    down when collapsed and up when expanded. */
 .repo-toggle-icon {
-  flex: 0 0 1.5rem;
+  grid-column: 2;
+  grid-row: 1 / -1;
   display: flex;
   align-items: center;
   justify-content: center;
