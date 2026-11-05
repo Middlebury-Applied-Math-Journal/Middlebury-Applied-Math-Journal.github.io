@@ -14,7 +14,7 @@
       "contributorsOverflow": false,
       "isFork": false,
       "isArchived": false,
-      "updatedAt": "2026-11-04T20:04:11Z",
+      "updatedAt": "2026-11-05T12:40:16Z",
       "topics": [
         "edition-1",
         "mechanistic-insights-into-disease-and-progression"
@@ -22,7 +22,8 @@
       "pdfUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/alzheimers-biomarker-cascade/main/pdf/alzheimer.pdf",
       "bio": {
         "markdownUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/alzheimers-biomarker-cascade/main/bio/bio.md",
-        "imageUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/alzheimers-biomarker-cascade/main/bio/basic.png"
+        "imageUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/alzheimers-biomarker-cascade/main/bio/basic.png",
+        "name": "Krysta Pereira1"
       }
     },
     {
@@ -43,7 +44,27 @@
       "pdfUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/behavior-driven-vaccination-sir/main/pdf/behavior-vaccination.pdf",
       "bio": {
         "markdownUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/behavior-driven-vaccination-sir/main/bio/bio.md",
-        "imageUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/behavior-driven-vaccination-sir/main/bio/basic.png"
+        "imageUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/behavior-driven-vaccination-sir/main/bio/basic.png",
+        "name": "Andrew Dou"
+      }
+    },
+    {
+      "name": "bratu-pseudo-arclength-continuation",
+      "displayTitle": "Bratu Pseudo Arclength Continuation",
+      "htmlUrl": "https://github.com/Middlebury-Applied-Math-Journal/bratu-pseudo-arclength-continuation",
+      "description": null,
+      "summary": "Put your abstract here.",
+      "contributors": [],
+      "contributorsOverflow": false,
+      "isFork": false,
+      "isArchived": false,
+      "updatedAt": "2026-11-05T12:44:26Z",
+      "topics": [],
+      "pdfUrl": null,
+      "bio": {
+        "markdownUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/bratu-pseudo-arclength-continuation/main/bio/bio.md",
+        "imageUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/bratu-pseudo-arclength-continuation/main/bio/basic.png",
+        "name": "Name"
       }
     },
     {
@@ -56,7 +77,7 @@
       "contributorsOverflow": false,
       "isFork": false,
       "isArchived": false,
-      "updatedAt": "2026-11-04T19:53:13Z",
+      "updatedAt": "2026-11-05T12:54:41Z",
       "topics": [
         "edition-1",
         "managing-energy"
@@ -64,7 +85,79 @@
       "pdfUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/carbon-cycle-ode/main/pdf/carbon-cycle.pdf",
       "bio": {
         "markdownUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/carbon-cycle-ode/main/bio/bio.md",
-        "imageUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/carbon-cycle-ode/main/bio/basic.png"
+        "imageUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/carbon-cycle-ode/main/bio/basic.png",
+        "name": "Megan Balparda"
+      }
+    },
+    {
+      "name": "chebyshev-semi-iteration",
+      "displayTitle": "Chebyshev Semi Iteration",
+      "htmlUrl": "https://github.com/Middlebury-Applied-Math-Journal/chebyshev-semi-iteration",
+      "description": null,
+      "summary": "Put your abstract here.",
+      "contributors": [],
+      "contributorsOverflow": false,
+      "isFork": false,
+      "isArchived": false,
+      "updatedAt": "2026-10-29T15:32:40Z",
+      "topics": [],
+      "pdfUrl": null,
+      "bio": {
+        "markdownUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/chebyshev-semi-iteration/main/bio/bio.md",
+        "imageUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/chebyshev-semi-iteration/main/bio/basic.png",
+        "name": null
+      }
+    },
+    {
+      "name": "google-pagerank-extrapolation",
+      "displayTitle": "Google Pagerank Extrapolation",
+      "htmlUrl": "https://github.com/Middlebury-Applied-Math-Journal/google-pagerank-extrapolation",
+      "description": "TBD",
+      "summary": "Put your abstract here.",
+      "contributors": [
+        {
+          "login": "cbisono-robot14",
+          "htmlUrl": "https://github.com/cbisono-robot14",
+          "avatarUrl": "https://avatars.githubusercontent.com/u/339424175?v=4",
+          "name": null
+        }
+      ],
+      "contributorsOverflow": false,
+      "isFork": false,
+      "isArchived": false,
+      "updatedAt": "2026-11-05T08:40:51Z",
+      "topics": [],
+      "pdfUrl": null,
+      "bio": {
+        "markdownUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/google-pagerank-extrapolation/main/bio/bio.md",
+        "imageUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/google-pagerank-extrapolation/main/bio/basic.png",
+        "name": null
+      }
+    },
+    {
+      "name": "kaczmarz-overdetermined-systems",
+      "displayTitle": "Kaczmarz Overdetermined Systems",
+      "htmlUrl": "https://github.com/Middlebury-Applied-Math-Journal/kaczmarz-overdetermined-systems",
+      "description": null,
+      "summary": "Put your abstract here.",
+      "contributors": [
+        {
+          "login": "AidenHan8",
+          "htmlUrl": "https://github.com/AidenHan8",
+          "avatarUrl": "https://avatars.githubusercontent.com/u/159857225?v=4",
+          "name": null
+        }
+      ],
+      "contributorsOverflow": false,
+      "isFork": false,
+      "isArchived": false,
+      "updatedAt": "2026-10-27T15:55:07Z",
+      "topics": [],
+      "pdfUrl": null,
+      "bio": {
+        "markdownUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/kaczmarz-overdetermined-systems/main/bio/bio.md",
+        "imageUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/kaczmarz-overdetermined-systems/main/bio/basic.png",
+        "name": null
       }
     },
     {
@@ -77,7 +170,7 @@
       "contributorsOverflow": false,
       "isFork": false,
       "isArchived": false,
-      "updatedAt": "2026-11-04T20:09:09Z",
+      "updatedAt": "2026-11-05T13:01:43Z",
       "topics": [
         "edition-1",
         "wild-equations"
@@ -85,7 +178,53 @@
       "pdfUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/leslie-matrix-fishery-harvesting/main/pdf/fisher.pdf",
       "bio": {
         "markdownUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/leslie-matrix-fishery-harvesting/main/bio/bio.md",
-        "imageUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/leslie-matrix-fishery-harvesting/main/bio/basic.png"
+        "imageUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/leslie-matrix-fishery-harvesting/main/bio/basic.png",
+        "name": "Izzy Pentony"
+      }
+    },
+    {
+      "name": "levenberg-marquardt-caffeine-sensitivity",
+      "displayTitle": "Levenberg Marquardt Caffeine Sensitivity",
+      "htmlUrl": "https://github.com/Middlebury-Applied-Math-Journal/levenberg-marquardt-caffeine-sensitivity",
+      "description": null,
+      "summary": "Put your abstract here.",
+      "contributors": [
+        {
+          "login": "jgracepark",
+          "htmlUrl": "https://github.com/jgracepark",
+          "avatarUrl": "https://avatars.githubusercontent.com/u/159796297?v=4",
+          "name": null
+        }
+      ],
+      "contributorsOverflow": false,
+      "isFork": false,
+      "isArchived": false,
+      "updatedAt": "2026-11-03T16:51:38Z",
+      "topics": [],
+      "pdfUrl": null,
+      "bio": {
+        "markdownUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/levenberg-marquardt-caffeine-sensitivity/main/bio/bio.md",
+        "imageUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/levenberg-marquardt-caffeine-sensitivity/main/bio/basic.png",
+        "name": null
+      }
+    },
+    {
+      "name": "nonstandard-finite-difference-sir",
+      "displayTitle": "Nonstandard Finite Difference Sir",
+      "htmlUrl": "https://github.com/Middlebury-Applied-Math-Journal/nonstandard-finite-difference-sir",
+      "description": null,
+      "summary": "Put your abstract here.",
+      "contributors": [],
+      "contributorsOverflow": false,
+      "isFork": false,
+      "isArchived": false,
+      "updatedAt": "2026-11-05T13:00:51Z",
+      "topics": [],
+      "pdfUrl": null,
+      "bio": {
+        "markdownUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/nonstandard-finite-difference-sir/main/bio/bio.md",
+        "imageUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/nonstandard-finite-difference-sir/main/bio/basic.png",
+        "name": "Name"
       }
     },
     {
@@ -106,7 +245,8 @@
       "pdfUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/pandemic-compartmental-models/main/pdf/prevent-pandemic.pdf",
       "bio": {
         "markdownUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/pandemic-compartmental-models/main/bio/bio.md",
-        "imageUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/pandemic-compartmental-models/main/bio/basic.png"
+        "imageUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/pandemic-compartmental-models/main/bio/basic.png",
+        "name": "Jack Underwood"
       }
     },
     {
@@ -127,7 +267,8 @@
       "pdfUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/river-temperature-thermal-discharge/main/pdf/river-temp.pdf",
       "bio": {
         "markdownUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/river-temperature-thermal-discharge/main/bio/bio.md",
-        "imageUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/river-temperature-thermal-discharge/main/bio/basic.png"
+        "imageUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/river-temperature-thermal-discharge/main/bio/basic.png",
+        "name": "Bailey Parent"
       }
     },
     {
@@ -140,7 +281,7 @@
       "contributorsOverflow": false,
       "isFork": false,
       "isArchived": false,
-      "updatedAt": "2026-11-04T20:13:06Z",
+      "updatedAt": "2026-11-05T12:59:43Z",
       "topics": [
         "edition-1",
         "wild-equations"
@@ -148,7 +289,27 @@
       "pdfUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/rock-paper-scissors-cyclic-competition/main/pdf/rps.pdf",
       "bio": {
         "markdownUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/rock-paper-scissors-cyclic-competition/main/bio/bio.md",
-        "imageUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/rock-paper-scissors-cyclic-competition/main/bio/basic.png"
+        "imageUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/rock-paper-scissors-cyclic-competition/main/bio/basic.png",
+        "name": "Evan Flaks"
+      }
+    },
+    {
+      "name": "rough-bergomi-hybrid-quadrature",
+      "displayTitle": "Rough Bergomi Hybrid Quadrature",
+      "htmlUrl": "https://github.com/Middlebury-Applied-Math-Journal/rough-bergomi-hybrid-quadrature",
+      "description": "TBD",
+      "summary": "Put your abstract here.",
+      "contributors": [],
+      "contributorsOverflow": false,
+      "isFork": false,
+      "isArchived": false,
+      "updatedAt": "2026-10-29T15:33:17Z",
+      "topics": [],
+      "pdfUrl": null,
+      "bio": {
+        "markdownUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/rough-bergomi-hybrid-quadrature/main/bio/bio.md",
+        "imageUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/rough-bergomi-hybrid-quadrature/main/bio/basic.png",
+        "name": null
       }
     },
     {
@@ -161,7 +322,7 @@
       "contributorsOverflow": false,
       "isFork": false,
       "isArchived": false,
-      "updatedAt": "2026-11-04T20:06:30Z",
+      "updatedAt": "2026-11-05T12:58:11Z",
       "topics": [
         "edition-1",
         "wild-equations"
@@ -169,7 +330,27 @@
       "pdfUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/spatial-pattern-formation/main/pdf/spatial-pattern.pdf",
       "bio": {
         "markdownUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/spatial-pattern-formation/main/bio/bio.md",
-        "imageUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/spatial-pattern-formation/main/bio/basic.png"
+        "imageUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/spatial-pattern-formation/main/bio/basic.png",
+        "name": "Liza Platonov"
+      }
+    },
+    {
+      "name": "thiele-ode-life-insurance",
+      "displayTitle": "Thiele Ode Life Insurance",
+      "htmlUrl": "https://github.com/Middlebury-Applied-Math-Journal/thiele-ode-life-insurance",
+      "description": null,
+      "summary": "Put your abstract here.",
+      "contributors": [],
+      "contributorsOverflow": false,
+      "isFork": false,
+      "isArchived": false,
+      "updatedAt": "2026-10-29T15:33:58Z",
+      "topics": [],
+      "pdfUrl": null,
+      "bio": {
+        "markdownUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/thiele-ode-life-insurance/main/bio/bio.md",
+        "imageUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/thiele-ode-life-insurance/main/bio/basic.png",
+        "name": null
       }
     },
     {
@@ -182,7 +363,7 @@
       "contributorsOverflow": false,
       "isFork": false,
       "isArchived": false,
-      "updatedAt": "2026-11-04T20:00:14Z",
+      "updatedAt": "2026-11-05T12:57:04Z",
       "topics": [
         "edition-1",
         "mechanistic-insights-into-disease-and-progression"
@@ -190,7 +371,8 @@
       "pdfUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/tmbox-microfluidic-biosensor/main/pdf/biosensor.pdf",
       "bio": {
         "markdownUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/tmbox-microfluidic-biosensor/main/bio/bio.md",
-        "imageUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/tmbox-microfluidic-biosensor/main/bio/basic.png"
+        "imageUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/tmbox-microfluidic-biosensor/main/bio/basic.png",
+        "name": "Athena Antippas"
       }
     },
     {
@@ -203,7 +385,7 @@
       "contributorsOverflow": false,
       "isFork": false,
       "isArchived": false,
-      "updatedAt": "2026-11-04T19:56:25Z",
+      "updatedAt": "2026-11-05T12:56:02Z",
       "topics": [
         "edition-1",
         "managing-energy"
@@ -211,7 +393,8 @@
       "pdfUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/wind-turbine-gearbox-maintenance/main/pdf/wind-turbine.pdf",
       "bio": {
         "markdownUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/wind-turbine-gearbox-maintenance/main/bio/bio.md",
-        "imageUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/wind-turbine-gearbox-maintenance/main/bio/basic.png"
+        "imageUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/wind-turbine-gearbox-maintenance/main/bio/basic.png",
+        "name": "Caroline Hoff"
       }
     }
   ]

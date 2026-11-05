@@ -179,10 +179,11 @@ async function getPdfUrl(owner, repo, defaultBranch) {
 }
 
 // Returns raw-content URLs for a repo's author bio, from a top-level `bio/`
-// directory: { markdownUrl, imageUrl }, either of which may be null (the
-// first `.md` file and the first image found). Returns null if there's no
-// `bio/` directory or it holds neither. index.js fetches the markdown when
-// a visitor opens the bio modal.
+// directory: { markdownUrl, imageUrl, name }, any of which may be null (the
+// first `.md` file, the first image found, and the text of the markdown's
+// first heading). Returns null if there's no `bio/` directory or it holds
+// neither file. index.js fetches the markdown when a visitor opens the bio
+// modal, and uses `name` as the author when a repo has no contributors.
 async function getBio(owner, repo, defaultBranch) {
   const url = `${API_BASE}/repos/${owner}/${repo}/contents/bio`;
   try {
@@ -200,11 +201,46 @@ async function getBio(owner, repo, defaultBranch) {
     if (!markdown && !image) return null;
     const rawUrl = (item) =>
       item ? `https://raw.githubusercontent.com/${owner}/${repo}/${defaultBranch}/bio/${item.name}` : null;
-    return { markdownUrl: rawUrl(markdown), imageUrl: rawUrl(image) };
+    const name = markdown ? await getBioName(markdown.url) : null;
+    return { markdownUrl: rawUrl(markdown), imageUrl: rawUrl(image), name };
   } catch (err) {
     console.warn(`  bio/ listing errored for ${owner}/${repo}: ${err.message}`);
     return null;
   }
+}
+
+// Fetches a bio markdown file (by its contents-API URL) and returns the
+// text of its first heading, e.g. "Megan Balparda" from "# Megan Balparda",
+// or null if it can't be fetched or has no heading.
+async function getBioName(contentsApiUrl) {
+  try {
+    const res = await ghRequest(contentsApiUrl, { accept: 'application/vnd.github.raw+json' });
+    if (!res.ok) {
+      console.warn(`  bio markdown fetch failed: ${res.status}`);
+      return null;
+    }
+    return extractFirstHeading(await res.text());
+  } catch (err) {
+    console.warn(`  bio markdown fetch errored: ${err.message}`);
+    return null;
+  }
+}
+
+function extractFirstHeading(markdown) {
+  if (!markdown) return null;
+  const lines = stripFrontMatter(markdown).replace(/<!--[\s\S]*?-->/g, '').split('\n');
+  for (let i = 0; i < lines.length; i++) {
+    const trimmed = lines[i].trim();
+    const atx = trimmed.match(/^#{1,6}\s+(.*?)\s*#*\s*$/);
+    let heading = atx ? atx[1] : null;
+    // Setext heading: a text line underlined with === or ---.
+    if (!heading && trimmed && /^(=+|-+)\s*$/.test((lines[i + 1] || '').trim())) heading = trimmed;
+    if (heading) {
+      const text = toPlainText(heading);
+      if (text) return text;
+    }
+  }
+  return null;
 }
 
 // ---------------------------------------------------------------------
@@ -477,7 +513,8 @@ function renderReadme(entries, builtAt, site) {
 
 function formatContributorsMarkdown(entry) {
   if (entry.contributors.length === 0) {
-    return entry.contributorsOverflow ? '_too many to list_' : '_none listed_';
+    if (entry.contributorsOverflow) return '_too many to list_';
+    return entry.bio?.name || '_none listed_';
   }
   const names = entry.contributors.map((c) => `[@${c.login}](${c.htmlUrl})`).join(', ');
   return entry.contributorsOverflow ? `${names}, _and more_` : names;

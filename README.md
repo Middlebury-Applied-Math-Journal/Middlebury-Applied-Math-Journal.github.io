@@ -13,41 +13,84 @@ _Last built: 2026-11-04T20:44:15.694Z_
 
 Alzheimer’s disease is a progressive, irreversible brain disorder that gradually destroys cognitive function and memory, mak- ing even the simplest tasks di!cult to perform. While the general pathological mechanisms underlying Alzheimer’s dis- ease are known, the timing and progression of these changes in the brain rem…
 
-**Contributors:** _none listed_
+**Contributors:** Krysta Pereira1
 
 ## [Behavior Driven Vaccination Sir](https://github.com/Middlebury-Applied-Math-Journal/behavior-driven-vaccination-sir)
 
 Vaccination rates can change with public perception of dis- ease risk, especially when infection levels rise or fall over time. However, many classical SIR vaccination models treat vacci- nation coverage as constant, which can miss feedback between disease prevalence and human behavior. This paper studies whether behav…
 
-**Contributors:** _none listed_
+**Contributors:** Andrew Dou
+
+## [Bratu Pseudo Arclength Continuation](https://github.com/Middlebury-Applied-Math-Journal/bratu-pseudo-arclength-continuation)
+
+Put your abstract here.
+
+**Contributors:** Name
 
 ## [Carbon Cycle Ode](https://github.com/Middlebury-Applied-Math-Journal/carbon-cycle-ode)
 
 Carbon dioxide acts as a greenhouse gas when stored in the atmosphere. The burning of fossil fuels and biomass upsets the natural balance of the carbon cycle by releasing long-ago stored carbon into the air, tipping the equilibrium towards the atmospheric storage. A model consisting of a system of ordinary di!erential…
 
+**Contributors:** Megan Balparda
+
+## [Chebyshev Semi Iteration](https://github.com/Middlebury-Applied-Math-Journal/chebyshev-semi-iteration)
+
+Put your abstract here.
+
 **Contributors:** _none listed_
+
+## [Google Pagerank Extrapolation](https://github.com/Middlebury-Applied-Math-Journal/google-pagerank-extrapolation)
+
+Put your abstract here.
+
+**Contributors:** [@cbisono-robot14](https://github.com/cbisono-robot14)
+
+## [Kaczmarz Overdetermined Systems](https://github.com/Middlebury-Applied-Math-Journal/kaczmarz-overdetermined-systems)
+
+Put your abstract here.
+
+**Contributors:** [@AidenHan8](https://github.com/AidenHan8)
 
 ## [Leslie Matrix Fishery Harvesting](https://github.com/Middlebury-Applied-Math-Journal/leslie-matrix-fishery-harvesting)
 
 Fishery management officials must balance maximizing economic gain with preserving fish populations. This challenge depends heavily on understanding how regulations on min- imum harvesting age a"ect long-term population dynamics. This paper compares a Leslie matrix and a system of ordinary diferential equations (ODEs)…
 
-**Contributors:** _none listed_
+**Contributors:** Izzy Pentony
+
+## [Levenberg Marquardt Caffeine Sensitivity](https://github.com/Middlebury-Applied-Math-Journal/levenberg-marquardt-caffeine-sensitivity)
+
+Put your abstract here.
+
+**Contributors:** [@jgracepark](https://github.com/jgracepark)
+
+## [Nonstandard Finite Difference Sir](https://github.com/Middlebury-Applied-Math-Journal/nonstandard-finite-difference-sir)
+
+Put your abstract here.
+
+**Contributors:** Name
 
 ## [Pandemic Compartmental Models](https://github.com/Middlebury-Applied-Math-Journal/pandemic-compartmental-models)
 
 After the COVID-19 pandemic upended daily life in 2020, questions about how disease control agencies around the world could better prepare for the spread diseases arose. Epidemiol- ogy is the study of the spread of diseases, and in this paper, we explore how epidemiological models can inform disease inter- vention stra…
+After the COVID-19 pandemic upended daily life in 2020, questions about how disease control agencies around the world could better prepare for the spread diseases arose. Epidemiol- ogy is the study of the spread of diseases, and in this paper, we explore how epidemiological models can inform disease inter- vention stra…
 
-**Contributors:** _none listed_
+**Contributors:** Jack Underwood
 
 ## [River Temperature Thermal Discharge](https://github.com/Middlebury-Applied-Math-Journal/river-temperature-thermal-discharge)
 
 Thermal discharge from power plants can raise downstream river temperatures and stress aquatic ecosystems, especially during warm seasons. While limits on the amount of allowed heat output do exist, they are not defined dynamically to account for varying river conditions. This study uses a one dimensional advection-di!…
 
-**Contributors:** _none listed_
+**Contributors:** Bailey Parent
 
 ## [Rock Paper Scissors Cyclic Competition](https://github.com/Middlebury-Applied-Math-Journal/rock-paper-scissors-cyclic-competition)
 
 n 1996, Sinervo & Lively documented a striking natural phe- nomenon: the three male throat-color morphs of the side- blotched lizard (Uta stansburiana) cycle through dominance in sequence over a five-year period, with no single morph ever permanently prevailing; a biological manifestation of the rock-paper-scissors gam…
+
+**Contributors:** Evan Flaks
+
+## [Rough Bergomi Hybrid Quadrature](https://github.com/Middlebury-Applied-Math-Journal/rough-bergomi-hybrid-quadrature)
+
+Put your abstract here.
 
 **Contributors:** _none listed_
 
@@ -55,19 +98,25 @@ n 1996, Sinervo & Lively documented a striking natural phe- nomenon: the three m
 
 Spatial patterns are present throughout many areas of nature such as in animal patterns and vegetation growth. Turing pat- terns are one way of mathematically modeling spatial pattern formation, and the reaction-di!usion principles which define the model have been shown to be the likely biological cause of pattern form…
 
+**Contributors:** Liza Platonov
+
+## [Thiele Ode Life Insurance](https://github.com/Middlebury-Applied-Math-Journal/thiele-ode-life-insurance)
+
+Put your abstract here.
+
 **Contributors:** _none listed_
 
 ## [Tmbox Microfluidic Biosensor](https://github.com/Middlebury-Applied-Math-Journal/tmbox-microfluidic-biosensor)
 
 Microfluidic devices are small, typically inexpensive devices capable of performing complex biochemical assays. For exam- ple, the enzyme-linked immunosorbent assay (ELISA) can be adapted to a microfluidic electrochemical biosensor for rapid cancer biomarker quantification. An ELISA produces the oxidized electroactive…
 
-**Contributors:** _none listed_
+**Contributors:** Athena Antippas
 
 ## [Wind Turbine Gearbox Maintenance](https://github.com/Middlebury-Applied-Math-Journal/wind-turbine-gearbox-maintenance)
 
 Wind turbine gearboxes degrade under uncertain operating conditions, such as turbulence, storms, and rapidly chang- ing loads, making maintenance decisions sensitive to random- ness. While keeping turbines operating is crucial for energy production, poorly chosen maintenance strategies can lead to inadequate maintenanc…
 
-**Contributors:** _none listed_
+**Contributors:** Caroline Hoff
 
 ## Organizing editions and sections
 

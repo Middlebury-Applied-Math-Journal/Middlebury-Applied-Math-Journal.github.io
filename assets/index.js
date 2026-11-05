@@ -89,10 +89,20 @@
     }
   }
 
+  // A repo's authors: its GitHub contributors or, when it has none (e.g.
+  // every committer is an excluded maintainer), the name from the first
+  // heading of its bio/*.md.
+  function authorsOf(repo) {
+    if (repo.contributors?.length) return repo.contributors;
+    if (!repo.contributorsOverflow && repo.bio?.name) return [{ name: repo.bio.name }];
+    return [];
+  }
+
   function renderContributors(repo) {
     const line = el('p', { className: 'card-text small mb-0' });
+    const authors = authorsOf(repo);
 
-    if (!repo.contributors?.length) {
+    if (!authors.length) {
       line.append(
         el('span', { className: 'text-body-secondary' }, [
           repo.contributorsOverflow ? 'Too many authors to list' : 'No authors listed',
@@ -101,10 +111,16 @@
       return line;
     }
 
-    repo.contributors.forEach((c, i) => {
+    authors.forEach((c, i) => {
       if (i > 0) line.append(', ');
       const displayName = c.name || `@${c.login}`;
-      const link = el('a', { href: c.htmlUrl, className: 'd-inline-flex align-items-center gap-1 text-decoration-none' }, [
+      // A bio-only author has no GitHub profile: without a bio modal to
+      // open, show the name as plain text.
+      if (!c.htmlUrl && !(repo.bio && bioModal)) {
+        line.append(el('span', {}, [displayName]));
+        return;
+      }
+      const link = el('a', { href: c.htmlUrl || repo.bio?.markdownUrl || '#', className: 'd-inline-flex align-items-center gap-1 text-decoration-none' }, [
         c.avatarUrl
           ? el('img', {
               src: avatarSrc(c.avatarUrl),
@@ -195,7 +211,7 @@
     if (repo.isArchived) badges.push(el('span', { className: 'badge text-bg-secondary' }, ['Archived']));
     if (repo.isFork) badges.push(el('span', { className: 'badge text-bg-secondary' }, ['Fork']));
 
-    const authorNames = (repo.contributors || []).map((c) => c.name || `@${c.login}`).join(', ');
+    const authorNames = authorsOf(repo).map((c) => c.name || `@${c.login}`).join(', ');
 
     const toggle = el('button', {
       type: 'button',
