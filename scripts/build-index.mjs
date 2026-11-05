@@ -317,6 +317,43 @@ function extractFirstParagraph(markdown) {
     : text;
 }
 
+// Article title: the text of the README's first top-level heading (`# Title`,
+// a setext `Title\n=====`, or an HTML `<h1>`), or null if there is none.
+// Lines inside fenced code blocks are ignored so `# comment` lines in
+// shell snippets aren't mistaken for headings.
+function extractMainHeading(markdown) {
+  if (!markdown) return null;
+  const body = stripFrontMatter(markdown).replace(/<!--[\s\S]*?-->/g, '');
+  const lines = body.split('\n');
+
+  let inFence = false;
+  for (let i = 0; i < lines.length; i++) {
+    const trimmed = lines[i].trim();
+    if (/^(```|~~~)/.test(trimmed)) {
+      inFence = !inFence;
+      continue;
+    }
+    if (inFence) continue;
+
+    let raw = null;
+    const atx = trimmed.match(/^#\s+(.*?)\s*#*\s*$/);
+    if (atx) {
+      raw = atx[1];
+    } else if (trimmed && i + 1 < lines.length && /^=+\s*$/.test(lines[i + 1].trim())) {
+      raw = trimmed;
+    } else {
+      const html = trimmed.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i);
+      if (html) raw = html[1].replace(/<[^>]+>/g, '');
+    }
+
+    if (raw !== null) {
+      const text = toPlainText(raw);
+      if (text) return text;
+    }
+  }
+  return null;
+}
+
 function humanize(text) {
   return text
     .split(/[-_]/)
@@ -381,7 +418,7 @@ async function buildRepoEntries() {
 
     entries.push({
       name: repo.name,
-      displayTitle: titleCaseFromRepoName(repo.name),
+      displayTitle: extractMainHeading(readmeText) || titleCaseFromRepoName(repo.name),
       htmlUrl: repo.html_url,
       description: repo.description || null,
       summary: firstParagraph || repo.description || null,
