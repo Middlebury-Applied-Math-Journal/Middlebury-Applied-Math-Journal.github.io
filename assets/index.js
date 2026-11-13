@@ -1,9 +1,9 @@
 // Renders the repository index from data/repos.json, which the nightly
 // workflow rebuilds (see scripts/build-index.mjs and SETUP.md), and adds a
 // live filter on top. Cards are built as DOM nodes with textContent, never
-// innerHTML, so README text can't inject markup. The exceptions are the
-// author bio modal and each edition's editorial, whose markdown is rendered
-// by marked and sanitized by DOMPurify before it's inserted.
+// innerHTML, so README text can't inject markup. The one exception is the
+// reading modal (author bios and edition editorials), whose markdown is
+// rendered by marked and sanitized by DOMPurify before it's inserted.
 //
 // The PDF pane (assets/pdf-reader.js) listens for clicks on #repo-list, so
 // it works with these cards without any coordination.
@@ -150,28 +150,46 @@
   }
 
   // ---------------------------------------------------------------------
-  // Author bio modal: the author's name as the h1, the repo's bio/*.md
-  // rendered on the left, and the bio/ image on the right.
+  // Reading modal, shared by author bios and edition editorials: a title
+  // and byline, rendered markdown on the left, and an image on the right.
   // ---------------------------------------------------------------------
 
   function setBioMessage(text) {
     bioBody.replaceChildren(el('p', { className: 'text-body-secondary' }, [text]));
   }
 
-  async function openBio(name, bio, repoTitle) {
-    const token = ++bioRequestToken;
-    bioTitle.textContent = name;
-    bioImageCol.classList.toggle('d-none', !bio.imageUrl);
-    bioContent.classList.toggle('col-md-7', Boolean(bio.imageUrl));
-    bioByline.textContent = repoTitle ? `Author of ${repoTitle}` : '';
-    if (bio.imageUrl) {
-      bioImage.src = bio.imageUrl;
-      bioImage.alt = `Photo of ${name}`;
+  // Markdown is rendered by marked and sanitized by DOMPurify.
+  function setBioMarkdown(markdown) {
+    if (!window.marked || !window.DOMPurify) throw new Error('markdown renderer not loaded');
+    bioBody.innerHTML = window.DOMPurify.sanitize(window.marked.parse(markdown));
+    window.MathJax?.typesetPromise?.([bioBody]).catch((err) => console.warn('MathJax typeset failed:', err));
+  }
+
+  // Fills in the modal's title, byline and image, and opens it. Returns a
+  // token; a slower request for an earlier modal checks it before writing.
+  function showReadingModal({ title, byline, imageUrl, imageAlt }) {
+    bioTitle.textContent = title;
+    bioByline.textContent = byline || '';
+    bioImageCol.classList.toggle('d-none', !imageUrl);
+    bioContent.classList.toggle('col-md-7', Boolean(imageUrl));
+    if (imageUrl) {
+      bioImage.src = imageUrl;
+      bioImage.alt = imageAlt || '';
     } else {
       bioImage.removeAttribute('src');
     }
-    setBioMessage(bio.markdownUrl ? 'Loading bio…' : 'No bio available.');
     if (!bioModal.open) bioModal.showModal();
+    return ++bioRequestToken;
+  }
+
+  async function openBio(name, bio, repoTitle) {
+    const token = showReadingModal({
+      title: name,
+      byline: repoTitle ? `Author of ${repoTitle}` : '',
+      imageUrl: bio.imageUrl,
+      imageAlt: `Photo of ${name}`,
+    });
+    setBioMessage(bio.markdownUrl ? 'Loading bio…' : 'No bio available.');
     if (!bio.markdownUrl) return;
 
     try {
@@ -183,12 +201,28 @@
         setBioMessage('No bio available.');
         return;
       }
-      if (!window.marked || !window.DOMPurify) throw new Error('markdown renderer not loaded');
-      bioBody.innerHTML = window.DOMPurify.sanitize(window.marked.parse(markdown));
-      window.MathJax?.typesetPromise?.([bioBody]).catch((err) => console.warn('MathJax typeset failed:', err));
+      setBioMarkdown(markdown);
     } catch (err) {
       if (token !== bioRequestToken) return;
       setBioMessage(`Could not load this bio (${err.message}).`);
+    }
+  }
+
+  // The edition's editorial.md, already inlined in data/editions.json by
+  // scripts/build-editions.mjs, beside the edition's cover.
+  function openEditorial(editionKey, settings) {
+    showReadingModal({
+      title: 'From the Editors',
+      byline: settings.description
+        ? `${editionLabel(editionKey)}: ${settings.description}`
+        : editionLabel(editionKey),
+      imageUrl: settings.cover,
+      imageAlt: `Cover of ${editionLabel(editionKey)}`,
+    });
+    try {
+      setBioMarkdown(settings.editorial);
+    } catch (err) {
+      setBioMessage(`Could not show the editorial (${err.message}).`);
     }
   }
 
@@ -373,22 +407,22 @@
 
   const slugId = (prefix, key) => prefix + (key == null ? 'other' : key.replace(/[^a-z0-9-]/g, '-'));
 
-  // The edition's editorial.md, rendered like the author bios: marked, then
-  // sanitized by DOMPurify. Without the renderer it falls back to plain text.
-  function renderEditorial(markdown) {
-    const node = el('div', { className: 'edition-editorial' });
-    if (window.marked && window.DOMPurify) {
-      node.innerHTML = window.DOMPurify.sanitize(window.marked.parse(markdown));
-    } else {
-      node.textContent = markdown;
-    }
-    return node;
+  // Button under the edition description that opens the editorial modal.
+  function renderEditorialButton(editionKey, settings) {
+    if (!bioModal) return null;
+    const button = el('button', {
+      type: 'button',
+      className: 'outline-btn edition-editorial-btn',
+      'aria-haspopup': 'dialog',
+    }, outlineBtnContent('Read the editorial'));
+    button.addEventListener('click', () => openEditorial(editionKey, settings));
+    return el('p', { className: 'edition-editorial' }, [button]);
   }
 
   // Renders one edition group, laid out like a book page: the cover image (if
   // the edition's folder has one) on the left, and on the right the edition
-  // title, an article count, a short rule, the edition description, the
-  // editorial, the section indexes, and the closing image. An edition whose repos all lack a section topic gets no
+  // title, an article count, a short rule, the edition description, a
+  // button opening the editorial, the section indexes, and the closing image. An edition whose repos all lack a section topic gets no
   // section headings, so its repo list sits directly under the description.
   function renderEdition(edition) {
     const editionId = slugId('edition-', edition.key);
@@ -401,7 +435,7 @@
       el('p', { className: 'edition-byline' }, [`${repoCount} ${repoCount === 1 ? 'article' : 'articles'}`]),
       el('hr', { className: 'edition-rule' }),
       settings.description ? el('p', { className: 'edition-description' }, [settings.description]) : null,
-      settings.editorial ? renderEditorial(settings.editorial) : null,
+      settings.editorial ? renderEditorialButton(edition.key, settings) : null,
     ]);
     const group = el('section', { className: 'col-12 repo-group edition-group', 'aria-labelledby': editionId }, [
       el('div', { className: 'row g-4 g-md-5' }, [

@@ -1,3 +1,3 @@
-## From the editors
+Write the editorial for this edition here. It opens in a popup from the "Read the editorial" button, under the title "From the Editors".
 
-Write the editorial for this edition here. Markdown works: **bold**, *italics*, [links](https://example.com), lists, and math such as $e^{i\pi} + 1 = 0$.
+Markdown works: **bold**, *italics*, [links](https://example.com), lists, and math such as $e^{i\pi} + 1 = 0$.

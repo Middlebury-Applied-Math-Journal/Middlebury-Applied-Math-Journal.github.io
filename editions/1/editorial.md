@@ -1,5 +1,3 @@
-# Prof. Jen Crodelle
-
 It is a true joy to introduce the very first edition of the Middlebury College Applied Math Journal. This collection, titled Modeling Patterns in Nature, represents the culmination of a semester’s worth of curiosity, frustration, and eventual triumph by our Senior Applied Math majors.
 
 This year, our capstone seminar, “Advanced Mathematical Modeling” challenged students to master the art of translating messy, real-world problems into rigorous mathematical frameworks. The projects you’ll find here are incredibly diverse, touching on everything from managing energy and ecology to understanding epidemiology and the progression of disease. I am immensely proud of the work these seniors completed this semester. Most arrived with a deep knowledge of complex equations but had very little experience with the messy side of math: the part where you have to decide which assumptions to make and which questions are worth asking. Through many iterations of posing new research questions, the students persevered, pushing themselves to ask deep questions and pivoting toward creative solutions.
@@ -7,3 +5,5 @@ This year, our capstone seminar, “Advanced Mathematical Modeling” challenged
 At the end of each article, you will find a QR code that leads to the full paper, including references, appendices, and code. Alongside their research, you will also find a Mathematical Autobiography. I asked our seniors to look back on their own paths and share the moments that shaped them. They’ve reflected on those “aha!” moments, the “locked doors” that once felt impassable, and how they would explain their love of math to someone who says, “I’m just not a math person.”
 
 To the seniors: thank you for your dedication, your willingness to interrogate your own assumptions, and for sharing your unique mathematical voices with the Middlebury community.
+
+*Prof. Jen Crodelle

@@ -105,7 +105,7 @@ Each edition has a folder named for its topic without `edition-`. Articles tagge
 | `edition.json` | The edition description, and its sections in display order, each with a color. |
 | `cover.jpg` | The image shown beside the edition. `.png`, `.webp`, `.avif` and `.gif` also work. |
 | `closing.jpg` | The image shown after the edition's articles. Same formats as the cover. |
-| `editorial.md` | The editorial, written in Markdown, shown under the description. Math in `$…$` works. |
+| `editorial.md` | The editorial, written in Markdown. A **Read the editorial** button under the description opens it in a popup titled "From the Editors", beside the cover. Math in `$…$` works. |
 
 `edition.json` looks like this:
 

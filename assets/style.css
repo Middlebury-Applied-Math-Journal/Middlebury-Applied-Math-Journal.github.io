@@ -215,35 +215,10 @@ a.site-nav-link:focus-visible {
   margin-bottom: 2.25rem;
 }
 
-/* The edition's editorial.md, between the description and the sections. */
+/* "Read the editorial" button, between the description and the
+   sections. The editorial opens in the reading modal (.bio-modal). */
 .edition-editorial {
-  font-size: 0.9375rem;
-  line-height: 1.6;
-  max-width: 34rem;
   margin-bottom: 2.25rem;
-}
-
-.edition-editorial > :last-child {
-  margin-bottom: 0;
-}
-
-.edition-editorial h2,
-.edition-editorial h3 {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-weight: 400;
-  font-size: 1.35rem;
-  margin: 1.5rem 0 0.5rem;
-}
-
-.edition-editorial > h2:first-child,
-.edition-editorial > h3:first-child {
-  margin-top: 0;
-}
-
-.edition-editorial img {
-  max-width: 100%;
-  height: auto;
 }
 
 /* The edition's closing image, after its last section. */
