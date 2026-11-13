@@ -215,6 +215,49 @@ a.site-nav-link:focus-visible {
   margin-bottom: 2.25rem;
 }
 
+/* The edition's editorial.md, between the description and the sections. */
+.edition-editorial {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  max-width: 34rem;
+  margin-bottom: 2.25rem;
+}
+
+.edition-editorial > :last-child {
+  margin-bottom: 0;
+}
+
+.edition-editorial h2,
+.edition-editorial h3 {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.35rem;
+  margin: 1.5rem 0 0.5rem;
+}
+
+.edition-editorial > h2:first-child,
+.edition-editorial > h3:first-child {
+  margin-top: 0;
+}
+
+.edition-editorial img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* The edition's closing image, after its last section. */
+.edition-closing {
+  max-width: 34rem;
+  margin: 3rem 0 0;
+}
+
+.edition-closing-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 /* Italic serif label above each section's index. */
 .section-group + .section-group {
   margin-top: 1.75rem;
@@ -231,8 +274,8 @@ a.site-nav-link:focus-visible {
   margin-bottom: 0.6rem;
 }
 
-/* Section color from data/editions.json, as a small swatch before the
-   label. */
+/* Section color from the edition's edition.json, as a small swatch
+   before the label. */
 .section-swatch {
   width: 0.6rem;
   height: 0.6rem;

@@ -1,0 +1,53 @@
+name: Build editions
+
+# Rebuilds data/editions.json from the editions/ folders whenever they
+# change, then commits the result if anything changed. Errors in an
+# edition (invalid JSON, a bad color, two cover images) fail the run and
+# leave data/editions.json as it was; the run summary lists each problem
+# next to its file. See ../../SETUP.md for how this works.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'editions/**'
+      - 'scripts/build-editions.mjs'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-editions
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out this repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.INDEX_REPO_TOKEN || secrets.GITHUB_TOKEN }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Build the editions
+        run: node scripts/build-editions.mjs
+
+      - name: Commit and push if the editions changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/editions.json
+          if git diff --cached --quiet; then
+            echo "No changes to data/editions.json — nothing to commit."
+          else
+            git commit -m "chore: rebuild editions"
+            # The nightly index build may have pushed in the meantime.
+            git pull --rebase
+            git push
+          fi

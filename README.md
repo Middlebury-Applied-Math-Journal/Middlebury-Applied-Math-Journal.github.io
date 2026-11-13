@@ -71,7 +71,7 @@ Wind turbine gearboxes degrade under uncertain operating conditions, such as tur
 
 ## Organizing editions and sections
 
-The website groups articles into editions, and editions into sections. Two things control this: **topics** on each article repository decide where it goes, and **`data/editions.json`** in this repository holds the settings for each edition and section.
+The website groups articles into editions, and editions into sections. Two things control this: **topics** on each article repository decide where it goes, and a **folder under `editions/`** in this repository holds each edition's description, sections, images and editorial.
 
 ### Topics: placing an article
 
@@ -90,43 +90,46 @@ Use these topics:
 | any other topic | `managing-energy` | Managing Energy (section) |
 
 - Editions are listed newest first. Numbers are compared as numbers, so `edition-10` comes before `edition-9`.
-- Sections are listed alphabetically within their edition.
+- Sections are listed in the order given in the edition's `edition.json`. Sections not listed there follow alphabetically.
 - A repository with no `edition-` topic is listed under **Other repositories** at the bottom of the page.
 - Any topic that does not start with `edition-` is used as the section. A repository with an edition but no other topic is listed under **Other** within that edition. If no repository in an edition has a section, the edition shows its articles without section headings.
 - Give each repository only one `edition-` topic and one other topic. If it has more, only the first of each in alphabetical order is used, so a repository tagged `fluids` and `pde` is placed in the Fluids section.
 - Topic changes appear after the next build. The build runs nightly, or you can run it now: open the **Actions** tab, select **Build organization repository index**, and select **Run workflow**.
 
-### `data/editions.json`: edition and section settings
+### `editions/`: one folder per edition
 
-This file is edited by hand. The nightly build never overwrites it. The page reads it directly, so changes appear as soon as GitHub Pages redeploys, with no build needed.
+Each edition has a folder named for its topic without `edition-`. Articles tagged `edition-2026` belong to `editions/2026/`. The folder holds four files:
+
+| File | What it is |
+| --- | --- |
+| `edition.json` | The edition description, and its sections in display order, each with a color. |
+| `cover.jpg` | The image shown beside the edition. `.png`, `.webp`, `.avif` and `.gif` also work. |
+| `closing.jpg` | The image shown after the edition's articles. Same formats as the cover. |
+| `editorial.md` | The editorial, written in Markdown, shown under the description. Math in `$…$` works. |
+
+`edition.json` looks like this:
 
 ```json
 {
-  "editions": {
-    "2026": {
-      "image": "assets/images/sci.jpeg",
-      "description": "A short paragraph about the theme of this edition."
-    }
-  },
-  "sections": {
-    "managing-energy": {
-      "color": "#2E7D32"
-    }
-  }
+  "description": "A short paragraph about the theme of this edition.",
+  "sections": [
+    { "key": "managing-energy", "color": "#2E7D32" },
+    { "key": "wild-equations", "color": "#1565C0" }
+  ]
 }
 ```
 
-**Editions.** Each key under `"editions"` is the part of the topic after `edition-`. The topic `edition-2026` uses the key `"2026"`. Each edition can set:
+- Each `key` is a section topic exactly as it appears on the article repositories, in lowercase.
+- Each `color` is a six-digit hex code such as `"#2E7D32"`. Pick a color dark enough to see on a white page.
+- Colors belong to the edition, so the same section can have a different color in another edition.
+- The file must be valid JSON: wrap keys and values in double quotes, and do not leave a comma after the last item in a list.
 
-- `image`: a picture shown beside the edition. Add the image file to `assets/images/` and use its path, such as `"assets/images/cover.jpg"`. A full `https://` URL also works.
-- `description`: plain text shown under the edition title.
+**To start a new edition:**
 
-**Sections.** Each key under `"sections"` is the section topic itself. The topic `managing-energy` uses the key `"managing-energy"`. Each section can set:
+1. Copy the `editions/_template/` folder and rename the copy, such as `editions/2027/`. On GitHub, you can instead open `editions/`, select **Add file → Create new file**, and type `2027/edition.json` as the name.
+2. Fill in `edition.json` and `editorial.md`, and upload `cover.jpg` and `closing.jpg` into the folder (**Add file → Upload files**).
+3. Commit. The **Build editions** workflow runs on every change to `editions/` and updates the site in a minute or two.
 
-- `color`: a color swatch shown beside the section heading. Any CSS color works, such as `"#2E7D32"` or `"teal"`.
+The **Build editions** workflow checks every edition. A mistake that would break the page, such as invalid JSON, a color that is not a hex code, a section listed twice, or two cover images, fails the run, and the site keeps the previous settings until it is fixed. Missing files, low-contrast colors, and sections used by articles but not listed in `edition.json` are reported as warnings. Both appear on the workflow run in the **Actions** tab, next to the file they concern. To check locally, run `npm run build:editions`.
 
-Every setting is optional. An edition or section with no entry is shown without an image, description, or color. Keep these rules in mind when you edit the file:
-
-- Write keys in lowercase, because GitHub stores topics in lowercase.
-- A section color applies to that section name in every edition.
-- The file must be valid JSON: wrap keys and values in double quotes, and do not leave a comma after the last item in a list. If the file is invalid, the page still loads but without any images, descriptions, or colors. The browser console shows the error.
+Do not edit `data/editions.json`. The workflow generates it from the `editions/` folders and overwrites it.

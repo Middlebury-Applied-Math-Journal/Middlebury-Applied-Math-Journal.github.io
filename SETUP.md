@@ -2,9 +2,9 @@
 
 This repository builds and publishes an index of every repository in the
 Middlebury-Applied-Math-Journal organization. This file explains how it works and how to
-set it up. Do not edit README.md or data/repos.json directly — a workflow
-overwrites both on every run. index.html, assets/, site.json, and
-data/editions.json are hand-maintained and safe to edit.
+set it up. Do not edit README.md, data/repos.json, or data/editions.json
+directly — workflows overwrite them. index.html, assets/, site.json, and
+the editions/ folders are hand-maintained and safe to edit.
 
 ## How it works
 
@@ -101,7 +101,8 @@ The page groups repositories using their GitHub topics:
   numerically, so `edition-10` comes before `edition-9`.
 - Within an edition, any other topic (one not starting with `edition-`)
   puts the repository under that section (`root-finding` → "Root
-  Finding"). Sections are listed alphabetically.
+  Finding"). Sections are listed in the order the edition's
+  `edition.json` gives, then any unlisted ones alphabetically.
 - A repository with no `edition-` topic is listed under "Other
   repositories" at the bottom; one with no other topic is listed
   under "Other" within its edition. An edition with no sections at all shows
@@ -112,9 +113,23 @@ The page groups repositories using their GitHub topics:
 Topics are read during the nightly build, so a topic change shows up after
 the next run (or a manual run of the workflow).
 
-Each edition's image and description, and each section's color, are set in
-`data/editions.json`. See "Organizing editions and sections" in README.md for
-the format.
+## Edition folders
+
+Each edition has a folder under `editions/`, named for its topic without
+`edition-` (`editions/3/` for `edition-3`). It holds `edition.json` (the
+description and the ordered sections with their colors), `cover.jpg`,
+`closing.jpg`, and `editorial.md`. `editions/_template/` is a starting point
+to copy. See "Organizing editions and sections" in README.md for the format.
+
+A second workflow, `.github/workflows/build-editions.yml`, runs
+`scripts/build-editions.mjs` on every push that changes `editions/`. The
+script checks each folder and writes `data/editions.json`, which the page
+reads. It needs no network access or token, so you can run it locally with
+`npm run build:editions`. Errors (invalid JSON, a bad color, a duplicate
+section, two cover images) fail the run without touching
+`data/editions.json`. Missing files, low-contrast colors, and mismatches with
+the topics in `data/repos.json` are warnings. Both show up as annotations on
+the workflow run.
 
 ## Known limitations
 

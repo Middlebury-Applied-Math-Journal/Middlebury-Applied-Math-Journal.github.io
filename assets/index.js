@@ -1,9 +1,9 @@
 // Renders the repository index from data/repos.json, which the nightly
 // workflow rebuilds (see scripts/build-index.mjs and SETUP.md), and adds a
 // live filter on top. Cards are built as DOM nodes with textContent, never
-// innerHTML, so README text can't inject markup. The one exception is the
-// author bio modal, whose markdown is rendered by marked and sanitized by
-// DOMPurify before it's inserted.
+// innerHTML, so README text can't inject markup. The exceptions are the
+// author bio modal and each edition's editorial, whose markdown is rendered
+// by marked and sanitized by DOMPurify before it's inserted.
 //
 // The PDF pane (assets/pdf-reader.js) listens for clicks on #repo-list, so
 // it works with these cards without any coordination.
@@ -11,8 +11,9 @@
   'use strict';
 
   const DATA_URL = 'data/repos.json';
-  // Hand-edited per-edition settings, e.g.
-  // { editions: { "2026": { image: "…", description: "…" } } }.
+  // Per-edition settings, generated from the editions/ folders by
+  // scripts/build-editions.mjs: { editions: { "2026": { description,
+  // sections: [{ key, color }], cover, closing, editorial } } }.
   const EDITIONS_URL = 'data/editions.json';
   const EDITION_PREFIX = 'edition-';
 
@@ -37,7 +38,6 @@
 
   let cards = [];
   let editionSettings = {};
-  let sectionSettings = {};
 
   // Small element helper: el('a', { href: '…', className: '…' }, [children]).
   function el(tag, props = {}, children = []) {
@@ -326,11 +326,15 @@
     return descending ? -cmp : cmp;
   }
 
-  // Section order: sections listed under "sections" in data/editions.json
-  // come first, in the order they appear there; any others follow
-  // alphabetically, and "Other" (null) is always last.
-  function compareSections(a, b) {
-    const order = Object.keys(sectionSettings);
+  // Section order within an edition: sections listed in that edition's
+  // edition.json come first, in the order they appear there; any others
+  // follow alphabetically, and "Other" (null) is always last.
+  const sectionsOf = (editionKey) =>
+    (editionKey != null && Array.isArray(editionSettings[editionKey]?.sections)
+      ? editionSettings[editionKey].sections
+      : []);
+
+  function compareSections(order, a, b) {
     const ia = a == null ? -1 : order.indexOf(a);
     const ib = b == null ? -1 : order.indexOf(b);
     if (ia !== -1 && ib !== -1) return ia - ib;
@@ -357,10 +361,11 @@
       .sort((a, b) => compareKeys(a, b, true))
       .map((editionKey) => {
         const sections = editions.get(editionKey);
+        const order = sectionsOf(editionKey).map((s) => s.key);
         return {
           key: editionKey,
           sections: [...sections.keys()]
-            .sort(compareSections)
+            .sort((a, b) => compareSections(order, a, b))
             .map((sectionKey) => ({ key: sectionKey, repos: sections.get(sectionKey) })),
         };
       });
@@ -368,10 +373,22 @@
 
   const slugId = (prefix, key) => prefix + (key == null ? 'other' : key.replace(/[^a-z0-9-]/g, '-'));
 
-  // Renders one edition group, laid out like a book page: the edition image (if
-  // data/editions.json gives one) on the left, and on the right the edition
-  // title, an article count, a short rule, the edition description, and the
-  // section indexes. An edition whose repos all lack a section topic gets no
+  // The edition's editorial.md, rendered like the author bios: marked, then
+  // sanitized by DOMPurify. Without the renderer it falls back to plain text.
+  function renderEditorial(markdown) {
+    const node = el('div', { className: 'edition-editorial' });
+    if (window.marked && window.DOMPurify) {
+      node.innerHTML = window.DOMPurify.sanitize(window.marked.parse(markdown));
+    } else {
+      node.textContent = markdown;
+    }
+    return node;
+  }
+
+  // Renders one edition group, laid out like a book page: the cover image (if
+  // the edition's folder has one) on the left, and on the right the edition
+  // title, an article count, a short rule, the edition description, the
+  // editorial, the section indexes, and the closing image. An edition whose repos all lack a section topic gets no
   // section headings, so its repo list sits directly under the description.
   function renderEdition(edition) {
     const editionId = slugId('edition-', edition.key);
@@ -384,18 +401,20 @@
       el('p', { className: 'edition-byline' }, [`${repoCount} ${repoCount === 1 ? 'article' : 'articles'}`]),
       el('hr', { className: 'edition-rule' }),
       settings.description ? el('p', { className: 'edition-description' }, [settings.description]) : null,
+      settings.editorial ? renderEditorial(settings.editorial) : null,
     ]);
     const group = el('section', { className: 'col-12 repo-group edition-group', 'aria-labelledby': editionId }, [
       el('div', { className: 'row g-4 g-md-5' }, [
-        settings.image
+        settings.cover
           ? el('div', { className: 'col-12 col-md-5 edition-image-col' }, [
-              el('img', { src: settings.image, className: 'edition-image', alt: '', loading: 'lazy' }),
+              el('img', { src: settings.cover, className: 'edition-image', alt: '', loading: 'lazy' }),
             ])
           : null,
         content,
       ]),
     ]);
-    if (settings.image) content.classList.add('col-md-7');
+    if (settings.cover) content.classList.add('col-md-7');
+    const sectionColors = new Map(sectionsOf(edition.key).map((s) => [s.key, s.color]));
 
     for (const section of edition.sections) {
       const list = el('div', { className: 'repo-index' }, section.repos.map((repo) => {
@@ -410,13 +429,21 @@
       }
       const sectionId = `${editionId}--${slugId('section-', section.key)}`;
       const heading = el('h3', { className: 'section-heading', id: sectionId }, [sectionLabel(section.key)]);
-      const color = section.key != null && sectionSettings[section.key]?.color;
+      const color = section.key != null && sectionColors.get(section.key);
       if (color && /^#[0-9a-f]{6}$/i.test(color)) {
         heading.prepend(el('span', { className: 'section-swatch', 'aria-hidden': 'true' }));
         heading.style.setProperty('--section-color', color);
       }
       content.append(
         el('section', { className: 'repo-group section-group', 'aria-labelledby': sectionId }, [heading, list])
+      );
+    }
+
+    if (settings.closing) {
+      content.append(
+        el('figure', { className: 'edition-closing' }, [
+          el('img', { src: settings.closing, className: 'edition-closing-image', alt: '', loading: 'lazy' }),
+        ])
       );
     }
     return group;
@@ -510,12 +537,11 @@
   }
 
   // editions.json is optional: if it's missing or broken, the index still
-  // renders, just without edition images.
+  // renders, just without edition images, editorials, or section colors.
   async function loadEditionSettings() {
     try {
       const data = await fetchJson(EDITIONS_URL);
       editionSettings = data?.editions || {};
-      sectionSettings = data?.sections || {};
     } catch (err) {
       console.warn(`Could not load ${EDITIONS_URL}:`, err);
     }
