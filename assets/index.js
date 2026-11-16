@@ -281,22 +281,28 @@
       }, outlineBtnContent('View on GitHub')),
     ]);
 
-    const panel = el('div', { className: 'repo-panel', id: panelId, hidden: true }, [
+    const panel = el('div', { className: 'repo-panel', id: panelId }, [
       summary,
       renderContributors(repo),
       actions,
     ]);
 
+    // The wrapper animates open/closed in CSS (grid rows 0fr <-> 1fr),
+    // driven by the card's is-expanded class.
+    // The unpadded inner div is the grid item, so it can shrink to 0.
+    const collapse = el('div', { className: 'repo-collapse' }, [
+      el('div', { className: 'repo-collapse-inner' }, [panel]),
+    ]);
+
     toggle.addEventListener('click', () => {
       const expanded = toggle.getAttribute('aria-expanded') === 'true';
       toggle.setAttribute('aria-expanded', String(!expanded));
-      panel.hidden = expanded;
       card.classList.toggle('is-expanded', !expanded);
     });
 
     const card = el('div', { className: 'repo-card' }, [
       el(`h${headingLevel}`, { className: 'repo-heading' }, [toggle]),
-      panel,
+      collapse,
     ]);
     card.dataset.repoName = repo.name;
     card.dataset.repoSearch = [

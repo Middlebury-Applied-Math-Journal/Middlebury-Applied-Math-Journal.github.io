@@ -362,12 +362,51 @@ a.site-nav-link:focus-visible {
   transition: transform 0.15s ease;
 }
 
+.repo-toggle, .repo-panel {
+  transition: all 0.3s ease;
+}
+
+/* Collapsible wrapper around .repo-panel. Animating the grid row from
+   0fr to 1fr slides the panel to its natural height. visibility keeps
+   collapsed content out of the tab order and screen readers; on close
+   it flips only after the slide finishes. */
+.repo-collapse {
+  display: grid;
+  grid-template-rows: 0fr;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transition: grid-template-rows 0.3s ease, opacity 0.3s ease, visibility 0s linear 0.3s;
+}
+
+.repo-card.is-expanded .repo-collapse {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  visibility: visible;
+  transition: grid-template-rows 0.3s ease, opacity 0.3s ease, visibility 0s;
+}
+
+/* No padding or border here, so the 0fr row can collapse to zero;
+   the panel's padding lives inside and is clipped. */
+.repo-collapse-inner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.repo-toggle[aria-expanded='true'], .repo-card.is-expanded .repo-panel {
+  border-left: 5px solid var(--section-color, var(--bs-primary));
+}
+
 .repo-toggle[aria-expanded='true'] .repo-toggle-icon > span {
   transform: translateY(0.1rem) rotate(-135deg);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .repo-toggle-icon > span {
+  .repo-toggle-icon > span,
+  .repo-toggle,
+  .repo-panel,
+  .repo-collapse,
+  .repo-card.is-expanded .repo-collapse {
     transition: none;
   }
 }
@@ -773,6 +812,10 @@ body {
 .math-logo-readout {
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
+}
+
+.read-pdf-btn, .outline-btn{
+  background-color: #ffffff;
 }
 
 @media (min-width: 768px) {
