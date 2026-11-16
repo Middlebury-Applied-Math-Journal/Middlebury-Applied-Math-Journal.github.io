@@ -2,8 +2,8 @@
   "description": "Modelling Patterns in Nature",
   "sections": [
     { "key": "managing-energy", "color": "#636E5C" },
-    { "key": "mechanistic-insights-into-disease-and-progression", "color": "#580bbc" },
-    { "key": "wild-equations", "color": "#1565C0" },
-    { "key": "understanding-epidemiology", "color": "#efefef" }
+    { "key": "mechanistic-insights-into-disease-and-progression", "color": "#602f61" },
+    { "key": "wild-equations", "color": "#365b96" },
+    { "key": "understanding-epidemiology", "color": "#6d2426" }
   ]
 }
