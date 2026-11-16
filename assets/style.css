@@ -249,12 +249,14 @@ a.site-nav-link:focus-visible {
   margin-bottom: 0.6rem;
 }
 
-/* Section color from the edition's edition.json, as a small swatch
-   before the label. */
-.section-swatch {
-  width: 0.6rem;
-  height: 0.6rem;
-  background: var(--section-color);
+/* Section color from the edition's edition.json, as a background block
+   behind the section label. --section-fg is #ffffff or #000000, picked
+   in assets/index.js (sectionTextColor) to meet WCAG AA 4.5:1. */
+.section-heading.has-section-color {
+  max-width: 34rem;
+  padding: 0.35rem 0.75rem;
+  background-color: var(--section-color);
+  color: var(--section-fg);
 }
 
 /* Condensed index of repos within a section (see renderCard in
@@ -420,6 +422,41 @@ a.site-nav-link:focus-visible {
 
 [data-bs-theme='dark'] .outline-btn:focus-visible {
   outline-color: #6ea8fe;
+}
+
+/* Editor's Note button: sized like a .repo-toggle row (full width of
+   the .repo-index, same minimum height and padding), with the arrow
+   cell pinned to the far right. */
+.edition-editorial-btn {
+  display: flex;
+  width: 100%;
+  max-width: 34rem;
+  min-height: 3.75rem;
+  text-align: left;
+}
+
+.edition-editorial-btn .outline-btn-label {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0.75rem;
+}
+
+.edition-editorial-btn .outline-btn-icon {
+  flex: none;
+  width: 1.5rem;
+}
+
+.edition-editorial-btn:hover {
+  background: var(--bs-tertiary-bg);
+}
+
+.edition-editorial-btn:hover .outline-btn-label {
+  text-decoration: none;
+}
+
+.edition-editorial-btn:focus-visible {
+  outline-offset: -3px;
 }
 
 .repo-toggle .badge {

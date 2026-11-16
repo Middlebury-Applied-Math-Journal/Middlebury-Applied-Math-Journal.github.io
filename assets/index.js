@@ -407,6 +407,22 @@
 
   const slugId = (prefix, key) => prefix + (key == null ? 'other' : key.replace(/[^a-z0-9-]/g, '-'));
 
+  // WCAG 2.2 relative luminance of a #rrggbb color.
+  function relativeLuminance(hex) {
+    const [r, g, b] = [1, 3, 5].map((i) => {
+      const c = parseInt(hex.slice(i, i + 2), 16) / 255;
+      return c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
+    });
+    return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+  }
+
+  // Text color for a section block: white when it meets the WCAG AA
+  // 4.5:1 ratio for normal text against the section color, else black.
+  function sectionTextColor(bgHex) {
+    const whiteContrast = 1.05 / (relativeLuminance(bgHex) + 0.05);
+    return whiteContrast >= 4.5 ? '#ffffff' : '#000000';
+  }
+
   // Button under the edition description that opens the editorial modal.
   function renderEditorialButton(editionKey, settings) {
     if (!bioModal) return null;
@@ -414,7 +430,7 @@
       type: 'button',
       className: 'outline-btn edition-editorial-btn',
       'aria-haspopup': 'dialog',
-    }, outlineBtnContent('Read the editorial'));
+    }, outlineBtnContent('Editor\'s Note'));
     button.addEventListener('click', () => openEditorial(editionKey, settings));
     return el('p', { className: 'edition-editorial' }, [button]);
   }
@@ -465,8 +481,9 @@
       const heading = el('h3', { className: 'section-heading', id: sectionId }, [sectionLabel(section.key)]);
       const color = section.key != null && sectionColors.get(section.key);
       if (color && /^#[0-9a-f]{6}$/i.test(color)) {
-        heading.prepend(el('span', { className: 'section-swatch', 'aria-hidden': 'true' }));
+        heading.classList.add('has-section-color');
         heading.style.setProperty('--section-color', color);
+        heading.style.setProperty('--section-fg', sectionTextColor(color));
       }
       content.append(
         el('section', { className: 'repo-group section-group', 'aria-labelledby': sectionId }, [heading, list])
