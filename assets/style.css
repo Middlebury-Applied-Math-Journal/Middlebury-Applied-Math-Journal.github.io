@@ -252,11 +252,16 @@ a.site-nav-link:focus-visible {
 /* Section color from the edition's edition.json, as a background block
    behind the section label. --section-fg is #ffffff or #000000, picked
    in assets/index.js (sectionTextColor) to meet WCAG AA 4.5:1. */
-.section-heading.has-section-color {
+.has-section-color .section-heading {
   max-width: 34rem;
   padding: 0.35rem 0.75rem;
   background-color: var(--section-color);
   color: var(--section-fg);
+}
+
+/* Expanded repo panels carry a light tint of the section color. */
+.has-section-color .repo-panel {
+  background-color: color-mix(in srgb, var(--section-color) 10%, transparent);
 }
 
 /* Condensed index of repos within a section (see renderCard in

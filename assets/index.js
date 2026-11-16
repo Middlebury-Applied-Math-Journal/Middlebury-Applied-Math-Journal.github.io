@@ -480,14 +480,14 @@
       const sectionId = `${editionId}--${slugId('section-', section.key)}`;
       const heading = el('h3', { className: 'section-heading', id: sectionId }, [sectionLabel(section.key)]);
       const color = section.key != null && sectionColors.get(section.key);
+      const sectionEl = el('section', { className: 'repo-group section-group', 'aria-labelledby': sectionId }, [heading, list]);
       if (color && /^#[0-9a-f]{6}$/i.test(color)) {
-        heading.classList.add('has-section-color');
-        heading.style.setProperty('--section-color', color);
-        heading.style.setProperty('--section-fg', sectionTextColor(color));
+        // Set on the section so both the heading and the repo panels can use it.
+        sectionEl.classList.add('has-section-color');
+        sectionEl.style.setProperty('--section-color', color);
+        sectionEl.style.setProperty('--section-fg', sectionTextColor(color));
       }
-      content.append(
-        el('section', { className: 'repo-group section-group', 'aria-labelledby': sectionId }, [heading, list])
-      );
+      content.append(sectionEl);
     }
 
     if (settings.closing) {
