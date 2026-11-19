@@ -1,24 +1,24 @@
-name: Build editions
+name: Build issues
 
-# Rebuilds data/editions.json from the editions/ folders whenever they
+# Rebuilds data/issues.json from the issues/ folders whenever they
 # change, then commits the result if anything changed. Errors in an
-# edition (invalid JSON, a bad color, two cover images) fail the run and
-# leave data/editions.json as it was; the run summary lists each problem
+# issue (invalid JSON, a bad color, two cover images) fail the run and
+# leave data/issues.json as it was; the run summary lists each problem
 # next to its file. See ../../SETUP.md for how this works.
 
 on:
   push:
     branches: [main]
     paths:
-      - 'editions/**'
-      - 'scripts/build-editions.mjs'
+      - 'issues/**'
+      - 'scripts/build-issues.mjs'
   workflow_dispatch: {}
 
 permissions:
   contents: write
 
 concurrency:
-  group: build-editions
+  group: build-issues
   cancel-in-progress: false
 
 jobs:
@@ -35,18 +35,18 @@ jobs:
         with:
           node-version: '22'
 
-      - name: Build the editions
-        run: node scripts/build-editions.mjs
+      - name: Build the issues
+        run: node scripts/build-issues.mjs
 
-      - name: Commit and push if the editions changed
+      - name: Commit and push if the issues changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/editions.json
+          git add data/issues.json
           if git diff --cached --quiet; then
-            echo "No changes to data/editions.json — nothing to commit."
+            echo "No changes to data/issues.json — nothing to commit."
           else
-            git commit -m "chore: rebuild editions"
+            git commit -m "chore: rebuild issues"
             # The nightly index build may have pushed in the meantime.
             git pull --rebase
             git push

@@ -2,10 +2,10 @@
   "name": "math-journal-org-index",
   "private": true,
   "type": "module",
-  "description": "Builds the Middlebury-Applied-Math-Journal organization repository index data (data/repos.json, README.md) from the GitHub API, and data/editions.json from the editions/ folders.",
+  "description": "Builds the Middlebury-Applied-Math-Journal organization repository index data (data/repos.json, README.md) from the GitHub API, and data/issues.json from the issues/ folders.",
   "scripts": {
     "build": "node scripts/build-index.mjs",
-    "build:editions": "node scripts/build-editions.mjs"
+    "build:issues": "node scripts/build-issues.mjs"
   },
   "engines": {
     "node": ">=20"

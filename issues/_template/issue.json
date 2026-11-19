@@ -1,5 +1,5 @@
 {
-  "description": "A short paragraph about the theme of this edition.",
+  "description": "A short paragraph about the theme of this issue.",
   "sections": [
     { "key": "first-section-topic", "color": "#2E7D32" },
     { "key": "second-section-topic", "color": "#1565C0" }

@@ -2,9 +2,9 @@
 
 This repository builds and publishes an index of every repository in the
 Middlebury-Applied-Math-Journal organization. This file explains how it works and how to
-set it up. Do not edit README.md, data/repos.json, or data/editions.json
+set it up. Do not edit README.md, data/repos.json, or data/issues.json
 directly — workflows overwrite them. index.html, assets/, site.json, and
-the editions/ folders are hand-maintained and safe to edit.
+the issues/ folders are hand-maintained and safe to edit.
 
 ## How it works
 
@@ -92,42 +92,42 @@ is in UTC. For example, `'0 12 * * *'` runs once at 12:00 UTC every day.
 You can always trigger a build by hand from the Actions tab regardless of
 the schedule.
 
-## Grouping by edition and section
+## Grouping by issue and section
 
 The page groups repositories using their GitHub topics:
 
-- A topic starting with `edition-` puts the repository under that edition
-  (`edition-3` → "Edition 3"). Editions are listed newest first, compared
-  numerically, so `edition-10` comes before `edition-9`.
-- Within an edition, any other topic (one not starting with `edition-`)
+- A topic starting with `issue-` puts the repository under that issue
+  (`issue-3` → "Issue 3"). Issues are listed newest first, compared
+  numerically, so `issue-10` comes before `issue-9`.
+- Within an issue, any other topic (one not starting with `issue-`)
   puts the repository under that section (`root-finding` → "Root
-  Finding"). Sections are listed in the order the edition's
-  `edition.json` gives, then any unlisted ones alphabetically.
-- A repository with no `edition-` topic is listed under "Other
+  Finding"). Sections are listed in the order the issue's
+  `issue.json` gives, then any unlisted ones alphabetically.
+- A repository with no `issue-` topic is listed under "Other
   repositories" at the bottom; one with no other topic is listed
-  under "Other" within its edition. An edition with no sections at all shows
+  under "Other" within its issue. An issue with no sections at all shows
   its repositories directly, without section headings.
-- If a repository has more than one `edition-` topic, or more than one
+- If a repository has more than one `issue-` topic, or more than one
   other topic, only the first of each in alphabetical order is used.
 
 Topics are read during the nightly build, so a topic change shows up after
 the next run (or a manual run of the workflow).
 
-## Edition folders
+## Issue folders
 
-Each edition has a folder under `editions/`, named for its topic without
-`edition-` (`editions/3/` for `edition-3`). It holds `edition.json` (the
+Each issue has a folder under `issues/`, named for its topic without
+`issue-` (`issues/3/` for `issue-3`). It holds `issue.json` (the
 description and the ordered sections with their colors), `cover.jpg`,
-`closing.jpg`, and `editorial.md`. `editions/_template/` is a starting point
-to copy. See "Organizing editions and sections" in README.md for the format.
+`closing.jpg`, and `editorial.md`. `issues/_template/` is a starting point
+to copy. See "Organizing issues and sections" in README.md for the format.
 
-A second workflow, `.github/workflows/build-editions.yml`, runs
-`scripts/build-editions.mjs` on every push that changes `editions/`. The
-script checks each folder and writes `data/editions.json`, which the page
+A second workflow, `.github/workflows/build-issues.yml`, runs
+`scripts/build-issues.mjs` on every push that changes `issues/`. The
+script checks each folder and writes `data/issues.json`, which the page
 reads. It needs no network access or token, so you can run it locally with
-`npm run build:editions`. Errors (invalid JSON, a bad color, a duplicate
+`npm run build:issues`. Errors (invalid JSON, a bad color, a duplicate
 section, two cover images) fail the run without touching
-`data/editions.json`. Missing files, low-contrast colors, and mismatches with
+`data/issues.json`. Missing files, low-contrast colors, and mismatches with
 the topics in `data/repos.json` are warnings. Both show up as annotations on
 the workflow run.
 

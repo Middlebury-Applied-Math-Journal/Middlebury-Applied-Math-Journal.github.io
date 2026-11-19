@@ -66,7 +66,7 @@ body:has(#pdf-pane:not(.d-none)) .page-width {
 }
 
 /* Menu bar directly under the header, drawn with the same 1px lines as
-   the repo rows: a cell per edition link on the left, search in the right
+   the repo rows: a cell per issue link on the left, search in the right
    cell. On phones the search takes its own row below the links. */
 .site-nav {
   display: flex;
@@ -138,20 +138,20 @@ a.site-nav-link:focus-visible {
   }
 }
 
-/* Room above an edition heading reached from the menu bar. */
-.edition-heading {
+/* Room above an issue heading reached from the menu bar. */
+.issue-heading {
   scroll-margin-top: 1.5rem;
 }
 
-/* Edition groups, laid out like a book listing (see renderEdition in
+/* Issue groups, laid out like a book listing (see renderIssue in
    assets/index.js): image on the left, title block and index on the
    right. */
-.edition-group + .edition-group {
+.issue-group + .issue-group {
   margin-top: 5rem;
 }
 
 /* Sticky so it stays beside the index while it scrolls. */
-.edition-image {
+.issue-image {
   display: block;
   width: 100%;
   height: auto;
@@ -162,7 +162,7 @@ a.site-nav-link:focus-visible {
 
 /* On phones the image sits above the title, so keep it cover-sized. */
 @media (max-width: 767.98px) {
-  .edition-image {
+  .issue-image {
     position: static;
     max-width: 14rem;
   }
@@ -171,10 +171,10 @@ a.site-nav-link:focus-visible {
 /* When the PDF pane is open the index is too narrow for two columns, so
    the index takes the full width and the image is hidden. */
 @media (min-width: 992px) {
-  #index-pane.col-lg-5 .edition-image-col {
+  #index-pane.col-lg-5 .issue-image-col {
     display: none;
   }
-  #index-pane.col-lg-5 .edition-content.col-md-7 {
+  #index-pane.col-lg-5 .issue-content.col-md-7 {
     width: 100%;
   }
   /* Room below the index so even the last row can scroll to the top
@@ -184,7 +184,7 @@ a.site-nav-link:focus-visible {
   }
 }
 
-.edition-heading {
+.issue-heading {
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 2.85rem;
@@ -193,7 +193,7 @@ a.site-nav-link:focus-visible {
   margin-bottom: 0.15rem;
 }
 
-.edition-byline {
+.issue-byline {
   font-family: var(--font-display);
   font-style: italic;
   font-size: 1.1rem;
@@ -201,14 +201,14 @@ a.site-nav-link:focus-visible {
 }
 
 /* Short rule under the title block. */
-.edition-rule {
+.issue-rule {
   width: 2.75rem;
   margin: 1.25rem 0 1.75rem;
   border-top: 1px solid currentColor;
   opacity: 0.6;
 }
 
-.edition-description {
+.issue-description {
   font-size: 0.9375rem;
   line-height: 1.6;
   max-width: 34rem;
@@ -217,17 +217,17 @@ a.site-nav-link:focus-visible {
 
 /* "Read the editorial" button, between the description and the
    sections. The editorial opens in the reading modal (.bio-modal). */
-.edition-editorial {
+.issue-editorial {
   margin-bottom: 2.25rem;
 }
 
-/* The edition's closing image, after its last section. */
-.edition-closing {
+/* The issue's closing image, after its last section. */
+.issue-closing {
   max-width: 34rem;
   margin: 3rem 0 0;
 }
 
-.edition-closing-image {
+.issue-closing-image {
   display: block;
   width: 100%;
   height: auto;
@@ -249,7 +249,7 @@ a.site-nav-link:focus-visible {
   margin-bottom: 0.6rem;
 }
 
-/* Section color from the edition's edition.json, as a background block
+/* Section color from the issue's issue.json, as a background block
    behind the section label. --section-fg is #ffffff or #000000, picked
    in assets/index.js (sectionTextColor) to meet WCAG AA 4.5:1. */
 .has-section-color .section-heading {
@@ -471,7 +471,7 @@ a.site-nav-link:focus-visible {
 /* Editor's Note button: sized like a .repo-toggle row (full width of
    the .repo-index, same minimum height and padding), with the arrow
    cell pinned to the far right. */
-.edition-editorial-btn {
+.issue-editorial-btn {
   display: flex;
   width: 100%;
   max-width: 34rem;
@@ -479,27 +479,27 @@ a.site-nav-link:focus-visible {
   text-align: left;
 }
 
-.edition-editorial-btn .outline-btn-label {
+.issue-editorial-btn .outline-btn-label {
   flex: 1;
   display: flex;
   align-items: center;
   padding: 0.5rem 0.75rem;
 }
 
-.edition-editorial-btn .outline-btn-icon {
+.issue-editorial-btn .outline-btn-icon {
   flex: none;
   width: 1.5rem;
 }
 
-.edition-editorial-btn:hover {
+.issue-editorial-btn:hover {
   background: var(--bs-tertiary-bg);
 }
 
-.edition-editorial-btn:hover .outline-btn-label {
+.issue-editorial-btn:hover .outline-btn-label {
   text-decoration: none;
 }
 
-.edition-editorial-btn:focus-visible {
+.issue-editorial-btn:focus-visible {
   outline-offset: -3px;
 }
 
@@ -661,8 +661,8 @@ body {
   right: 1rem;
 }
 
-/* Title block matches the edition heading: bold serif name, italic
-   byline, short rule (.edition-rule), then the bio text. */
+/* Title block matches the issue heading: bold serif name, italic
+   byline, short rule (.issue-rule), then the bio text. */
 .bio-title {
   font-family: var(--font-display);
   font-weight: 700;

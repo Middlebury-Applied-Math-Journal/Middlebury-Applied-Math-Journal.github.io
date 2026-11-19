@@ -1,4 +1,8 @@
 {
-  "description": "Another demo edition for the journal. This edition contains different example articles and is used to showcase the journal's capabilities. This description should focus on the over-all theme.",
-  "sections": []
+  "description": "Numerically Speaking: Balancing Accuracy and Efficiency of Computational Methods",
+  "sections": [
+    { "key": "the-need-for-speed", "title": "The Need for Speed: A Guide to Not Waiting", "color": "#5A1F66" },
+    { "key": "big-data-smaller-residuals", "title": "Big Data, Smaller Residuals", "color": "#073891" },
+    { "key": "an-ode-to-numerical-odes", "title": "An Ode to Numerical ODEs", "color": "#1A6321" }
+  ]
 }

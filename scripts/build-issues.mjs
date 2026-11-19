@@ -1,36 +1,39 @@
 #!/usr/bin/env node
-// Builds data/editions.json from the editions/ folders. Each folder is one
-// edition, named for the part of its topic after `edition-` (editions/2026/
-// for the topic `edition-2026`), and holds:
+// Builds data/issues.json from the issues/ folders. Each folder is one
+// issue, named for the part of its topic after `issue-` (issues/2026/
+// for the topic `issue-2026`), and holds:
 //
-//   edition.json   description and the ordered list of sections with colors
-//   cover.<ext>    image shown beside the edition
-//   closing.<ext>  image shown after the edition's articles
+//   issue.json   description and the ordered list of sections with colors
+//   cover.<ext>    image shown beside the issue
+//   closing.<ext>  image shown after the issue's articles
 //   editorial.md   editorial text, rendered as Markdown on the page
 //
-// Folders starting with `_` or `.` (such as editions/_template/) are skipped.
+// Folders starting with `_` or `.` (such as issues/_template/) are skipped.
 //
 // Problems that would break the page (invalid JSON, a bad color, a duplicate
 // section) are errors: the script prints them and exits without writing.
 // Missing files and mismatches with the repository topics in data/repos.json
-// are warnings: the edition is still built, without the missing parts.
+// are warnings: the issue is still built, without the missing parts.
 //
-// Run with `npm run build:editions`. No network access or dependencies needed.
+// Run with `npm run build:issues`. No network access or dependencies needed.
 
 import { readFile, readdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const EDITIONS_DIR = 'editions';
-const OUTPUT = path.join('data', 'editions.json');
+const ISSUES_DIR = 'issues';
+const OUTPUT = path.join('data', 'issues.json');
 const REPOS = path.join('data', 'repos.json');
-const EDITION_PREFIX = 'edition-';
+const ISSUE_PREFIX = 'issue-';
+// Articles tagged before the rename to "issue" use `edition-*` topics; they
+// are read as the matching `issue-*` topic, as assets/index.js does.
+const LEGACY_ISSUE_PREFIX = 'edition-';
 
 const IMAGE_EXTENSIONS = ['jpg', 'jpeg', 'png', 'webp', 'avif', 'gif'];
 const IMAGE_SLOTS = ['cover', 'closing'];
 const EDITORIAL_FILE = 'editorial.md';
-const SETTINGS_FILE = 'edition.json';
+const SETTINGS_FILE = 'issue.json';
 const KNOWN_SETTINGS = new Set(['description', 'sections']);
 // GitHub topics: lowercase letters, digits and hyphens.
 const TOPIC_PATTERN = /^[a-z0-9][a-z0-9-]*$/;
@@ -69,7 +72,7 @@ async function readJson(file) {
 
 function parseSections(raw, file) {
   if (raw === undefined) {
-    warn(file, 'No "sections" list. Articles in this edition will be listed alphabetically by section, with no colors.');
+    warn(file, 'No "sections" list. Articles in this issue will be listed alphabetically by section, with no colors.');
     return [];
   }
   if (!Array.isArray(raw)) {
@@ -94,8 +97,9 @@ function parseSections(raw, file) {
       error(file, `${where}: "${key}" is not a valid topic. Use lowercase letters, digits and hyphens, as GitHub topics do.`);
       return;
     }
-    if (key.startsWith(EDITION_PREFIX)) {
-      error(file, `${where}: "${key}" starts with "${EDITION_PREFIX}", so the page treats it as an edition, not a section.`);
+    const prefix = [ISSUE_PREFIX, LEGACY_ISSUE_PREFIX].find((p) => key.startsWith(p));
+    if (prefix) {
+      error(file, `${where}: "${key}" starts with "${prefix}", so the page treats it as an issue, not a section.`);
       return;
     }
     if (seen.has(key)) {
@@ -113,19 +117,25 @@ function parseSections(raw, file) {
     if (ratio < MIN_SWATCH_CONTRAST) {
       warn(file, `Section "${key}" color ${color} is hard to see on the white page (contrast ${ratio.toFixed(2)}:1, aim for at least ${MIN_SWATCH_CONTRAST}:1).`);
     }
-    for (const extra of Object.keys(entry)) {
-      if (extra !== 'key' && extra !== 'color') warn(file, `Section "${key}" has an unknown setting "${extra}", which is ignored.`);
+    let title;
+    if (typeof entry.title === 'string' && entry.title.trim()) {
+      title = entry.title.trim();
+    } else if (entry.title !== undefined) {
+      warn(file, `Section "${key}" "title" must be text in double quotes; using the topic name instead.`);
     }
-    sections.push({ key, color });
+    for (const extra of Object.keys(entry)) {
+      if (!['key', 'color', 'title'].includes(extra)) warn(file, `Section "${key}" has an unknown setting "${extra}", which is ignored.`);
+    }
+    sections.push(title ? { key, title, color } : { key, color });
   });
   return sections;
 }
 
-async function buildEdition(key, dir) {
+async function buildIssue(key, dir) {
   const files = await readdir(path.join(ROOT, dir));
-  const edition = {};
+  const issue = {};
 
-  // edition.json
+  // issue.json
   const settingsFile = `${dir}/${SETTINGS_FILE}`;
   let settings = {};
   if (files.includes(SETTINGS_FILE)) {
@@ -140,19 +150,19 @@ async function buildEdition(key, dir) {
       return null;
     }
   } else {
-    warn(dir, `No ${SETTINGS_FILE}. Copy the one from ${EDITIONS_DIR}/_template/.`);
+    warn(dir, `No ${SETTINGS_FILE}. Copy the one from ${ISSUES_DIR}/_template/.`);
   }
   for (const extra of Object.keys(settings)) {
     if (!KNOWN_SETTINGS.has(extra)) warn(settingsFile, `Unknown setting "${extra}", which is ignored.`);
   }
   if (typeof settings.description === 'string' && settings.description.trim()) {
-    edition.description = settings.description.trim();
+    issue.description = settings.description.trim();
   } else if (settings.description !== undefined) {
     error(settingsFile, '"description" must be text in double quotes.');
   } else {
     warn(settingsFile, 'No "description".');
   }
-  edition.sections = parseSections(settings.sections, settingsFile);
+  issue.sections = parseSections(settings.sections, settingsFile);
 
   // cover.* and closing.*
   for (const slot of IMAGE_SLOTS) {
@@ -163,7 +173,7 @@ async function buildEdition(key, dir) {
     if (matches.length > 1) {
       error(dir, `More than one ${slot} image (${matches.join(', ')}). Keep only one.`);
     } else if (matches.length === 1) {
-      edition[slot] = `${dir}/${matches[0]}`;
+      issue[slot] = `${dir}/${matches[0]}`;
     } else {
       warn(dir, `No ${slot} image. Add ${slot}.jpg (or .png, .webp) to this folder.`);
     }
@@ -172,7 +182,7 @@ async function buildEdition(key, dir) {
   // editorial.md
   if (files.includes(EDITORIAL_FILE)) {
     const text = (await readFile(path.join(ROOT, dir, EDITORIAL_FILE), 'utf-8')).trim();
-    if (text) edition.editorial = text;
+    if (text) issue.editorial = text;
     else warn(`${dir}/${EDITORIAL_FILE}`, 'The editorial is empty.');
   } else {
     warn(dir, `No ${EDITORIAL_FILE}.`);
@@ -188,40 +198,42 @@ async function buildEdition(key, dir) {
     }
   }
 
-  return edition;
+  return issue;
 }
 
-// Compares the editions/ folders with the topics on the article
+// Compares the issues/ folders with the topics on the article
 // repositories in data/repos.json, so a typo in a topic or a section key is
 // caught instead of silently showing an uncolored section.
-async function checkAgainstTopics(editions) {
+async function checkAgainstTopics(issues) {
   let repos;
   try {
     repos = (await readJson(REPOS)).repos || [];
   } catch {
     return; // No index built yet: nothing to compare against.
   }
-  const used = new Map(); // edition key -> Set of section keys
+  const used = new Map(); // issue key -> Set of section keys
   for (const repo of repos) {
-    const topics = (repo.topics || []).map((t) => String(t).toLowerCase());
-    const edition = topics.find((t) => t.startsWith(EDITION_PREFIX) && t.length > EDITION_PREFIX.length);
-    if (!edition) continue;
-    const section = topics.find((t) => !t.startsWith(EDITION_PREFIX));
-    const key = edition.slice(EDITION_PREFIX.length);
+    const topics = (repo.topics || [])
+      .map((t) => String(t).toLowerCase())
+      .map((t) => (t.startsWith(LEGACY_ISSUE_PREFIX) ? ISSUE_PREFIX + t.slice(LEGACY_ISSUE_PREFIX.length) : t));
+    const issue = topics.find((t) => t.startsWith(ISSUE_PREFIX) && t.length > ISSUE_PREFIX.length);
+    if (!issue) continue;
+    const section = topics.find((t) => !t.startsWith(ISSUE_PREFIX));
+    const key = issue.slice(ISSUE_PREFIX.length);
     if (!used.has(key)) used.set(key, new Set());
     if (section) used.get(key).add(section);
   }
 
   for (const [key, sectionsUsed] of used) {
-    const edition = editions[key];
-    if (!edition) {
-      warn(EDITIONS_DIR, `Articles are tagged "${EDITION_PREFIX}${key}" but there is no ${EDITIONS_DIR}/${key}/ folder.`);
+    const issue = issues[key];
+    if (!issue) {
+      warn(ISSUES_DIR, `Articles are tagged "${ISSUE_PREFIX}${key}" but there is no ${ISSUES_DIR}/${key}/ folder.`);
       continue;
     }
-    const listed = new Set(edition.sections.map((s) => s.key));
+    const listed = new Set(issue.sections.map((s) => s.key));
     for (const section of sectionsUsed) {
       if (!listed.has(section)) {
-        warn(`${EDITIONS_DIR}/${key}/${SETTINGS_FILE}`, `Articles in this edition use the section "${section}", which is not in "sections".`);
+        warn(`${ISSUES_DIR}/${key}/${SETTINGS_FILE}`, `Articles in this issue use the section "${section}", which is not in "sections".`);
       }
     }
   }
@@ -230,29 +242,29 @@ async function checkAgainstTopics(editions) {
 async function main() {
   let entries;
   try {
-    entries = await readdir(path.join(ROOT, EDITIONS_DIR), { withFileTypes: true });
+    entries = await readdir(path.join(ROOT, ISSUES_DIR), { withFileTypes: true });
   } catch (err) {
     if (err.code !== 'ENOENT') throw err;
     entries = [];
   }
 
-  const editions = {};
+  const issues = {};
   const folders = entries
     .filter((e) => e.isDirectory() && !e.name.startsWith('_') && !e.name.startsWith('.'))
     .map((e) => e.name)
     .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
 
   for (const name of folders) {
-    const dir = `${EDITIONS_DIR}/${name}`;
+    const dir = `${ISSUES_DIR}/${name}`;
     if (!TOPIC_PATTERN.test(name)) {
-      error(dir, `Folder name "${name}" can't match a topic. Use lowercase letters, digits and hyphens, such as "2026" for the topic "${EDITION_PREFIX}2026".`);
+      error(dir, `Folder name "${name}" can't match a topic. Use lowercase letters, digits and hyphens, such as "2026" for the topic "${ISSUE_PREFIX}2026".`);
       continue;
     }
-    const edition = await buildEdition(name, dir);
-    if (edition) editions[name] = edition;
+    const issue = await buildIssue(name, dir);
+    if (issue) issues[name] = issue;
   }
 
-  await checkAgainstTopics(editions);
+  await checkAgainstTopics(issues);
 
   if (!inActions) {
     for (const w of warnings) console.warn(`warning  ${w.file}: ${w.message}`);
@@ -265,11 +277,11 @@ async function main() {
   }
 
   const output = {
-    note: `Generated by scripts/build-editions.mjs from the ${EDITIONS_DIR}/ folders. Do not edit by hand.`,
-    editions,
+    note: `Generated by scripts/build-issues.mjs from the ${ISSUES_DIR}/ folders. Do not edit by hand.`,
+    issues,
   };
   await writeFile(path.join(ROOT, OUTPUT), JSON.stringify(output, null, 2) + '\n', 'utf-8');
-  console.log(`Wrote ${OUTPUT} with ${folders.length} edition(s) and ${warnings.length} warning(s).`);
+  console.log(`Wrote ${OUTPUT} with ${folders.length} issue(s) and ${warnings.length} warning(s).`);
 }
 
 main().catch((err) => {

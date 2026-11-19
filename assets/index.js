@@ -2,7 +2,7 @@
 // workflow rebuilds (see scripts/build-index.mjs and SETUP.md), and adds a
 // live filter on top. Cards are built as DOM nodes with textContent, never
 // innerHTML, so README text can't inject markup. The one exception is the
-// reading modal (author bios and edition editorials), whose markdown is
+// reading modal (author bios and issue editorials), whose markdown is
 // rendered by marked and sanitized by DOMPurify before it's inserted.
 //
 // The PDF pane (assets/pdf-reader.js) listens for clicks on #repo-list, so
@@ -11,16 +11,19 @@
   'use strict';
 
   const DATA_URL = 'data/repos.json';
-  // Per-edition settings, generated from the editions/ folders by
-  // scripts/build-editions.mjs: { editions: { "2026": { description,
+  // Per-issue settings, generated from the issues/ folders by
+  // scripts/build-issues.mjs: { issues: { "2026": { description,
   // sections: [{ key, color }], cover, closing, editorial } } }.
-  const EDITIONS_URL = 'data/editions.json';
-  const EDITION_PREFIX = 'edition-';
+  const ISSUES_URL = 'data/issues.json';
+  const ISSUE_PREFIX = 'issue-';
+  // Articles tagged before the rename to "issue" use `edition-*` topics;
+  // they are read as the matching `issue-*` topic.
+  const LEGACY_ISSUE_PREFIX = 'edition-';
 
   const repoList = document.getElementById('repo-list');
   const input = document.getElementById('repo-search');
   const status = document.getElementById('repo-search-status');
-  const editionNav = document.getElementById('edition-nav');
+  const issueNav = document.getElementById('issue-nav');
   const noResults = document.getElementById('no-results');
   const siteTitle = document.getElementById('site-title');
   const siteDescription = document.getElementById('site-description');
@@ -37,7 +40,7 @@
   if (!repoList) return;
 
   let cards = [];
-  let editionSettings = {};
+  let issueSettings = {};
 
   // Small element helper: el('a', { href: '…', className: '…' }, [children]).
   function el(tag, props = {}, children = []) {
@@ -150,7 +153,7 @@
   }
 
   // ---------------------------------------------------------------------
-  // Reading modal, shared by author bios and edition editorials: a title
+  // Reading modal, shared by author bios and issue editorials: a title
   // and byline, rendered markdown on the left, and an image on the right.
   // ---------------------------------------------------------------------
 
@@ -208,16 +211,16 @@
     }
   }
 
-  // The edition's editorial.md, already inlined in data/editions.json by
-  // scripts/build-editions.mjs, beside the edition's cover.
-  function openEditorial(editionKey, settings) {
+  // The issue's editorial.md, already inlined in data/issues.json by
+  // scripts/build-issues.mjs, beside the issue's cover.
+  function openEditorial(issueKey, settings) {
     showReadingModal({
       title: 'From the Editors',
       byline: settings.description
-        ? `${editionLabel(editionKey)}: ${settings.description}`
-        : editionLabel(editionKey),
+        ? `${issueLabel(issueKey)}: ${settings.description}`
+        : issueLabel(issueKey),
       imageUrl: settings.cover,
-      imageAlt: `Cover of ${editionLabel(editionKey)}`,
+      imageAlt: `Cover of ${issueLabel(issueKey)}`,
     });
     try {
       setBioMarkdown(settings.editorial);
@@ -311,36 +314,42 @@
       repo.description || '',
       repo.summary || '',
       authorNames,
-      editionLabel(topicSuffix(repo, EDITION_PREFIX)),
-      sectionLabel(sectionKeyOf(repo)),
+      issueLabel(topicSuffix(repo, ISSUE_PREFIX)),
+      sectionLabel(sectionKeyOf(repo), topicSuffix(repo, ISSUE_PREFIX)),
     ].join(' ').toLowerCase();
     return card;
   }
 
   // ---------------------------------------------------------------------
-  // Grouping: repos are grouped by their first `edition-*` topic, then within
-  // each edition by their first other topic (any topic not starting with
-  // `edition-`). Repos missing either fall into an "Other" group at that level.
+  // Grouping: repos are grouped by their first `issue-*` topic, then within
+  // each issue by their first other topic (any topic not starting with
+  // `issue-`). Repos missing either fall into an "Other" group at that level.
   // ---------------------------------------------------------------------
 
-  // Returns what follows `prefix` in the repo's first topic starting with
-  // it (e.g. "3" for "edition-3"), or null if it has no such topic.
-  function topicSuffix(repo, prefix) {
+  // The repo's topics, lowercased, with legacy `edition-*` topics read as
+  // `issue-*`.
+  function topicsOf(repo) {
     const topics = Array.isArray(repo.topics) ? repo.topics : [];
-    for (const topic of topics) {
+    return topics.map((topic) => {
       const t = String(topic).toLowerCase();
+      return t.startsWith(LEGACY_ISSUE_PREFIX) ? ISSUE_PREFIX + t.slice(LEGACY_ISSUE_PREFIX.length) : t;
+    });
+  }
+
+  // Returns what follows `prefix` in the repo's first topic starting with
+  // it (e.g. "3" for "issue-3"), or null if it has no such topic.
+  function topicSuffix(repo, prefix) {
+    for (const t of topicsOf(repo)) {
       if (t.startsWith(prefix) && t.length > prefix.length) return t.slice(prefix.length);
     }
     return null;
   }
 
-  // The repo's section: its first topic that isn't an `edition-*` topic,
+  // The repo's section: its first topic that isn't an `issue-*` topic,
   // or null if it has none.
   function sectionKeyOf(repo) {
-    const topics = Array.isArray(repo.topics) ? repo.topics : [];
-    for (const topic of topics) {
-      const t = String(topic).toLowerCase();
-      if (t && !t.startsWith(EDITION_PREFIX)) return t;
+    for (const t of topicsOf(repo)) {
+      if (t && !t.startsWith(ISSUE_PREFIX)) return t;
     }
     return null;
   }
@@ -352,11 +361,17 @@
       .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
       .join(' ');
 
-  const editionLabel = (key) => (key == null ? 'Other repositories' : `Edition ${humanizeSlug(key)}`);
+  const issueLabel = (key) => (key == null ? 'Other repositories' : `Issue ${humanizeSlug(key)}`);
 
-  const sectionLabel = (key) => (key == null ? 'Other' : humanizeSlug(key));
+  // A section's heading: its "title" from issue.json if set, otherwise
+  // the topic made readable.
+  const sectionLabel = (key, issueKey) => {
+    if (key == null) return 'Other';
+    const title = sectionsOf(issueKey).find((s) => s.key === key)?.title;
+    return typeof title === 'string' && title ? title : humanizeSlug(key);
+  };
 
-  // Numeric-aware compare, so "edition-10" sorts after "edition-9". Null keys
+  // Numeric-aware compare, so "issue-10" sorts after "issue-9". Null keys
   // (the "Other" groups) always sort last.
   function compareKeys(a, b, descending) {
     if (a === b) return 0;
@@ -366,12 +381,12 @@
     return descending ? -cmp : cmp;
   }
 
-  // Section order within an edition: sections listed in that edition's
-  // edition.json come first, in the order they appear there; any others
+  // Section order within an issue: sections listed in that issue's
+  // issue.json come first, in the order they appear there; any others
   // follow alphabetically, and "Other" (null) is always last.
-  const sectionsOf = (editionKey) =>
-    (editionKey != null && Array.isArray(editionSettings[editionKey]?.sections)
-      ? editionSettings[editionKey].sections
+  const sectionsOf = (issueKey) =>
+    (issueKey != null && Array.isArray(issueSettings[issueKey]?.sections)
+      ? issueSettings[issueKey].sections
       : []);
 
   function compareSections(order, a, b) {
@@ -383,27 +398,27 @@
     return compareKeys(a, b, false);
   }
 
-  // Returns [{ key, sections: [{ key, repos }] }], newest edition first and
+  // Returns [{ key, sections: [{ key, repos }] }], newest issue first and
   // sections ordered by compareSections. Repos keep their order from
   // repos.json.
   function groupRepos(repos) {
-    const editions = new Map();
+    const issues = new Map();
     for (const repo of repos) {
-      const editionKey = topicSuffix(repo, EDITION_PREFIX);
+      const issueKey = topicSuffix(repo, ISSUE_PREFIX);
       const sectionKey = sectionKeyOf(repo);
-      if (!editions.has(editionKey)) editions.set(editionKey, new Map());
-      const sections = editions.get(editionKey);
+      if (!issues.has(issueKey)) issues.set(issueKey, new Map());
+      const sections = issues.get(issueKey);
       if (!sections.has(sectionKey)) sections.set(sectionKey, []);
       sections.get(sectionKey).push(repo);
     }
 
-    return [...editions.keys()]
+    return [...issues.keys()]
       .sort((a, b) => compareKeys(a, b, true))
-      .map((editionKey) => {
-        const sections = editions.get(editionKey);
-        const order = sectionsOf(editionKey).map((s) => s.key);
+      .map((issueKey) => {
+        const sections = issues.get(issueKey);
+        const order = sectionsOf(issueKey).map((s) => s.key);
         return {
-          key: editionKey,
+          key: issueKey,
           sections: [...sections.keys()]
             .sort((a, b) => compareSections(order, a, b))
             .map((sectionKey) => ({ key: sectionKey, repos: sections.get(sectionKey) })),
@@ -429,50 +444,50 @@
     return whiteContrast >= 4.5 ? '#ffffff' : '#000000';
   }
 
-  // Button under the edition description that opens the editorial modal.
-  function renderEditorialButton(editionKey, settings) {
+  // Button under the issue description that opens the editorial modal.
+  function renderEditorialButton(issueKey, settings) {
     if (!bioModal) return null;
     const button = el('button', {
       type: 'button',
-      className: 'outline-btn edition-editorial-btn',
+      className: 'outline-btn issue-editorial-btn',
       'aria-haspopup': 'dialog',
     }, outlineBtnContent('Editor\'s Note'));
-    button.addEventListener('click', () => openEditorial(editionKey, settings));
-    return el('p', { className: 'edition-editorial' }, [button]);
+    button.addEventListener('click', () => openEditorial(issueKey, settings));
+    return el('p', { className: 'issue-editorial' }, [button]);
   }
 
-  // Renders one edition group, laid out like a book page: the cover image (if
-  // the edition's folder has one) on the left, and on the right the edition
-  // title, an article count, a short rule, the edition description, a
-  // button opening the editorial, the section indexes, and the closing image. An edition whose repos all lack a section topic gets no
+  // Renders one issue group, laid out like a book page: the cover image (if
+  // the issue's folder has one) on the left, and on the right the issue
+  // title, an article count, a short rule, the issue description, a
+  // button opening the editorial, the section indexes, and the closing image. An issue whose repos all lack a section topic gets no
   // section headings, so its repo list sits directly under the description.
-  function renderEdition(edition) {
-    const editionId = slugId('edition-', edition.key);
-    const showSections = !(edition.sections.length === 1 && edition.sections[0].key == null);
-    const settings = (edition.key != null && editionSettings[edition.key]) || {};
-    const repoCount = edition.sections.reduce((n, section) => n + section.repos.length, 0);
+  function renderIssue(issue) {
+    const issueId = slugId('issue-', issue.key);
+    const showSections = !(issue.sections.length === 1 && issue.sections[0].key == null);
+    const settings = (issue.key != null && issueSettings[issue.key]) || {};
+    const repoCount = issue.sections.reduce((n, section) => n + section.repos.length, 0);
 
-    const content = el('div', { className: 'col-12 edition-content' }, [
-      el('h2', { className: 'edition-heading', id: editionId }, [editionLabel(edition.key)]),
-      el('p', { className: 'edition-byline' }, [`${repoCount} ${repoCount === 1 ? 'article' : 'articles'}`]),
-      el('hr', { className: 'edition-rule' }),
-      settings.description ? el('p', { className: 'edition-description' }, [settings.description]) : null,
-      settings.editorial ? renderEditorialButton(edition.key, settings) : null,
+    const content = el('div', { className: 'col-12 issue-content' }, [
+      el('h2', { className: 'issue-heading', id: issueId }, [issueLabel(issue.key)]),
+      el('p', { className: 'issue-byline' }, [`${repoCount} ${repoCount === 1 ? 'article' : 'articles'}`]),
+      el('hr', { className: 'issue-rule' }),
+      settings.description ? el('p', { className: 'issue-description' }, [settings.description]) : null,
+      settings.editorial ? renderEditorialButton(issue.key, settings) : null,
     ]);
-    const group = el('section', { className: 'col-12 repo-group edition-group', 'aria-labelledby': editionId }, [
+    const group = el('section', { className: 'col-12 repo-group issue-group', 'aria-labelledby': issueId }, [
       el('div', { className: 'row g-4 g-md-5' }, [
         settings.cover
-          ? el('div', { className: 'col-12 col-md-5 edition-image-col' }, [
-              el('img', { src: settings.cover, className: 'edition-image', alt: '', loading: 'lazy' }),
+          ? el('div', { className: 'col-12 col-md-5 issue-image-col' }, [
+              el('img', { src: settings.cover, className: 'issue-image', alt: '', loading: 'lazy' }),
             ])
           : null,
         content,
       ]),
     ]);
     if (settings.cover) content.classList.add('col-md-7');
-    const sectionColors = new Map(sectionsOf(edition.key).map((s) => [s.key, s.color]));
+    const sectionColors = new Map(sectionsOf(issue.key).map((s) => [s.key, s.color]));
 
-    for (const section of edition.sections) {
+    for (const section of issue.sections) {
       const list = el('div', { className: 'repo-index' }, section.repos.map((repo) => {
         const card = renderCard(repo, showSections ? 4 : 3);
         cards.push(card);
@@ -483,8 +498,8 @@
         content.append(list);
         continue;
       }
-      const sectionId = `${editionId}--${slugId('section-', section.key)}`;
-      const heading = el('h3', { className: 'section-heading', id: sectionId }, [sectionLabel(section.key)]);
+      const sectionId = `${issueId}--${slugId('section-', section.key)}`;
+      const heading = el('h3', { className: 'section-heading', id: sectionId }, [sectionLabel(section.key, issue.key)]);
       const color = section.key != null && sectionColors.get(section.key);
       const sectionEl = el('section', { className: 'repo-group section-group', 'aria-labelledby': sectionId }, [heading, list]);
       if (color && /^#[0-9a-f]{6}$/i.test(color)) {
@@ -498,20 +513,20 @@
 
     if (settings.closing) {
       content.append(
-        el('figure', { className: 'edition-closing' }, [
-          el('img', { src: settings.closing, className: 'edition-closing-image', alt: '', loading: 'lazy' }),
+        el('figure', { className: 'issue-closing' }, [
+          el('img', { src: settings.closing, className: 'issue-closing-image', alt: '', loading: 'lazy' }),
         ])
       );
     }
     return group;
   }
 
-  // One menu-bar link per edition, jumping to its heading.
-  function renderEditionNav(editions) {
-    if (!editionNav) return;
-    editionNav.replaceChildren(...editions.map((edition) =>
+  // One menu-bar link per issue, jumping to its heading.
+  function renderIssueNav(issues) {
+    if (!issueNav) return;
+    issueNav.replaceChildren(...issues.map((issue) =>
       el('li', {}, [
-        el('a', { href: `#${slugId('edition-', edition.key)}`, className: 'site-nav-link' }, [editionLabel(edition.key)]),
+        el('a', { href: `#${slugId('issue-', issue.key)}`, className: 'site-nav-link' }, [issueLabel(issue.key)]),
       ])
     ));
   }
@@ -526,13 +541,13 @@
       if (matches) visibleCount++;
     }
 
-    // Hide any edition or section whose cards are all filtered out.
+    // Hide any issue or section whose cards are all filtered out.
     for (const group of repoList.querySelectorAll('.repo-group')) {
       group.classList.toggle('d-none', !group.querySelector('.repo-card:not(.d-none)'));
     }
     // ...and its menu-bar link.
-    for (const link of editionNav?.querySelectorAll('a') ?? []) {
-      const group = document.querySelector(link.hash)?.closest('.edition-group');
+    for (const link of issueNav?.querySelectorAll('a') ?? []) {
+      const group = document.querySelector(link.hash)?.closest('.issue-group');
       link.parentElement.classList.toggle('d-none', Boolean(group?.classList.contains('d-none')));
     }
 
@@ -570,9 +585,9 @@
 
     const repos = Array.isArray(data.repos) ? data.repos : [];
     cards = [];
-    const editions = groupRepos(repos);
-    repoList.replaceChildren(...editions.map(renderEdition));
-    renderEditionNav(editions);
+    const issues = groupRepos(repos);
+    repoList.replaceChildren(...issues.map(renderIssue));
+    renderIssueNav(issues);
 
     if (repos.length === 0 && status) {
       status.textContent = 'No repositories found.';
@@ -593,24 +608,24 @@
     return res.json();
   }
 
-  // editions.json is optional: if it's missing or broken, the index still
-  // renders, just without edition images, editorials, or section colors.
-  async function loadEditionSettings() {
+  // issues.json is optional: if it's missing or broken, the index still
+  // renders, just without issue images, editorials, or section colors.
+  async function loadIssueSettings() {
     try {
-      const data = await fetchJson(EDITIONS_URL);
-      editionSettings = data?.editions || {};
+      const data = await fetchJson(ISSUES_URL);
+      issueSettings = data?.issues || {};
     } catch (err) {
-      console.warn(`Could not load ${EDITIONS_URL}:`, err);
+      console.warn(`Could not load ${ISSUES_URL}:`, err);
     }
   }
 
   async function init() {
-    // Both requests start at once; the edition settings only need to be in
+    // Both requests start at once; the issue settings only need to be in
     // place before the cards render.
-    const editionsLoaded = loadEditionSettings();
+    const issuesLoaded = loadIssueSettings();
     try {
       const data = await fetchJson(DATA_URL);
-      await editionsLoaded;
+      await issuesLoaded;
       renderSite(data);
     } catch (err) {
       console.error(`Could not load ${DATA_URL}:`, err);
