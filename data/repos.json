@@ -2,7 +2,7 @@
   "org": "Middlebury-Applied-Math-Journal",
   "title": "Middlebury Applied Math Journal",
   "description": "A senior student research journal on mathematical methods and their applications.",
-  "builtAt": "2026-11-19T16:37:05.074Z",
+  "builtAt": "2026-11-20T16:12:24.182Z",
   "repos": [
     {
       "name": "alzheimers-biomarker-cascade",
@@ -16,7 +16,7 @@
       "isArchived": false,
       "updatedAt": "2026-11-05T13:13:36Z",
       "topics": [
-        "edition-1",
+        "issue-1",
         "mechanistic-insights-into-disease-and-progression"
       ],
       "pdfUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/alzheimers-biomarker-cascade/main/pdf/alzheimer.pdf",
@@ -38,7 +38,7 @@
       "isArchived": false,
       "updatedAt": "2026-11-04T20:31:21Z",
       "topics": [
-        "edition-1",
+        "issue-1",
         "understanding-epidemiology"
       ],
       "pdfUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/behavior-driven-vaccination-sir/main/pdf/behavior-vaccination.pdf",
@@ -60,7 +60,7 @@
       "isArchived": false,
       "updatedAt": "2026-11-05T12:54:41Z",
       "topics": [
-        "edition-1",
+        "issue-1",
         "managing-energy"
       ],
       "pdfUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/carbon-cycle-ode/main/pdf/carbon-cycle.pdf",
@@ -82,7 +82,7 @@
       "isArchived": false,
       "updatedAt": "2026-11-05T13:01:43Z",
       "topics": [
-        "edition-1",
+        "issue-1",
         "wild-equations"
       ],
       "pdfUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/leslie-matrix-fishery-harvesting/main/pdf/fisher.pdf",
@@ -104,7 +104,7 @@
       "isArchived": false,
       "updatedAt": "2026-11-04T20:28:04Z",
       "topics": [
-        "edition-1",
+        "issue-1",
         "understanding-epidemiology"
       ],
       "pdfUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/pandemic-compartmental-models/main/pdf/prevent-pandemic.pdf",
@@ -126,7 +126,7 @@
       "isArchived": false,
       "updatedAt": "2026-11-04T16:34:54Z",
       "topics": [
-        "edition-1",
+        "issue-1",
         "managing-energy"
       ],
       "pdfUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/river-temperature-thermal-discharge/main/pdf/river-temp.pdf",
@@ -148,7 +148,7 @@
       "isArchived": false,
       "updatedAt": "2026-11-05T12:59:43Z",
       "topics": [
-        "edition-1",
+        "issue-1",
         "wild-equations"
       ],
       "pdfUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/rock-paper-scissors-cyclic-competition/main/pdf/rps.pdf",
@@ -170,7 +170,7 @@
       "isArchived": false,
       "updatedAt": "2026-11-05T17:02:41Z",
       "topics": [
-        "edition-1",
+        "issue-1",
         "wild-equations"
       ],
       "pdfUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/spatial-pattern-formation/main/pdf/spatial-pattern.pdf",
@@ -192,7 +192,7 @@
       "isArchived": false,
       "updatedAt": "2026-11-05T12:57:04Z",
       "topics": [
-        "edition-1",
+        "issue-1",
         "mechanistic-insights-into-disease-and-progression"
       ],
       "pdfUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/tmbox-microfluidic-biosensor/main/pdf/biosensor.pdf",
@@ -214,7 +214,7 @@
       "isArchived": false,
       "updatedAt": "2026-11-05T12:56:02Z",
       "topics": [
-        "edition-1",
+        "issue-1",
         "managing-energy"
       ],
       "pdfUrl": "https://raw.githubusercontent.com/Middlebury-Applied-Math-Journal/wind-turbine-gearbox-maintenance/main/pdf/wind-turbine.pdf",

@@ -7,7 +7,7 @@ A senior student research journal on mathematical methods and their applications
 
 An automatically generated index of every repository in the [Middlebury-Applied-Math-Journal](https://github.com/Middlebury-Applied-Math-Journal) organization. Rebuilt nightly by [GitHub Actions](.github/workflows/build-index.yml). See [SETUP.md](SETUP.md) for how it works, and [Organizing issues and sections](#organizing-issues-and-sections) to place an article in an issue.
 
-_Last built: 2026-11-19T16:37:05.074Z_
+_Last built: 2026-11-20T16:12:24.182Z_
 
 ## [Investigating the Biomarker Cascade of Alzheimer’s Disease](https://github.com/Middlebury-Applied-Math-Journal/alzheimers-biomarker-cascade)
 
@@ -115,13 +115,12 @@ Each issue has a folder named for its topic without `issue-`. Articles tagged `i
   "description": "A short paragraph about the theme of this issue.",
   "sections": [
     { "key": "managing-energy", "color": "#2E7D32" },
-    { "key": "wild-equations", "title": "Wild Equations: Modeling the Untamed", "color": "#1565C0" }
+    { "key": "wild-equations", "color": "#1565C0" }
   ]
 }
 ```
 
 - Each `key` is a section topic exactly as it appears on the article repositories, in lowercase.
-- `title` is optional. Without it, the heading is made from the topic (`wild-equations` shows as "Wild Equations"). Add a title when the heading needs punctuation or capitals a topic can't hold, such as "Big Data, Smaller Residuals" or "ODEs".
 - Each `color` is a six-digit hex code such as `"#2E7D32"`. Pick a color dark enough to see on a white page.
 - Colors belong to the issue, so the same section can have a different color in another issue.
 - The file must be valid JSON: wrap keys and values in double quotes, and do not leave a comma after the last item in a list.
